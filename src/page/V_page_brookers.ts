@@ -48,7 +48,7 @@ export function V_page_brookers<van_T extends VanShape>({ ctx }:{
 	function V_page_brookers_sidebar() {
 		return (
 			H.div({
-					class: `V_page_brookers_sidebar relative mt--24 min-h-screen ml-4 lg:ml-auto mt-auto bottom-0 right-0 lg:max-w-sm max-w-xs`
+					class: `V_page_brookers_sidebar hidden relative mt--24 min-h-screen ml-4 lg:ml-auto mt-auto bottom-0 right-0 lg:max-w-sm max-w-xs`
 				},
 				V_timeline<van_T>({
 						ctx,
