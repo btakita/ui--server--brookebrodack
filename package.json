@@ -5,9 +5,9 @@
   "types": "src/index.ts",
   "dependencies": {
     "@btakita/ui--server--blog": "workspace:*",
-    "@ctx-core/html": "^11.5.4",
-    "@ctx-core/object": "^29.1.0",
-    "@ctx-core/vanjs": "^2.1.4"
+    "@ctx-core/html": "^11.5.5",
+    "@ctx-core/object": "^30.0.0",
+    "@ctx-core/vanjs": "^2.2.1"
   },
   "devDependencies": {
     "bun-types": "latest",
