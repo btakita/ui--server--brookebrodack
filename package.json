@@ -1,9 +1,17 @@
 {
   "name": "@btakita/ui--server--brookebrodack",
-  "module": "src/index.ts",
   "type": "module",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "@btakita/ui--server--blog": "workspace:*",
+    "@ctx-core/html": "^11.5.3",
+    "@ctx-core/object": "^29.0.0",
+    "@ctx-core/vanjs": "^2.1.2"
+  },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "van-type-delegate": "^1.1.1"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
