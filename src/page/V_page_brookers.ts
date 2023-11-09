@@ -10,21 +10,26 @@ export function V_page_brookers<van_T extends VanShape>({ ctx }:{
 	let H = H_<van_T>(ctx)
 	return (
 		H.div({
-				class: 'V_page_home min-h-screen hidden overflow-x-hidden',
+				class: 'V_page_home min-h-screen overflow-x-hidden',
 				'data-onbind': '' + V_page_brookers__onbind
 			},
 			V_page_brookers_content(),
-			H.div({ class: 'img_a absolute h-96 bottom-0 w-full' },
+			V_page_brookers_img_a(),
+			H.div({ class: 'relative mt-24' },
+			)))
+	function V_page_brookers_img_a() {
+	  return (
+			H.div({ class: 'V_page_brookers_img_a hidden absolute z-10 h-96 bottom-0 w-full' },
 				H.img({
 					class: 'cooler-in-space absolute top-0 m-auto',
 					src: '/assets/images/cooler-in-space--look-aud-right.gif'
-				})),
-			H.div({ class: 'relative mt-24' },
-			)))
+				}))
+		)
+	}
 	function V_page_brookers_content() {
 	  return (
 			H.div({
-				// class: 'V_page_brookers_content w-screen ml-50wh'
+				class: 'V_page_brookers_content w-screen'
 			},
 				V_page_brookers_hero(),
 				V_page_brookers_sidebar(),
@@ -34,7 +39,7 @@ export function V_page_brookers<van_T extends VanShape>({ ctx }:{
 	function V_page_brookers_hero() {
 		return (
 			H.div({
-					class: 'V_page_brookers_hero absolute w-screen top-0 left-50 h-24 flex flex-col items-center justify-top'
+					class: 'V_page_brookers_hero absolute top-0 left-50 h-24 flex flex-col items-center justify-top'
 				},
 				H.h1({ class: 'mt-12' }, `Hello, my name is Brooke Brodack`),
 				H.h2(`& I am an artist`))
@@ -43,7 +48,8 @@ export function V_page_brookers<van_T extends VanShape>({ ctx }:{
 	function V_page_brookers_sidebar() {
 		return (
 			H.div({
-					class: 'V_page_brookers_sidebar mt--24 min-h-screen ml-auto mt-auto bottom-0 right-0 mr-12 max-w-sm'
+					class: 'V_page_brookers_sidebar relative mt--24 min-h-screen ml-auto mt-auto bottom-0 right-0' +
+						' lg:max-w-sm max-w-xs'
 				},
 				V_timeline<van_T>({
 						ctx,
