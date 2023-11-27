@@ -5,15 +5,14 @@
   "types": "src/index.ts",
   "dependencies": {
     "@btakita/ui--server--blog": "workspace:*",
-    "@ctx-core/html": "^11.5.5",
-    "@ctx-core/object": "^30.0.0",
-    "@ctx-core/vanjs": "^2.2.1"
+    "@ctx-core/html": "^11.6.31",
+    "ctx-core": "^4.8.0",
+    "relementjs": "^0.14.1"
   },
   "devDependencies": {
-    "bun-types": "latest",
-    "van-type-delegate": "^1.1.1"
+    "bun-types": "latest"
   },
   "peerDependencies": {
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2"
   }
 }
