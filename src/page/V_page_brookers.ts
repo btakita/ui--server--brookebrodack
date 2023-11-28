@@ -1,5 +1,5 @@
 import { V_page_brookers__onbind } from '@btakita/ui--all--brookebrodack'
-import { V_atb, V_footnote, V_footnote_list } from '@btakita/ui--server--blog'
+import { atb_, footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog'
 import { class_ } from '@ctx-core/html'
 import { type Ctx } from 'ctx-core/object'
 import { type Node_T, type relement_env_T, type tag__dom_T } from 'relementjs'
@@ -85,9 +85,8 @@ export function V_page_brookers<env_T extends relement_env_T>({ ctx }:{
 						description_a: [
 							`A spoof suspense drama about eating potato chips, has been called "brilliant" by Entertainment Weekly,
 						which has listed it among the "great moments in YouTube history."`,
-							V_footnote<env_T>({ ctx, id: 'knowyourmeme' },
-								V_atb<env_T>({
-									ctx,
+							footnote_c_<env_T>({ ctx, id: 'knowyourmeme' },
+								atb_<env_T>({
 									href: 'https://knowyourmeme.com/memes/people/brookers'
 								}, 'knowyourmeme.com'))
 						]
@@ -104,7 +103,7 @@ export function V_page_brookers<env_T extends relement_env_T>({ ctx }:{
 						title: 'Brookers first video on YouTube'
 					}),
 				),
-				V_footnote_list<env_T>({ ctx }))
+				footnote_list_c_<env_T>({ ctx }))
 		)
 	}
 }
