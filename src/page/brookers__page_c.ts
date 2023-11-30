@@ -1,56 +1,56 @@
-import { V_page_brookers__onbind } from '@btakita/ui--all--brookebrodack'
+import { brookers__page__onbind } from '@btakita/ui--all--brookebrodack'
 import { atb_, footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog'
 import { class_ } from '@ctx-core/html'
 import { type Ctx } from 'ctx-core/object'
 import { type Node_T, type relement_env_T, type tag__dom_T } from 'relementjs'
 import { a_, div_, h1_, h2_, h3_, img_, li_, ol_, p_, time_ } from 'relementjs/html'
-export function V_page_brookers<env_T extends relement_env_T>({ ctx }:{
+export function brookers__page_c_<env_T extends relement_env_T>({ ctx }:{
 	ctx:Ctx
 }) {
 	return (
 		div_({
-				class: 'V_page_home min-h-screen overflow-x-hidden',
-				'data-onbind': '' + V_page_brookers__onbind
+				class: 'brookers__page_c min-h-screen overflow-x-hidden',
+				'data-onbind': '' + brookers__page__onbind
 			},
-			V_page_brookers_content(),
-			V_page_brookers_img_a(),
+			brookers__page__content_c_(),
+			brookers__page__img_a_c_(),
 			div_({ class: 'relative mt-24' },))
 	) as Node_T<env_T, HTMLElementTagNameMap['div']>
-	function V_page_brookers_img_a() {
+	function brookers__page__img_a_c_() {
 		return (
-			div_({ class: 'V_page_brookers_img_a hidden absolute z-10 h-96 bottom-0 w-full' },
+			div_({ class: 'brookers__page__img_a_c_ hidden absolute z-10 h-96 bottom-0 w-full' },
 				img_({
 					class: 'cooler-in-space absolute top-0 m-auto',
 					src: '/assets/images/cooler-in-space--look-aud-right.gif'
 				}))
 		)
 	}
-	function V_page_brookers_content() {
+	function brookers__page__content_c_() {
 		return (
 			div_({
-					class: 'V_page_brookers_content w-screen'
+					class: 'brookers__page__content_c_ w-screen'
 				},
-				V_page_brookers_hero(),
-				V_page_brookers_sidebar())
+				brookers__page__hero_c_(),
+				brookers__page__sidebar_c_())
 		)
 	}
-	function V_page_brookers_hero() {
+	function brookers__page__hero_c_() {
 		return (
 			div_({
-					class: `V_page_brookers_hero absolute top-0 left-50 h-24 ml-4 mb-4 flex flex-col items-center justify-top`
+					class: `brookers__page__hero_c_ absolute top-0 left-50 h-24 ml-4 mb-4 flex flex-col items-center justify-top`
 				},
 				h1_({ class: 'mt-4' }, `Hello, my name is Brooke Brodack`),
 				h2_(`& I am an artist`))
 		)
 	}
-	function V_page_brookers_sidebar() {
+	function brookers__page__sidebar_c_() {
 		return (
 			div_({
-					class: `V_page_brookers_sidebar hidden relative mt--24 min-h-screen ml-4 mt-auto bottom-0 right-0 max-w-xs`
+					class: `brookers__page__sidebar_c_ hidden relative mt--24 min-h-screen ml-4 mt-auto bottom-0 right-0 max-w-xs`
 				},
-				V_timeline<env_T>({
+				brookers__timeline_c_<env_T>({
 						ctx,
-					}, V_timeline_item<env_T>({
+					}, brookers__timeline__item_c_<env_T>({
 						ctx,
 						at: 'February 2007',
 						title: 'The Sound of Your Voice—Barenaked Ladies',
@@ -60,25 +60,25 @@ export function V_page_brookers<env_T extends relement_env_T>({ ctx }:{
 							` with fellow YouTubers`,
 						],
 					}),
-					V_timeline_item<env_T>({
+					brookers__timeline__item_c_<env_T>({
 						ctx,
 						at: 'December 6 2006',
 						title: 'Tyra Banks Show',
 						description_a: [`Guest appearance`]
 					}),
-					V_timeline_item<env_T>({
+					brookers__timeline__item_c_<env_T>({
 						ctx,
 						at: 'July 5 2006',
 						title: 'CRAZED NUMA FAN !!!!',
 						description_a: ['Over 18 Million Views']
 					}),
-					V_timeline_item<env_T>({
+					brookers__timeline__item_c_<env_T>({
 						ctx,
 						at: 'July 3 - Aug 7 2006',
 						title: 'Most-subscribed on YouTube',
 						description_a: ['> 64000 subscribers']
 					}),
-					V_timeline_item<env_T>({
+					brookers__timeline__item_c_<env_T>({
 						ctx,
 						at: 'June 2006',
 						title: 'Chips',
@@ -91,13 +91,13 @@ export function V_page_brookers<env_T extends relement_env_T>({ ctx }:{
 								}, 'knowyourmeme.com'))
 						]
 					}),
-					V_timeline_item<env_T>({
+					brookers__timeline__item_c_<env_T>({
 						ctx,
 						at: 'June 2006',
 						title: 'Carson Daly NBC',
 						description_a: ['18 month development contract']
 					}),
-					V_timeline_item<env_T>({
+					brookers__timeline__item_c_<env_T>({
 						ctx,
 						at: 'September 2005',
 						title: 'Brookers first video on YouTube'
@@ -107,27 +107,27 @@ export function V_page_brookers<env_T extends relement_env_T>({ ctx }:{
 		)
 	}
 }
-export function V_timeline<env_T extends relement_env_T>({ ctx, style, ...$p }:{
+export function brookers__timeline_c_<env_T extends relement_env_T>({ ctx, style, ...$p }:{
 	ctx:Ctx
 	class?:string
 	style?:string
-}, ...children:V_timeline_item_T<env_T>[]) {
+}, ...children:brookers__timeline__item_T<env_T>[]) {
 	return ol_({
-			class: class_('V_timeline flex flex-col border-l border-gray-200 dark:border-gray-700', $p.class),
+			class: class_('brookers__timeline_c_ flex flex-col border-l border-gray-200 dark:border-gray-700', $p.class),
 			style,
 		}, ...children
 	) as Node_T<env_T, HTMLElementTagNameMap['ol']>
 }
-declare const V_timeline_item__sym:unique symbol
-export type V_timeline_item_T<env_T extends relement_env_T> = tag__dom_T<env_T>&{ V_timeline_item__sym:never }
-export function V_timeline_item<env_T extends relement_env_T>({ ctx, at, title, description_a }:{
+declare const brookers__timeline__item__sym:unique symbol
+export type brookers__timeline__item_T<env_T extends relement_env_T> = tag__dom_T<env_T>&{ brookers__timeline__item__sym:never }
+export function brookers__timeline__item_c_<env_T extends relement_env_T>({ ctx, at, title, description_a }:{
 	ctx:Ctx
 	at:string
 	title:string
 	description_a?:tag__dom_T<env_T>[]
-}, ...children:tag__dom_T<env_T>[]):V_timeline_item_T<env_T> {
+}, ...children:tag__dom_T<env_T>[]):brookers__timeline__item_T<env_T> {
 	return (
-		li_({ class: 'V_timeline_item mb-10 ml-4 first:mt-24' },
+		li_({ class: 'brookers__timeline__item_c_ mb-10 ml-4 first:mt-24' },
 			div_({
 				class: 'absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700'
 			}),
@@ -141,5 +141,5 @@ export function V_timeline_item<env_T extends relement_env_T>({ ctx, at, title, 
 				class: 'text-base font-normal text-gray-500 dark:text-gray-400'
 			}, ...(description_a || [])),
 			...children)
-	) as V_timeline_item_T<env_T>
+	) as brookers__timeline__item_T<env_T>
 }
