@@ -1,4 +1,4 @@
-import { brookers__page__onbind } from '@btakita/ui--all--brookebrodack'
+import { brookers__page__onbind } from '@btakita/ui--any--brookebrodack'
 import { atb_, footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog'
 import { class_ } from '@ctx-core/html'
 import { type Ctx } from 'ctx-core/object'
