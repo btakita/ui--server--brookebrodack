@@ -119,7 +119,9 @@ export function brookers__timeline_c_<env_T extends relement_env_T>({ ctx, style
 	) as Node_T<env_T, HTMLElementTagNameMap['ol']>
 }
 declare const brookers__timeline__item__sym:unique symbol
-export type brookers__timeline__item_T<env_T extends relement_env_T> = tag__dom_T<env_T>&{ brookers__timeline__item__sym:never }
+export type brookers__timeline__item_T<env_T extends relement_env_T> = tag__dom_T<env_T>&{
+	brookers__timeline__item__sym:never
+}
 export function brookers__timeline__item_c_<env_T extends relement_env_T>({ ctx, at, title, description_a }:{
 	ctx:Ctx
 	at:string
