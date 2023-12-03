@@ -6,9 +6,9 @@
 	"dependencies": {
 		"@btakita/ui--any--brookebrodack": "workspace:*",
 		"@btakita/ui--server--blog": "workspace:*",
-		"@ctx-core/html": "^11.6.32",
-		"ctx-core": "^4.8.1",
-		"relementjs": "^0.17.1"
+		"@ctx-core/html": "^11.6.33",
+		"ctx-core": "^4.8.2",
+		"relementjs": "^0.17.2"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
