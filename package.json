@@ -6,14 +6,14 @@
 	"dependencies": {
 		"@btakita/ui--any--brookebrodack": "workspace:*",
 		"@btakita/ui--server--blog": "workspace:*",
-		"@ctx-core/html": "^11.6.35",
-		"ctx-core": "^4.9.1",
-		"relementjs": "^0.20.1"
+		"@ctx-core/html": "^11.6.67",
+		"ctx-core": "^5.4.1",
+		"relementjs": "^0.31.11"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
 	},
 	"peerDependencies": {
-		"typescript": "^5.3.2"
+		"typescript": "^5.3.3"
 	}
 }
