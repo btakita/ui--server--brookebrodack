@@ -1,6 +1,7 @@
 {
 	"name": "@btakita/ui--server--brookebrodack",
 	"type": "module",
+	"version": "0.0.0",
 	"module": "src/index.ts",
 	"types": "src/index.ts",
 	"dependencies": {
@@ -8,7 +9,8 @@
 		"@btakita/ui--server--blog": "workspace:*",
 		"@ctx-core/html": "^11.6.67",
 		"ctx-core": "^5.4.1",
-		"relementjs": "^0.31.11"
+		"relementjs": "^0.33.0",
+		"relysjs": "^0.25.10"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
