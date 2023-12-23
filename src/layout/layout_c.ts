@@ -75,7 +75,6 @@ export function layout_c_<env_T extends relement_env_T = 'server'>({
 				script_(raw_(`
 					window.va = window.va || (()=>(window.vaq = window.vaq || []).push(arguments))
 				`.trim().replaceAll('					', ''))),
-				script_({ defer: 1, src: '/_vercel/insights/script.js' }),
 				title_(title),
 			]),
 			body_(...children))
