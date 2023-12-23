@@ -11,7 +11,7 @@
 		"@ctx-core/html": "^11.6.67",
 		"ctx-core": "^5.4.1",
 		"relementjs": "^0.33.0",
-		"relysjs": "^0.25.13"
+		"relysjs": "^0.25.14"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
