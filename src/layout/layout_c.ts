@@ -1,9 +1,14 @@
 import { import_meta_env_ } from 'ctx-core/env'
-import { Node_T, raw_, type relement_env_T, type tag__dom_T } from 'relementjs'
+import { raw_, type relement_env_T, type tag__dom_T } from 'relementjs'
 import { body_, head_, link_, meta_, script_, title_ } from 'relementjs/html'
 import { doc_html_ } from 'relementjs/server'
-import { assets_, assets__new, type assets_T, request_url_, type route_ctx_T } from 'relysjs'
+import { asset_path_a_, assets_, assets__new, type assets_T, request_url_, type route_ctx_T } from 'relysjs'
 const google_site_verification = import_meta_env_().PUBLIC_GOOGLE_SITE_VERIFICATION
+const [
+	favicon_svg,
+] = await asset_path_a_(
+	import('../public/assets/favicon.svg')
+)
 export function layout_c_<env_T extends relement_env_T = 'server'>({
 	ctx, assets, canonical_url, title, author, description, og_image
 }:{
@@ -50,7 +55,7 @@ export function layout_c_<env_T extends relement_env_T = 'server'>({
 					rel: 'stylesheet'
 				}),
 				meta_({ name: 'theme-color', content: '' }),
-				link_({ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }),
+				link_({ rel: 'icon', type: 'image/svg+xml', href: favicon_svg }),
 				link_({ rel: 'canonical', href: canonical_url }),
 				link_({ rel: 'sitemap', href: '/sitemap-index.xml' }),
 				google_site_verification

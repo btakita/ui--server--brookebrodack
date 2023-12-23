@@ -5,12 +5,13 @@
 	"module": "src/index.ts",
 	"types": "src/index.ts",
 	"dependencies": {
+		"@btakita/domain--any--brookebrodack": "workspace:*",
 		"@btakita/ui--any--brookebrodack": "workspace:*",
 		"@btakita/ui--server--blog": "workspace:*",
 		"@ctx-core/html": "^11.6.67",
 		"ctx-core": "^5.4.1",
 		"relementjs": "^0.33.0",
-		"relysjs": "^0.25.10"
+		"relysjs": "^0.25.13"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
