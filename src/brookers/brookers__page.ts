@@ -26,23 +26,13 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 				div_({ class: 'relative mt-24' })
 			]))
 	)
-	function brookers__page__img_a_c_() {
-		return (
-			div_({ class: 'brookers__page__img_a_c hidden absolute z-10 h-96 bottom-0 w-full' },
-				img_({
-					class: 'cooler-in-space absolute top-0 m-auto',
-					src: cooler_in_space_gif
-				}))
-		)
-	}
 	function brookers__page__content_c_() {
 		return [
 			div_({
-				class: 'brookers__page__content_c w-screen flex flex-col'
+				class: 'brookers__page__content_c w-screen'
 			}, [
 				brookers__page__hero_c_(),
-				brookers__page__sidebar_c_(),
-				brookers__page__main_c_(),
+				brookers__page__content__inner_c_(),
 			])
 		]
 	}
@@ -55,12 +45,56 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 			h2_(`& I am an artist`))
 		)
 	}
+	function brookers__page__content__inner_c_() {
+	  return (
+			div_({ class: 'brookers__page__content__inner_c hidden w-screen flex flex-row ml-4' }, [
+				brookers__page__sidebar_c_(),
+				brookers__page__main_c_(),
+			])
+		)
+	}
 	function brookers__page__sidebar_c_() {
 		return (
 			div_({
-				class: `brookers__page__sidebar_c hidden relative mt--24 min-h-screen ml-4 mt-auto bottom-0 right-0 max-w-xs`
+				class: `brookers__page__sidebar_c relative mt--24 min-h-screen mt-auto bottom-0 right-0 max-w-xs`
 			}, [
 				brookers__timeline_c_<env_T>({}, [
+					brookers__timeline__item_c_<env_T>({
+						at: 'September 2005',
+						title: 'Brookers first video on YouTube'
+					}),
+					brookers__timeline__item_c_<env_T>({
+						at: 'June 2006',
+						title: 'Carson Daly NBC',
+						description_a: ['18 month development contract']
+					}),
+					brookers__timeline__item_c_<env_T>({
+						at: 'June 2006',
+						title: 'Chips',
+						description_a: [
+							`A spoof suspense drama about eating potato chips, has been called "brilliant" by Entertainment Weekly,
+						which has listed it among the "great moments in YouTube history."`,
+							footnote_c_<env_T>({ ctx, id: 'knowyourmeme' },
+								atb_<env_T>({
+									href: 'https://knowyourmeme.com/memes/people/brookers'
+								}, 'knowyourmeme.com'))
+						]
+					}),
+					brookers__timeline__item_c_<env_T>({
+						at: 'July 3 - Aug 7 2006',
+						title: 'Most-subscribed on YouTube',
+						description_a: ['> 64000 subscribers']
+					}),
+					brookers__timeline__item_c_<env_T>({
+						at: 'July 5 2006',
+						title: 'CRAZED NUMA FAN !!!!',
+						description_a: ['Over 18 Million Views']
+					}),
+					brookers__timeline__item_c_<env_T>({
+						at: 'December 6 2006',
+						title: 'Tyra Banks Show',
+						description_a: [`judge for a student video competition`]
+					}),
 					brookers__timeline__item_c_<env_T>({
 						at: 'February 2007',
 						title: 'The Sound of Your Voice—Barenaked Ladies',
@@ -84,42 +118,6 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 						}
 						]
 					}),
-					brookers__timeline__item_c_<env_T>({
-						at: 'December 6 2006',
-						title: 'Tyra Banks Show',
-						description_a: [`judge for a student video competition`]
-					}),
-					brookers__timeline__item_c_<env_T>({
-						at: 'July 5 2006',
-						title: 'CRAZED NUMA FAN !!!!',
-						description_a: ['Over 18 Million Views']
-					}),
-					brookers__timeline__item_c_<env_T>({
-						at: 'July 3 - Aug 7 2006',
-						title: 'Most-subscribed on YouTube',
-						description_a: ['> 64000 subscribers']
-					}),
-					brookers__timeline__item_c_<env_T>({
-						at: 'June 2006',
-						title: 'Chips',
-						description_a: [
-							`A spoof suspense drama about eating potato chips, has been called "brilliant" by Entertainment Weekly,
-						which has listed it among the "great moments in YouTube history."`,
-							footnote_c_<env_T>({ ctx, id: 'knowyourmeme' },
-								atb_<env_T>({
-									href: 'https://knowyourmeme.com/memes/people/brookers'
-								}, 'knowyourmeme.com'))
-						]
-					}),
-					brookers__timeline__item_c_<env_T>({
-						at: 'June 2006',
-						title: 'Carson Daly NBC',
-						description_a: ['18 month development contract']
-					}),
-					brookers__timeline__item_c_<env_T>({
-						at: 'September 2005',
-						title: 'Brookers first video on YouTube'
-					}),
 				]),
 				footnote_list_c_<env_T>({ ctx })
 			]))
@@ -127,7 +125,7 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 	function brookers__page__main_c_() {
 		return (
 			div_({
-				class: `brookers__page__main_c flex-1`
+				class: `brookers__page__main_c flex-1 pt-24`
 			})
 		)
 	}
@@ -176,4 +174,13 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 			...children
 		])
 	) as brookers__timeline__item_T<env_T>
+}
+function brookers__page__img_a_c_() {
+	return (
+		div_({ class: 'brookers__page__img_a_c hidden absolute z-10 h-96 bottom-0 w-full' },
+			img_({
+				class: 'cooler-in-space absolute top-0 m-auto',
+				src: cooler_in_space_gif
+			}))
+	)
 }
