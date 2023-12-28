@@ -23,7 +23,8 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 					'brookers__page_c',
 					'min-h-screen',
 					'overflow-x-hidden',
-					'relative dark:bg-black'
+					'relative',
+					'dark:bg-black'
 				].join(' '),
 				hy__bind: brookers__page__hy__bind__id
 			}, [
@@ -112,8 +113,9 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 						at: 'June 2006',
 						title: 'Chips',
 						description_a: [
-							`A spoof suspense drama about eating potato chips, has been called "brilliant" by Entertainment Weekly,
-						which has listed it among the "great moments in YouTube history."`,
+							'A spoof suspense drama about eating potato chips, has been called "brilliant" by' +
+							' Entertainment Weekly, which has listed it among the "great moments in' +
+							' YouTube history."',
 							footnote_c_<env_T>({ ctx, id: 'knowyourmeme' },
 								atb_<env_T>({
 									href: 'https://knowyourmeme.com/memes/people/brookers'
@@ -139,9 +141,9 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 						at: 'February 2007',
 						title: 'The Sound of Your Voice—Barenaked Ladies',
 						description_a: [
-							`Appeared in `,
+							'Appeared in ',
 							a_({ href: 'https://www.youtube.com/watch?v=FoFMRXlNJ6Y' }, 'music video'),
-							` with fellow YouTubers`,
+							' with fellow YouTubers',
 						],
 						op_a: [{
 							type: 'html',
