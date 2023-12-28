@@ -1,5 +1,5 @@
 import { type brookers__timeline_op_T } from '@btakita/domain--any--brookebrodack'
-import { brookers__page__hy__bind__id } from '@btakita/ui--any--brookebrodack'
+import { brookers__page__hy__bind__id } from '@btakita/ui--any--brookebrodack/brookers'
 import { atb_ } from '@btakita/ui--server--blog/anchor'
 import { footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog/footnote'
 import { class_ } from '@ctx-core/html'
