@@ -1,6 +1,7 @@
 import { type brookers__timeline_op_T } from '@btakita/domain--any--brookebrodack'
 import { brookers__page__hy__bind__id } from '@btakita/ui--any--brookebrodack'
-import { atb_, footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog'
+import { atb_ } from '@btakita/ui--server--blog/anchor'
+import { footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog/footnote'
 import { class_ } from '@ctx-core/html'
 import { type Node_T, type relement_env_T, type tag__dom_T } from 'relementjs'
 import { a_, div_, h1_, h2_, h3_, img_, li_, ol_, p_, time_ } from 'relementjs/html'
@@ -18,7 +19,12 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 		layout_c_(
 			{ ctx },
 			div_({
-				class: 'brookers__page_c min-h-screen overflow-x-hidden relative',
+				class: [
+					'brookers__page_c',
+					'min-h-screen',
+					'overflow-x-hidden',
+					'relative dark:bg-black'
+				].join(' '),
 				hy__bind: brookers__page__hy__bind__id
 			}, [
 				brookers__page__content_c_(),
@@ -29,7 +35,10 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 	function brookers__page__content_c_() {
 		return [
 			div_({
-				class: 'brookers__page__content_c w-screen'
+				class: [
+					'brookers__page__content_c',
+					'w-screen'
+				].join(' ')
 			}, [
 				brookers__page__hero_c_(),
 				brookers__page__content__inner_c_(),
@@ -39,15 +48,37 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 	function brookers__page__hero_c_() {
 		return (
 			div_({
-				class: `brookers__page__hero_c absolute top-0 h-24 ml-4 mb-4 flex flex-col items-center justify-top`
-			},
-			h1_({ class: 'mt-4' }, `Hello, my name is Brooke Brodack`),
-			h2_(`& I am an artist`))
+				class: [
+					'brookers__page__hero_c',
+					'absolute',
+					'top-0',
+					'h-24',
+					'ml-4',
+					'mb-4',
+					'flex',
+					'flex-col',
+					'items-center',
+					'justify-top',
+					'dark:text-white',
+				].join(' ')
+			}, [
+				h1_({ class: 'mt-4' }, `Hello, my name is Brooke Brodack`),
+				h2_(`& I am an artist`)
+			])
 		)
 	}
 	function brookers__page__content__inner_c_() {
-	  return (
-			div_({ class: 'brookers__page__content__inner_c hidden w-screen flex flex-row ml-4' }, [
+		return (
+			div_({
+				class: [
+					'brookers__page__content__inner_c',
+					'hidden',
+					'w-screen',
+					'flex',
+					'flex-row',
+					'ml-4',
+				].join(' ')
+			}, [
 				brookers__page__sidebar_c_(),
 				brookers__page__main_c_(),
 			])
@@ -56,7 +87,16 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 	function brookers__page__sidebar_c_() {
 		return (
 			div_({
-				class: `brookers__page__sidebar_c relative mt--24 min-h-screen mt-auto bottom-0 right-0 max-w-xs`
+				class: [
+					'brookers__page__sidebar_c',
+					'relative',
+					'mt--24',
+					'min-h-screen',
+					'mt-auto',
+					'bottom-0',
+					'right-0',
+					'max-w-xs',
+				].join(' ')
 			}, [
 				brookers__timeline_c_<env_T>({}, [
 					brookers__timeline__item_c_<env_T>({
@@ -125,7 +165,11 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 	function brookers__page__main_c_() {
 		return (
 			div_({
-				class: `brookers__page__main_c flex-1 pt-24`
+				class: [
+					'brookers__page__main_c',
+					'flex-1',
+					'pt-24'
+				].join(' ')
 			})
 		)
 	}
@@ -135,7 +179,14 @@ export function brookers__timeline_c_<env_T extends relement_env_T>({ style, ...
 	style?:string
 }, ...children:brookers__timeline__item_T<env_T>[]) {
 	return ol_({
-		class: class_('brookers__timeline_c flex flex-col border-l border-gray-200 dark:border-gray-700', $p.class),
+		class: class_(
+			'brookers__timeline_c',
+			'flex',
+			'flex-col',
+			'border-l',
+			'border-gray-200',
+			'dark:border-gray-700',
+			$p.class),
 		style,
 	}, ...children) as Node_T<env_T, HTMLElementTagNameMap['ol']>
 }
@@ -156,20 +207,54 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 }, ...children:tag__dom_T<env_T>[]):brookers__timeline__item_T<env_T> {
 	return (
 		li_({
-			class: 'brookers__timeline__item_c mb-10 ml-4 first:mt-24',
+			class: [
+				'brookers__timeline__item_c',
+				'mb-10',
+				'ml-4',
+				'first:mt-24',
+			].join(' '),
 			'data-op_a': op_a,
 		}, [
 			div_({
-				class: 'absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700'
+				class: [
+					'absolute',
+					'w-3',
+					'h-3',
+					'bg-gray-200',
+					'rounded-full',
+					'mt-1.5',
+					'-left-1.5',
+					'border',
+					'border-white',
+					'dark:border-gray-900',
+					'dark:bg-gray-700',
+				].join(' ')
 			}),
 			time_({
-				class: 'mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500'
+				class: [
+					'mb-1',
+					'text-sm',
+					'font-normal',
+					'leading-none',
+					'text-gray-400',
+					'dark:text-gray-500',
+				].join(' ')
 			}, at),
 			h3_({
-				class: 'text-lg font-semibold text-gray-900 dark:text-white'
+				class: [
+					'text-lg',
+					'font-semibold',
+					'text-gray-900',
+					'dark:text-white',
+				].join(' ')
 			}, title),
 			p_({
-				class: 'text-base font-normal text-gray-500 dark:text-gray-400'
+				class: [
+					'text-base',
+					'font-normal',
+					'text-gray-500',
+					'dark:text-gray-400',
+				].join(' ')
 			}, ...(description_a || [])),
 			...children
 		])
@@ -177,10 +262,25 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 }
 function brookers__page__img_a_c_() {
 	return (
-		div_({ class: 'brookers__page__img_a_c hidden absolute z-10 h-96 bottom-0 w-full' },
-			img_({
-				class: 'cooler-in-space absolute top-0 m-auto',
-				src: cooler_in_space_gif
-			}))
+		div_({
+			class: [
+				'brookers__page__img_a_c',
+				'hidden',
+				'absolute',
+				'z-10',
+				'h-96',
+				'bottom-0',
+				'w-full',
+			].join(' ')
+		},
+		img_({
+			class: [
+				'cooler-in-space',
+				'absolute',
+				'top-0',
+				'm-auto',
+			].join(' '),
+			src: cooler_in_space_gif
+		}))
 	)
 }
