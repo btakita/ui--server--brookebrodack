@@ -28,11 +28,32 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 				].join(' '),
 				hy__bind: brookers__page__hy__bind__id
 			}, [
+				brookers__page__main_c_(),
 				brookers__page__content_c_(),
 				brookers__page__img_a_c_(),
 				div_({ class: 'relative mt-24' })
 			]))
 	)
+	function brookers__page__main_c_() {
+		return (
+			div_({
+				class: [
+					'brookers__page__main_c',
+					'fixed',
+					'top-0',
+					'right-0',
+					'bottom-0',
+					'min-h-screen',
+					'max-h-screen',
+					'w-[calc(100%-20rem)]',
+					'flex-1',
+					'pt-24',
+					'pl-8',
+					'pr-8'
+				].join(' ')
+			})
+		)
+	}
 	function brookers__page__content_c_() {
 		return [
 			div_({
@@ -81,7 +102,6 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 				].join(' ')
 			}, [
 				brookers__page__sidebar_c_(),
-				brookers__page__main_c_(),
 			])
 		)
 	}
@@ -145,35 +165,16 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 							a_({ href: 'https://www.youtube.com/watch?v=FoFMRXlNJ6Y' }, 'music video'),
 							' with fellow YouTubers',
 						],
-						op_a: [{
-							type: 'html',
-							html:
-								'<iframe' +
-								' width="560"' +
-								' height="315"' +
-								' src="https://www.youtube.com/embed/FoFMRXlNJ6Y?si=lFkPNi-y6ixfWcW7"' +
-								' title="YouTube video player"' +
-								' frameborder="0"' +
-								' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"' +
-								' allowfullscreen' +
-								'></iframe>'
-						}
+						op_a: [
+							{
+								type: 'youtube',
+								src: 'https://www.youtube.com/embed/FoFMRXlNJ6Y?si=lFkPNi-y6ixfWcW7'
+							}
 						]
 					}),
 				]),
 				footnote_list_c_<env_T>({ ctx })
 			]))
-	}
-	function brookers__page__main_c_() {
-		return (
-			div_({
-				class: [
-					'brookers__page__main_c',
-					'flex-1',
-					'pt-24'
-				].join(' ')
-			})
-		)
 	}
 }
 export function brookers__timeline_c_<env_T extends relement_env_T>({ style, ...$p }:{
@@ -214,8 +215,9 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 				'mb-10',
 				'ml-4',
 				'first:mt-24',
+				'cursor-pointer',
 			].join(' '),
-			'data-op_a': op_a,
+			'data-op_a': JSON.stringify(op_a),
 		}, [
 			div_({
 				class: [
