@@ -7,6 +7,7 @@ import { type Node_T, type relement_env_T, type tag__dom_T } from 'relementjs'
 import { a_, div_, h1_, h2_, h3_, img_, li_, ol_, p_, time_ } from 'relementjs/html'
 import { asset_path_a_, type route_ctx_T } from 'relysjs'
 import { layout_c_ } from '../layout/index.ts'
+import './index.css'
 const [
 	cooler_in_space_gif,
 ] = await asset_path_a_(
