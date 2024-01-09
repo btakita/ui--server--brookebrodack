@@ -5,7 +5,7 @@ import { footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog/footnot
 import { class_ } from '@ctx-core/html'
 import { type Node_T, raw_, type relement_env_T, type tag__dom_T } from 'relementjs'
 import { a_, div_, h1_, h2_, h3_, img_, li_, ol_, p_, template_, time_ } from 'relementjs/html'
-import { asset_path_a_, assets__assign, type route_ctx_T } from 'relysjs'
+import { asset_path_a_, type route_ctx_T } from 'relysjs'
 import { layout_c_ } from '../layout/index.ts'
 import './index.css'
 const [
@@ -16,9 +16,6 @@ const [
 export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }:{
 	ctx:route_ctx_T
 }) {
-	assets__assign(ctx, {
-		script_a: ['https://www.youtube.com/iframe_api']
-	})
 	return (
 		layout_c_(
 			{ ctx },
@@ -178,7 +175,7 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 						op_a: [
 							{
 								type: 'youtube',
-								src: 'https://www.youtube.com/embed/FoFMRXlNJ6Y?si=lFkPNi-y6ixfWcW7'
+								videoId: 'FoFMRXlNJ6Y'
 							}
 						]
 					}),
