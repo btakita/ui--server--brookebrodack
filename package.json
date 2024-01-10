@@ -28,8 +28,8 @@
 		"@btakita/ui--server--blog": "workspace:*",
 		"@ctx-core/html": "^11.6.80",
 		"ctx-core": "^5.16.1",
-		"relementjs": "^0.44.1",
-		"relysjs": "^0.41.4"
+		"relementjs": "^0.45.0",
+		"relysjs": "^0.41.5"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
