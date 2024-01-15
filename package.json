@@ -29,7 +29,7 @@
 		"@ctx-core/html": "^11.6.87",
 		"ctx-core": "^5.18.4",
 		"relementjs": "^0.48.4",
-		"relysjs": "^0.43.4"
+		"relysjs": "^0.44.1"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
