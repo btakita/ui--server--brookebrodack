@@ -26,10 +26,10 @@
 		"@btakita/domain--any--brookebrodack": "workspace:*",
 		"@btakita/ui--any--brookebrodack": "workspace:*",
 		"@btakita/ui--server--blog": "workspace:*",
-		"@ctx-core/html": "^11.6.91",
-		"ctx-core": "^5.18.8",
-		"relementjs": "^0.48.8",
-		"relysjs": "^0.44.7"
+		"@ctx-core/html": "^11.6.92",
+		"ctx-core": "^5.18.9",
+		"relementjs": "^0.48.9",
+		"relysjs": "^0.44.8"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
