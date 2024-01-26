@@ -28,7 +28,7 @@
 		"@btakita/ui--server--blog": "workspace:*",
 		"@ctx-core/html": "^11.7.7",
 		"ctx-core": "^5.31.1",
-		"relementjs": "^0.57.1",
+		"relementjs": "^0.57.2",
 		"relysjs": "^0.58.1"
 	},
 	"devDependencies": {

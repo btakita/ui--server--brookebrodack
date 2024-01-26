@@ -155,25 +155,34 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 					'right-0',
 					'max-w-xs')
 			}, [
-				brookers__timeline_c_<env_T>({}, [
-					brookers__timeline__item_c_<env_T>({
+				brookers__timeline_c_({}, [
+					brookers__timeline__item_c_({
 						at: 'September 2005',
 						title: 'Brookers first video on YouTube'
 					}),
-					brookers__timeline__item_c_<env_T>({
+					brookers__timeline__item_c_({
+						at: 'May 21, 2006',
+						title: 'what is...',
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'jRA9ujhIs2I'
+						}
+					}),
+					brookers__timeline__item_c_({
 						at: 'June 2006',
 						title: 'Carson Daly NBC',
 						description_a: ['18 month development contract']
 					}),
-					brookers__timeline__item_c_<env_T>({
+					brookers__timeline__item_c_({
 						at: 'June 2006',
 						title: 'Chips',
 						description_a: [
 							'A spoof suspense drama about eating potato chips, has been called "brilliant" by' +
 							' Entertainment Weekly, which has listed it among the "great moments in' +
 							' YouTube history."',
-							footnote_c_<env_T>({ ctx, id: 'knowyourmeme' },
-								atb_<env_T>({
+							footnote_c_({ ctx, id: 'knowyourmeme' },
+								atb_({
 									href: 'https://knowyourmeme.com/memes/people/brookers'
 								}, 'knowyourmeme.com'))
 						],
@@ -192,12 +201,12 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 							})
 						}
 					}),
-					brookers__timeline__item_c_<env_T>({
+					brookers__timeline__item_c_({
 						at: 'July 3 - Aug 7 2006',
 						title: 'Most-subscribed on YouTube',
 						description_a: ['> 64000 subscribers']
 					}),
-					brookers__timeline__item_c_<env_T>({
+					brookers__timeline__item_c_({
 						at: 'July 5 2006',
 						title: 'CRAZED NUMA FAN !!!!',
 						description_a: ['Over 18 Million Views'],
@@ -207,17 +216,17 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 							videoId: 'wflZKdXC8Vo'
 						}
 					}),
-					brookers__timeline__item_c_<env_T>({
+					brookers__timeline__item_c_({
 						at: 'December 6 2006',
 						title: 'Tyra Banks Show',
 						description_a: [`judge for a student video competition`]
 					}),
-					brookers__timeline__item_c_<env_T>({
+					brookers__timeline__item_c_({
 						at: 'February 2007',
 						title: 'The Sound of Your Voice—Barenaked Ladies',
 						description_a: [
 							'Appeared in ',
-							a_({ href: 'https://www.youtube.com/watch?v=FoFMRXlNJ6Y' }, 'music video'),
+							atb_({ href: 'https://www.youtube.com/watch?v=FoFMRXlNJ6Y' }, 'music video'),
 							' with fellow YouTubers',
 						],
 						op: {
@@ -226,8 +235,131 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 							videoId: 'FoFMRXlNJ6Y'
 						}
 					}),
+					brookers__timeline__item_c_({
+						at: 'February 7, 2007',
+						title: '"Web Celebrity"',
+						description_a: [
+							'"Web Celebrity" published by Brookers on IYS on Feb 7, 2007 and then quickly removed.',
+						],
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'izc8q91Yet0'
+						}
+					}),
+					brookers__timeline__item_c_({
+						at: 'Nov 18, 2007',
+						title: '"Brookers News"',
+						description_a: [
+							'Old laddys,',
+							'Little squichy purple balls thing will make you die!'
+						],
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'x_7oyWcg7AU'
+						}
+					}),
+					brookers__timeline__item_c_({
+						at: 'Aug 6, 2010',
+						title: 'Go Sukashi! - Episode #1',
+						description_a: [
+							"Brooke Brodack as Sukashi's girlfriend"
+						],
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: '8KqD2RNFW5E'
+						}
+					}),
+					brookers__timeline__item_c_({
+						at: 'Aug 13, 2010',
+						title: 'Go Sukashi! - The Picnic',
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'H3GpZ82uVQE'
+						}
+					}),
+					brookers__timeline__item_c_({
+						at: 'Aug 23, 2010',
+						title: 'Go Sukashi! - A Green Menace',
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'zleNliomOGA'
+						}
+					}),
+					brookers__timeline__item_c_({
+						at: 'Sep 10, 2010',
+						title: 'Go Sukashi! - Love Whispers Not',
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'LwmdQSSiYRw'
+						}
+					}),
+					brookers__timeline__item_c_({
+						at: 'Dec 22, 2010',
+						title: 'Go Sukashi! Christmas Special',
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'd7G4nCppWy4'
+						}
+					}),
+					brookers__timeline__item_c_({
+						at: 'Feb 7, 2011',
+						title: 'Go Sukashi! - Season 1 Recap Trailer',
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'P3D5B2Pt-Lo'
+						}
+					}),
+					brookers__timeline__item_c_({
+						at: 'Feb 9, 2011',
+						title: 'Go Sukashi! - Season 2 - Ep #1: Chopality',
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'Qaf5TYm8CNE'
+						}
+					}),
+					brookers__timeline__item_c_({
+						at: 'Feb 24, 2011',
+						title: 'Go Sukashi! - Season 2 - Ep #2: Love & Taxes',
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'Gc25NsgO_qg'
+						}
+					}),
+					brookers__timeline__item_c_({
+						at: 'Apr 5, 2011',
+						title: 'Go Sukashi: Outtakes and Bloopers',
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'enuphAemSRo'
+						}
+					}),
+					brookers__timeline__item_c_({
+						at: 'Mar 10, 2012',
+						title: 'My united states of...WHATEVA !!!',
+						description_a: [
+							atb_({
+								href: 'https://web.archive.org/web/20150109114045/https://www.youtube.com/watch?v=SLbFDMplZDs'
+							}, 'Stats on Internet Archive'),
+						],
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 's35NaNkKwR4'
+						}
+					})
 				]),
-				footnote_list_c_<env_T>({ ctx })
+				footnote_list_c_({ ctx })
 			]))
 	}
 }
@@ -324,8 +456,7 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 					'text-gray-500',
 					'dark:text-gray-400')
 			}, ...(description_a || [])),
-			...
-			children
+			...children
 		])
 	) as brookers__timeline__item_T<env_T>
 }
