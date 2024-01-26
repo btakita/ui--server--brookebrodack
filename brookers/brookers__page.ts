@@ -27,13 +27,12 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 					'<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" style="--darkreader-inline-fill: currentColor;" data-darkreader-inline-fill=""></path>' +
 					'</svg>')),
 			div_({
-				class: [
+				class: class_(
 					'brookers__page_c',
 					'min-h-screen',
 					'overflow-x-hidden',
 					'relative',
-					'dark:bg-black'
-				].join(' '),
+					'dark:bg-black'),
 				hy__bind: brookers__page__hy__bind__id
 			}, [
 				brookers__page__main_c_(),
@@ -45,9 +44,10 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 	function brookers__page__main_c_() {
 		return (
 			div_({
-				class: [
+				class: class_(
 					'brookers__page__main_c',
 					'fixed',
+					'z-10',
 					'top-0',
 					'right-0',
 					'bottom-0',
@@ -57,18 +57,25 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 					'flex-1',
 					'pt-24',
 					'pl-8',
-					'pr-8'
-				].join(' ')
-			})
+					'pr-8')
+			}, [
+				div_({
+					class: class_(
+						'YT_iframe_placeholder',
+						'hidden',
+						'w-full',
+						'aspect-video'
+					)
+				})
+			])
 		)
 	}
 	function brookers__page__content_c_() {
 		return [
 			div_({
-				class: [
+				class: class_(
 					'brookers__page__content_c',
-					'w-screen'
-				].join(' ')
+					'w-screen')
 			}, [
 				brookers__page__hero_c_(),
 				brookers__page__content__inner_c_(),
@@ -78,7 +85,7 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 	function brookers__page__hero_c_() {
 		return (
 			div_({
-				class: [
+				class: class_(
 					'brookers__page__hero_c',
 					'absolute',
 					'top-0',
@@ -89,8 +96,7 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 					'flex-col',
 					'items-center',
 					'justify-top',
-					'dark:text-white',
-				].join(' ')
+					'dark:text-white')
 			}, [
 				h1_({ class: 'mt-4' }, `Hello, my name is Brooke Brodack`),
 				h2_(`& I am an artist`)
@@ -100,14 +106,13 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 	function brookers__page__content__inner_c_() {
 		return (
 			div_({
-				class: [
+				class: class_(
 					'brookers__page__content__inner_c',
 					'hidden',
 					'w-screen',
 					'flex',
 					'flex-row',
-					'ml-4',
-				].join(' ')
+					'ml-4')
 			}, [
 				brookers__page__sidebar_c_(),
 			])
@@ -116,7 +121,7 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 	function brookers__page__sidebar_c_() {
 		return (
 			div_({
-				class: [
+				class: class_(
 					'brookers__page__sidebar_c',
 					'relative',
 					'mt--24',
@@ -124,8 +129,7 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 					'mt-auto',
 					'bottom-0',
 					'right-0',
-					'max-w-xs',
-				].join(' ')
+					'max-w-xs')
 			}, [
 				brookers__timeline_c_<env_T>({}, [
 					brookers__timeline__item_c_<env_T>({
