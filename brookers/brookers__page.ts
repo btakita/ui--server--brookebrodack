@@ -1,11 +1,12 @@
 import { type brookers__timeline_op_T } from '@btakita/domain--any--brookebrodack'
 import { brookers__page__hy__bind__id } from '@btakita/ui--any--brookebrodack/brookers'
+import { spinner_c_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { atb_ } from '@btakita/ui--server--blog/anchor'
 import { footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog/footnote'
 import { class_ } from '@ctx-core/html'
 import { background_image_style_ } from 'ctx-core/html'
 import { type Node_T, raw_, type relement_env_T, type tag__dom_T } from 'relementjs'
-import { a_, div_, h1_, h2_, h3_, img_, li_, ol_, p_, template_, time_ } from 'relementjs/html'
+import { a_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, template_, time_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
 import { type route_ctx_T } from 'relysjs/server'
 import { layout_c_ } from '../layout/index.ts'
@@ -23,12 +24,6 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 	return (
 		layout_c_(
 			{ ctx },
-			template_({ id: 'spinner' },
-				raw_(
-					'<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">' +
-					'<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" style="--darkreader-inline-stroke: currentColor;" data-darkreader-inline-stroke=""></circle>' +
-					'<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" style="--darkreader-inline-fill: currentColor;" data-darkreader-inline-fill=""></path>' +
-					'</svg>')),
 			div_({
 				class: class_(
 					'brookers__page_c',
@@ -38,6 +33,17 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 					'dark:bg-black'),
 				hy__bind: brookers__page__hy__bind__id
 			}, [
+				template_({
+					id: 'spinner_template',
+					class: 'hidden'
+				}, raw_('' + spinner_c_({
+					class: class_(
+						'spinner',
+						'absolute',
+						'z-10',
+						'top-56',
+						'left-[calc(50%-16px)]')
+				}))),
 				brookers__page__main_c_(),
 				brookers__page__content_c_(),
 				brookers__page__img_a_c_(),
@@ -63,9 +69,24 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 					'pr-8')
 			}, [
 				div_({
+					id: 'html_op__container',
 					class: class_(
-						'YT_iframe_placeholder',
 						'hidden',
+						'relative',
+						'top-0',
+						'left-0',
+						'z-20',
+						'h-full',
+						'w-full',
+						'overflow-auto')
+				}),
+				div_({
+					id: 'YT_iframe_placeholder',
+					class: class_(
+						'hidden',
+						'relative',
+						'top-0',
+						'left-0',
 						'w-full',
 						'aspect-video'
 					)
@@ -155,7 +176,21 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 								atb_<env_T>({
 									href: 'https://knowyourmeme.com/memes/people/brookers'
 								}, 'knowyourmeme.com'))
-						]
+						],
+						op: {
+							type: 'html',
+							bullet: 'video',
+							html: '' + iframe_({
+								class: class_(
+									'w-full',
+									'aspect-video'),
+								src: 'https://archive.org/embed/chips_202010&autoplay=1',
+								frameborder: 0,
+								webkitallowfullscreen: true,
+								mozallowfullscreen: true,
+								allowfullscreen: true,
+							})
+						}
 					}),
 					brookers__timeline__item_c_<env_T>({
 						at: 'July 3 - Aug 7 2006',
@@ -168,6 +203,7 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 						description_a: ['Over 18 Million Views'],
 						op: {
 							type: 'youtube',
+							bullet: 'video',
 							videoId: 'wflZKdXC8Vo'
 						}
 					}),
@@ -186,6 +222,7 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 						],
 						op: {
 							type: 'youtube',
+							bullet: 'video',
 							videoId: 'FoFMRXlNJ6Y'
 						}
 					}),
@@ -197,7 +234,6 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 export function brookers__timeline_c_<env_T extends relement_env_T>({ style, ...$p }:{
 	class?:string
 	style?:string
-// }, ...children:brookers__timeline__item_T<'any'>[]) {
 }, ...children:tag__dom_T<'any'>[]) {
 	return ol_({
 		class: class_(
@@ -243,23 +279,25 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 					'w-3',
 					'h-3',
 					'mt-1.5',
-					op?.type === 'youtube'
+					op?.bullet === 'video'
 						? [
 							'h-4',
 							'w-4',
 							'mr-1',
 							'overflow-visible',
 							'text-lg',
-							'dark:invert']
+							'dark:invert'
+						]
 						: [
 							'bg-gray-200',
 							'rounded-full',
 							'border',
 							'border-white',
 							'dark:border-gray-900',
-							'dark:bg-gray-700']),
+							'dark:bg-gray-700'
+						]),
 				style:
-					op?.type === 'youtube'
+					op?.bullet === 'video'
 						? background_image_style_(fa_video_regular_svg)
 						: undefined
 			}),
