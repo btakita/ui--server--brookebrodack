@@ -1,5 +1,5 @@
 import { import_meta_env_ } from 'ctx-core/env'
-import { raw_, type relement_env_T, type tag__dom_T } from 'relementjs'
+import { raw_, type tag__dom_T } from 'relementjs'
 import { body_, head_, link_, meta_, script_, title_ } from 'relementjs/html'
 import { doc_html_ } from 'relementjs/server'
 import { asset_path_a_, assets_, assets__new, type assets_T, request_url_, type route_ctx_T } from 'relysjs/server'
@@ -9,7 +9,7 @@ const [
 ] = await asset_path_a_(
 	import('../public/assets/favicon.svg')
 )
-export function layout_c_<env_T extends relement_env_T = 'server'>({
+export function layout_c_({
 	ctx, assets, canonical_url, title, author, description, og_image
 }:{
 	ctx:route_ctx_T
@@ -19,7 +19,7 @@ export function layout_c_<env_T extends relement_env_T = 'server'>({
 	author?:string
 	description?:string
 	og_image?:string
-}, ...children:tag__dom_T<env_T>) {
+}, ...children:tag__dom_T[]) {
 	canonical_url ??= request_url_(ctx).href
 	title ??= 'Brooke Brodack'
 	description ??= 'Hello, my name is Brooke Brodack & I am an artist'
