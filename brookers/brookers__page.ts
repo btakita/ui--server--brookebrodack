@@ -3,6 +3,7 @@ import { brookers__page__hy__bind__id } from '@btakita/ui--any--brookebrodack/br
 import { atb_ } from '@btakita/ui--server--blog/anchor'
 import { footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog/footnote'
 import { class_ } from '@ctx-core/html'
+import { background_image_style_ } from 'ctx-core/html'
 import { type Node_T, raw_, type relement_env_T, type tag__dom_T } from 'relementjs'
 import { a_, div_, h1_, h2_, h3_, img_, li_, ol_, p_, template_, time_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
@@ -11,8 +12,10 @@ import { layout_c_ } from '../layout/index.ts'
 import './index.css'
 const [
 	cooler_in_space_gif,
+	fa_video_regular_svg,
 ] = await asset_path_a_(
 	import('../public/assets/images/cooler-in-space--look-aud-right.gif'),
+	import('../public/assets/images/fa/fa-video-regular.svg'),
 )
 export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }:{
 	ctx:route_ctx_T
@@ -162,7 +165,11 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 					brookers__timeline__item_c_<env_T>({
 						at: 'July 5 2006',
 						title: 'CRAZED NUMA FAN !!!!',
-						description_a: ['Over 18 Million Views']
+						description_a: ['Over 18 Million Views'],
+						op: {
+							type: 'youtube',
+							videoId: 'wflZKdXC8Vo'
+						}
 					}),
 					brookers__timeline__item_c_<env_T>({
 						at: 'December 6 2006',
@@ -177,12 +184,10 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 							a_({ href: 'https://www.youtube.com/watch?v=FoFMRXlNJ6Y' }, 'music video'),
 							' with fellow YouTubers',
 						],
-						op_a: [
-							{
-								type: 'youtube',
-								videoId: 'FoFMRXlNJ6Y'
-							}
-						]
+						op: {
+							type: 'youtube',
+							videoId: 'FoFMRXlNJ6Y'
+						}
 					}),
 				]),
 				footnote_list_c_<env_T>({ ctx })
@@ -214,66 +219,75 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 	at,
 	title,
 	description_a,
-	op_a
+	op
 }:{
 	at:string
 	title:string
 	description_a?:tag__dom_T<'any'>[],
-	op_a?:brookers__timeline_op_T[]
+	op?:brookers__timeline_op_T
 }, ...children:tag__dom_T<env_T>[]):brookers__timeline__item_T<env_T> {
 	return (
 		li_({
-			class: [
+			class: class_(
 				'brookers__timeline__item_c',
 				'mb-10',
 				'ml-4',
 				'first:mt-24',
-				'cursor-pointer',
-			].join(' '),
-			'data-op_a': JSON.stringify(op_a),
+				'cursor-pointer'),
+			'data-op': JSON.stringify(op),
 		}, [
 			div_({
-				class: [
+				class: class_(
 					'absolute',
+					'-left-1.5',
 					'w-3',
 					'h-3',
-					'bg-gray-200',
-					'rounded-full',
 					'mt-1.5',
-					'-left-1.5',
-					'border',
-					'border-white',
-					'dark:border-gray-900',
-					'dark:bg-gray-700',
-				].join(' ')
+					op?.type === 'youtube'
+						? [
+							'h-4',
+							'w-4',
+							'mr-1',
+							'overflow-visible',
+							'text-lg',
+							'dark:invert']
+						: [
+							'bg-gray-200',
+							'rounded-full',
+							'border',
+							'border-white',
+							'dark:border-gray-900',
+							'dark:bg-gray-700']),
+				style:
+					op?.type === 'youtube'
+						? background_image_style_(fa_video_regular_svg)
+						: undefined
 			}),
 			time_({
-				class: [
+				class: class_(
 					'mb-1',
 					'text-sm',
 					'font-normal',
 					'leading-none',
 					'text-gray-400',
-					'dark:text-gray-500',
-				].join(' ')
+					'dark:text-gray-500')
 			}, at),
 			h3_({
-				class: [
+				class: class_(
 					'text-lg',
 					'font-semibold',
 					'text-gray-900',
-					'dark:text-white',
-				].join(' ')
+					'dark:invert')
 			}, title),
 			p_({
-				class: [
+				class: class_(
 					'text-base',
 					'font-normal',
 					'text-gray-500',
-					'dark:text-gray-400',
-				].join(' ')
+					'dark:text-gray-400')
 			}, ...(description_a || [])),
-			...children
+			...
+			children
 		])
 	) as brookers__timeline__item_T<env_T>
 }
