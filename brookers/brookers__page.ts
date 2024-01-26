@@ -5,7 +5,8 @@ import { footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog/footnot
 import { class_ } from '@ctx-core/html'
 import { type Node_T, raw_, type relement_env_T, type tag__dom_T } from 'relementjs'
 import { a_, div_, h1_, h2_, h3_, img_, li_, ol_, p_, template_, time_ } from 'relementjs/html'
-import { asset_path_a_, type route_ctx_T } from 'relysjs'
+import { asset_path_a_ } from 'relysjs'
+import { type route_ctx_T } from 'relysjs/server'
 import { layout_c_ } from '../layout/index.ts'
 import './index.css'
 const [
@@ -187,7 +188,8 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 export function brookers__timeline_c_<env_T extends relement_env_T>({ style, ...$p }:{
 	class?:string
 	style?:string
-}, ...children:brookers__timeline__item_T<env_T>[]) {
+// }, ...children:brookers__timeline__item_T<'any'>[]) {
+}, ...children:tag__dom_T<'any'>[]) {
 	return ol_({
 		class: class_(
 			'brookers__timeline_c',
@@ -212,7 +214,7 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 }:{
 	at:string
 	title:string
-	description_a?:tag__dom_T<env_T>[],
+	description_a?:tag__dom_T<'any'>[],
 	op_a?:brookers__timeline_op_T[]
 }, ...children:tag__dom_T<env_T>[]):brookers__timeline__item_T<env_T> {
 	return (
