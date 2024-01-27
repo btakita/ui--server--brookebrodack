@@ -7,11 +7,13 @@ export function home__page_({ ctx }:{ ctx:route_ctx_T }) {
 	return (
 		layout_c_({ ctx },
 			div_({
-				class: class_(
-					'home__page',
-					'mx-auto')
+				class: class_('home__page')
 			},
-			h1_('Brooke Brodack')),
+			h1_({
+				class: class_(
+					'mt-4',
+					'text-center')
+			}, 'Brooke Brodack')),
 			ul_(
 				li_({
 					class: class_(
