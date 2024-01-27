@@ -456,7 +456,7 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 					: undefined,
 				'group'
 			),
-			'data-op': JSON.stringify(op),
+			'data-op': encodeURIComponent(JSON.stringify(op)),
 		}, [
 			div_({
 				class: class_(
