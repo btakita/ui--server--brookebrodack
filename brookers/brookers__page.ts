@@ -524,21 +524,22 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 						: undefined
 				)
 			}, op?.title ?? title),
-			p_({
-				class: class_(
-					'text-base',
-					'font-normal',
-					'text-gray-500',
-					'dark:text-gray-400',
-					op?.bullet === 'video'
-						? [
-							'neon-teal',
-							'group-hover:animate-[neon-blink_0.03s_infinite_alternate]',
-							'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
-						]
-						: undefined
-				)
-			}, ...(description_a || [])),
+			(description_a || []).map(line=>
+				p_({
+					class: class_(
+						'text-base',
+						'font-normal',
+						'text-gray-500',
+						'dark:text-gray-400',
+						op?.bullet === 'video'
+							? [
+								'neon-teal',
+								'group-hover:animate-[neon-blink_0.03s_infinite_alternate]',
+								'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
+							]
+							: undefined
+					)
+				}, line)),
 			...children
 		])
 	) as brookers__timeline__item_T<env_T>
