@@ -1,9 +1,9 @@
 import { class_ } from 'ctx-core/html'
 import { raw_ } from 'relementjs'
 import { a_, div_, h1_, li_, ul_ } from 'relementjs/html'
-import { type route_ctx_T } from 'relysjs/server'
+import { type request_ctx_T } from 'relysjs/server'
 import { layout_c_ } from '../layout/index.ts'
-export function home__page_({ ctx }:{ ctx:route_ctx_T }) {
+export function home__page_({ ctx }:{ ctx:request_ctx_T }) {
 	return (
 		layout_c_({ ctx },
 			div_({

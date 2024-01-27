@@ -2,7 +2,7 @@ import { import_meta_env_ } from 'ctx-core/env'
 import { raw_, type tag__dom_T } from 'relementjs'
 import { body_, head_, link_, meta_, script_, title_ } from 'relementjs/html'
 import { doc_html_ } from 'relementjs/server'
-import { asset_path_a_, assets_, assets__new, type assets_T, request_url_, type route_ctx_T } from 'relysjs/server'
+import { asset_path_a_, assets_, assets__new, type assets_T, type request_ctx_T, request_url_ } from 'relysjs/server'
 const google_site_verification = import_meta_env_().PUBLIC_GOOGLE_SITE_VERIFICATION
 const [
 	favicon_svg,
@@ -12,7 +12,7 @@ const [
 export function layout_c_({
 	ctx, assets, canonical_url, title, author, description, og_image
 }:{
-	ctx:route_ctx_T
+	ctx:request_ctx_T
 	assets?:assets_T
 	canonical_url?:string
 	title?:string

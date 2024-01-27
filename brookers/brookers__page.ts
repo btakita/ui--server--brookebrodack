@@ -1,13 +1,13 @@
 import { type brookers__timeline_op_T } from '@btakita/domain--any--brookebrodack'
 import { brookers__page__hy__bind__id } from '@btakita/ui--any--brookebrodack/brookers'
-import { heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
+import { heroicons_uturn_left_, heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner_c_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { atb_ } from '@btakita/ui--server--blog/anchor'
 import { class_ } from 'ctx-core/html'
 import { type Node_T, raw_, type relement_env_T, type tag__dom_T } from 'relementjs'
-import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, template_, time_ } from 'relementjs/html'
+import { a_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, template_, time_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
-import { type route_ctx_T } from 'relysjs/server'
+import { type request_ctx_T } from 'relysjs/server'
 import { layout_c_ } from '../layout/index.ts'
 import '@btakita/ui--any--brookebrodack/neon'
 import './index.css'
@@ -17,7 +17,7 @@ const [
 	import('../public/assets/images/cooler-in-space--look-aud-right.gif'),
 )
 export function brookers__page_({ ctx }:{
-	ctx:route_ctx_T
+	ctx:request_ctx_T
 }) {
 	return (
 		layout_c_(
@@ -43,6 +43,7 @@ export function brookers__page_({ ctx }:{
 						'left-[calc(50%-16px)]')
 				}))),
 				brookers__page__hero_c_(),
+				brookers__back_link_c_(),
 				brookers__page__detail_c_(),
 				brookers__page__master_c_(),
 				brookers__page__img_a_c_(),
@@ -65,7 +66,29 @@ export function brookers__page_({ ctx }:{
 					'dark:text-white')
 			}, [
 				h1_({ class: 'mt-4' }, `Hello, my name is Brooke Brodack`),
-				h2_(`& I am an artist`)
+				h2_(`& I am an artist`),
+			])
+		)
+	}
+	function brookers__back_link_c_() {
+	  return (
+			a_({
+				href: '/',
+				class: class_(
+					'back_link',
+					'fixed',
+					'top-2',
+					'right-2',
+					'flex-none',
+					'h-6',
+					'w-6',
+					'mt-2',
+					'mr-2',
+					'cursor-pointer')
+			}, [
+				heroicons_uturn_left_({
+					class: class_('dark:stroke-gray-100')
+				})
 			])
 		)
 	}
