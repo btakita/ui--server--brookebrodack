@@ -1,10 +1,10 @@
 import { type brookers__timeline_op_T } from '@btakita/domain--any--brookebrodack'
 import { brookers__page__hy__bind__id } from '@btakita/ui--any--brookebrodack/brookers'
-import { fa_video_regular_ } from '@btakita/ui--any--brookebrodack/icon'
+import { heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner_c_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { atb_ } from '@btakita/ui--server--blog/anchor'
 import { footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog/footnote'
-import { class_ } from '@ctx-core/html'
+import { class_ } from 'ctx-core/html'
 import { type Node_T, raw_, type relement_env_T, type tag__dom_T } from 'relementjs'
 import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, template_, time_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
@@ -43,77 +43,21 @@ export function brookers__page_({ ctx }:{
 						'top-56',
 						'left-[calc(50%-16px)]')
 				}))),
-				brookers__page__main_c_(),
-				brookers__page__content_c_(),
+				brookers__page__hero_c_(),
+				brookers__page__detail_c_(),
+				brookers__page__master_c_(),
 				brookers__page__img_a_c_(),
-				div_({ class: 'relative mt-24' })
 			]))
 	)
-	function brookers__page__main_c_() {
-		return (
-			div_({
-				class: class_(
-					'brookers__page__main_c',
-					'fixed',
-					'z-10',
-					'top-0',
-					'right-0',
-					'bottom-0',
-					'min-h-screen',
-					'max-h-screen',
-					'w-[calc(100%-20rem)]',
-					'flex-1',
-					'pt-24',
-					'pl-8',
-					'pr-8')
-			}, [
-				div_({
-					id: 'html_op__container',
-					class: class_(
-						'hidden',
-						'relative',
-						'top-0',
-						'left-0',
-						'z-20',
-						'h-full',
-						'w-full',
-						'overflow-auto')
-				}),
-				div_({
-					id: 'YT_iframe_placeholder',
-					class: class_(
-						'hidden',
-						'relative',
-						'top-0',
-						'left-0',
-						'w-full',
-						'aspect-video'
-					)
-				})
-			])
-		)
-	}
-	function brookers__page__content_c_() {
-		return [
-			div_({
-				class: class_(
-					'brookers__page__content_c',
-					'w-screen')
-			}, [
-				brookers__page__hero_c_(),
-				brookers__page__content__inner_c_(),
-			])
-		]
-	}
 	function brookers__page__hero_c_() {
 		return (
 			div_({
 				class: class_(
 					'brookers__page__hero_c',
 					'absolute',
+					'z-20',
 					'top-0',
 					'h-24',
-					// 'ml-4',
 					'mb-4',
 					'flex',
 					'flex-col',
@@ -126,33 +70,100 @@ export function brookers__page_({ ctx }:{
 			])
 		)
 	}
-	function brookers__page__content__inner_c_() {
+	function brookers__page__detail_c_() {
 		return (
 			div_({
 				class: class_(
-					'brookers__page__content__inner_c',
+					'brookers__page__detail_c',
+					'fixed',
 					'hidden',
+					'sm:block',
+					'z-30',
+					'sm:z-0',
+					'top-0',
+					'right-0',
+					'bottom-0',
+					'h-screen',
+					'max-h-screen',
 					'w-screen',
-					'flex',
-					'flex-row',
-					'ml-4')
+					'sm:w-[calc(100%-20rem)]',
+					'container',
+					'flex-1',
+					'sm:pt-24',
+					'sm:px-8',
+					'bg-white',
+					'dark:bg-black')
 			}, [
-				brookers__page__sidebar_c_(),
+				div_({
+					id: 'html_op__top',
+					class: class_(
+						'flex',
+						'flex-column',
+						'h-16',
+						'sm:hidden',
+						'dark:text-white')
+				}, [
+					div_({
+						id: 'html_op__title',
+						class: class_(
+							'flex-grow',
+							'flex',
+							'justify-center',
+							'mt-2')
+					}),
+					div_({
+						id: 'html_op__close',
+						class: class_(
+							'sm:hidden',
+							'flex-none',
+							'h-6',
+							'w-6',
+							'mt-2',
+							'mr-2',
+							'cursor-pointer')
+					}, [
+						heroicons_x_mark_({
+							class: class_('dark:stroke-gray-100')
+						})
+					]),
+				]),
+				div_({
+					id: 'html_op__container',
+					class: class_(
+						'hidden',
+						'relative',
+						'top-16',
+						'left-0',
+						'z-20',
+						'h-full',
+						'w-full',
+						'overflow-auto')
+				}),
+				div_({
+					id: 'YT_iframe_placeholder',
+					class: class_(
+						'hidden',
+						'relative',
+						'top-16',
+						'left-0',
+						'w-full',
+						'aspect-video'
+					)
+				})
 			])
 		)
 	}
-	function brookers__page__sidebar_c_() {
+	function brookers__page__master_c_() {
 		return (
 			div_({
 				class: class_(
-					'brookers__page__sidebar_c',
+					'brookers__page__master_c',
 					'relative',
 					'mt--24',
 					'min-h-screen',
 					'mt-auto',
-					'bottom-0',
-					'right-0',
-					'max-w-xs')
+					'max-w-xs',
+					'ml-4')
 			}, [
 				brookers__timeline_c_({}, [
 					brookers__timeline__item_c_({
@@ -161,9 +172,9 @@ export function brookers__page_({ ctx }:{
 					}),
 					brookers__timeline__item_c_({
 						at: 'May 21, 2006',
-						title: 'what is...',
 						op: {
 							type: 'youtube',
+							title: 'what is...',
 							bullet: 'video',
 							videoId: 'jRA9ujhIs2I'
 						}
@@ -187,6 +198,7 @@ export function brookers__page_({ ctx }:{
 						],
 						op: {
 							type: 'html',
+							title: 'Chips',
 							bullet: 'video',
 							html: '' + iframe_({
 								class: class_(
@@ -207,10 +219,10 @@ export function brookers__page_({ ctx }:{
 					}),
 					brookers__timeline__item_c_({
 						at: 'July 5 2006',
-						title: 'CRAZED NUMA FAN !!!!',
 						description_a: ['Over 18 Million Views'],
 						op: {
 							type: 'youtube',
+							title: 'CRAZED NUMA FAN !!!!',
 							bullet: 'video',
 							videoId: 'wflZKdXC8Vo'
 						}
@@ -222,17 +234,16 @@ export function brookers__page_({ ctx }:{
 					}),
 					brookers__timeline__item_c_({
 						at: 'circa 2006-2007',
-						title: 'Orange Juice',
 						description_a: ['Who drank my orange juice?'],
 						op: {
 							type: 'youtube',
+							title: 'Orange Juice',
 							bullet: 'video',
 							videoId: 'h0InxfwadiM'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'February 2007',
-						title: 'The Sound of Your Voice—Barenaked Ladies',
 						description_a: [
 							'Appeared in ',
 							atb_({ href: 'https://www.youtube.com/watch?v=FoFMRXlNJ6Y' }, 'music video'),
@@ -240,25 +251,25 @@ export function brookers__page_({ ctx }:{
 						],
 						op: {
 							type: 'youtube',
+							title: 'The Sound of Your Voice—Barenaked Ladies',
 							bullet: 'video',
 							videoId: 'FoFMRXlNJ6Y'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'February 7, 2007',
-						title: '"Web Celebrity"',
 						description_a: [
 							'"Web Celebrity" published by Brookers on IYS on Feb 7, 2007 and then quickly removed.',
 						],
 						op: {
 							type: 'youtube',
+							title: '"Web Celebrity"',
 							bullet: 'video',
 							videoId: 'izc8q91Yet0'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Sep 7, 2007',
-						title: 'Who\'s Leg is this ?!',
 						description_a: [
 							'"there was a murder in my back yard if this leg is yours can you come and claim it ... its stinking' +
 							' up my yard..thanks"',
@@ -268,110 +279,110 @@ export function brookers__page_({ ctx }:{
 						],
 						op: {
 							type: 'youtube',
+							title: 'Who\'s Leg is this ?!',
 							bullet: 'video',
 							videoId: 'uYfYu2pB-yE'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Nov 18, 2007',
-						title: '"Brookers News"',
 						description_a: [
 							'Old laddys,',
 							'Little squichy purple balls thing will make you die!'
 						],
 						op: {
 							type: 'youtube',
+							title: '"Brookers News"',
 							bullet: 'video',
 							videoId: 'x_7oyWcg7AU'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Aug 6, 2010',
-						title: 'Go Sukashi! - Episode #1',
 						description_a: [
 							'Brooke Brodack as Sukashi\'s girlfriend'
 						],
 						op: {
 							type: 'youtube',
+							title: 'Go Sukashi! - Episode #1',
 							bullet: 'video',
 							videoId: '8KqD2RNFW5E'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Aug 13, 2010',
-						title: 'Go Sukashi! - The Picnic',
 						op: {
 							type: 'youtube',
+							title: 'Go Sukashi! - The Picnic',
 							bullet: 'video',
 							videoId: 'H3GpZ82uVQE'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Aug 23, 2010',
-						title: 'Go Sukashi! - A Green Menace',
 						op: {
 							type: 'youtube',
+							title: 'Go Sukashi! - A Green Menace',
 							bullet: 'video',
 							videoId: 'zleNliomOGA'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Sep 10, 2010',
-						title: 'Go Sukashi! - Love Whispers Not',
 						op: {
 							type: 'youtube',
+							title: 'Go Sukashi! - Love Whispers Not',
 							bullet: 'video',
 							videoId: 'LwmdQSSiYRw'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Dec 22, 2010',
-						title: 'Go Sukashi! Christmas Special',
 						op: {
 							type: 'youtube',
+							title: 'Go Sukashi! Christmas Special',
 							bullet: 'video',
 							videoId: 'd7G4nCppWy4'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Feb 7, 2011',
-						title: 'Go Sukashi! - Season 1 Recap Trailer',
 						op: {
 							type: 'youtube',
+							title: 'Go Sukashi! - Season 1 Recap Trailer',
 							bullet: 'video',
 							videoId: 'P3D5B2Pt-Lo'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Feb 9, 2011',
-						title: 'Go Sukashi! - Season 2 - Ep #1: Chopality',
 						op: {
 							type: 'youtube',
+							title: 'Go Sukashi! - Season 2 - Ep #1: Chopality',
 							bullet: 'video',
 							videoId: 'Qaf5TYm8CNE'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Feb 24, 2011',
-						title: 'Go Sukashi! - Season 2 - Ep #2: Love & Taxes',
 						op: {
 							type: 'youtube',
+							title: 'Go Sukashi! - Season 2 - Ep #2: Love & Taxes',
 							bullet: 'video',
 							videoId: 'Gc25NsgO_qg'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Apr 5, 2011',
-						title: 'Go Sukashi: Outtakes and Bloopers',
 						op: {
 							type: 'youtube',
+							title: 'Go Sukashi: Outtakes and Bloopers',
 							bullet: 'video',
 							videoId: 'enuphAemSRo'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Mar 10, 2012',
-						title: 'My united states of...WHATEVA !!!',
 						description_a: [
 							atb_({
 								href: 'https://web.archive.org/web/20150109114045/https://www.youtube.com/watch?v=SLbFDMplZDs'
@@ -379,18 +390,19 @@ export function brookers__page_({ ctx }:{
 						],
 						op: {
 							type: 'youtube',
+							title: 'My united states of...WHATEVA !!!',
 							bullet: 'video',
 							videoId: 's35NaNkKwR4'
 						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'Feb 8, 2022',
-						title: 'I was the world\'s first Youtube star: Brooke Brodack',
 						description_a: [
 							'Colm Flynn\' documentary on Brookers & long form interview with Brooke Brodack.'
 						],
 						op: {
 							type: 'youtube',
+							title: 'I was the world\'s first Youtube star: Brooke Brodack',
 							bullet: 'video',
 							videoId: 'dvzfyCM5pVQ'
 						}
@@ -403,7 +415,7 @@ export function brookers__page_({ ctx }:{
 export function brookers__timeline_c_<env_T extends relement_env_T>({ style, ...$p }:{
 	class?:string
 	style?:string
-}, ...children:tag__dom_T<'any'>[]) {
+}, ...children:tag__dom_T[]) {
 	return ol_({
 		class: class_(
 			'brookers__timeline_c',
@@ -416,10 +428,6 @@ export function brookers__timeline_c_<env_T extends relement_env_T>({ style, ...
 		style,
 	}, ...children) as Node_T<env_T, HTMLElementTagNameMap['ol']>
 }
-declare const brookers__timeline__item__sym:unique symbol
-export type brookers__timeline__item_T<env_T extends relement_env_T> = tag__dom_T<env_T>&{
-	[brookers__timeline__item__sym]:never
-}
 export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 	at,
 	title,
@@ -428,8 +436,13 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 }:{
 	at:string
 	title:string
-	description_a?:tag__dom_T<'any'>[],
+	description_a?:tag__dom_T[],
 	op?:brookers__timeline_op_T
+}|{
+	at:string
+	title?:string
+	description_a?:tag__dom_T[],
+	op:brookers__timeline_op_T
 }, ...children:tag__dom_T<env_T>[]):brookers__timeline__item_T<env_T> {
 	return (
 		li_({
@@ -460,7 +473,8 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 							'overflow-visible',
 							'text-lg',
 							'neon-teal',
-							'hover:animate-[neon-fade_0.03s_infinite_alternate]'
+							'hover:animate-[neon-fade_0.03s_infinite_alternate]',
+							'active:animate-[neon-fade_0.03s_infinite_alternate]'
 						]
 						: [
 							'bg-gray-200',
@@ -472,11 +486,11 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 						]),
 			}, [
 				op?.bullet === 'video'
-					? fa_video_regular_({
+					? heroicons_video_camera_({
 						class: class_(
 							'dark:stroke-gray-100',
-							'dark:fill-gray-100',
-							'group-hover:animate-[neon-fade_0.03s_infinite_alternate]')
+							'group-hover:animate-[neon-fade_0.03s_infinite_alternate]',
+							'group-active:animate-[neon-fade_0.03s_infinite_alternate]')
 					})
 					: undefined
 			]),
@@ -489,7 +503,11 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 					'text-gray-400',
 					'dark:text-gray-500',
 					op?.bullet === 'video'
-						? ['neon-teal', 'group-hover:animate-[neon-blink_0.03s_infinite_alternate]']
+						? [
+							'neon-teal',
+							'group-hover:animate-[neon-blink_0.03s_infinite_alternate]',
+							'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
+						]
 						: undefined)
 			}, at),
 			h3_({
@@ -500,10 +518,14 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 					'dark:text-gray-100',
 					// 'dark:invert'
 					op?.bullet === 'video'
-						? ['neon-teal', 'group-hover:animate-[neon-blink_0.03s_infinite_alternate]']
+						? [
+							'neon-teal',
+							'group-hover:animate-[neon-blink_0.03s_infinite_alternate]',
+							'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
+						]
 						: undefined
 				)
-			}, title),
+			}, op?.title ?? title),
 			p_({
 				class: class_(
 					'text-base',
@@ -511,7 +533,11 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 					'text-gray-500',
 					'dark:text-gray-400',
 					op?.bullet === 'video'
-						? ['neon-teal', 'group-hover:animate-[neon-blink_0.03s_infinite_alternate]']
+						? [
+							'neon-teal',
+							'group-hover:animate-[neon-blink_0.03s_infinite_alternate]',
+							'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
+						]
 						: undefined
 				)
 			}, ...(description_a || [])),
@@ -525,7 +551,7 @@ function brookers__page__img_a_c_() {
 			class: [
 				'brookers__page__img_a_c',
 				'hidden',
-				'absolute',
+				'fixed',
 				'z-10',
 				'h-96',
 				'bottom-0',
@@ -542,4 +568,8 @@ function brookers__page__img_a_c_() {
 			src: cooler_in_space_gif
 		}))
 	)
+}
+declare const brookers__timeline__item__sym:unique symbol
+export type brookers__timeline__item_T<env_T extends relement_env_T> = tag__dom_T<env_T>&{
+	[brookers__timeline__item__sym]:never
 }
