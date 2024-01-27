@@ -7,25 +7,33 @@ export function home__page_({ ctx }:{ ctx:route_ctx_T }) {
 	return (
 		layout_c_({ ctx },
 			div_({
-				class: class_('home__page')
-			},
-			h1_({
 				class: class_(
-					'mt-4',
-					'text-center')
-			}, 'Brooke Brodack')),
-			ul_(
-				li_({
+					'home__page',
+					'min-h-screen',
+					'overflow-x-hidden',
+					'relative',
+					'dark:bg-black',
+					'dark:text-white')
+			}, [
+				h1_({
 					class: class_(
-						'text-center',
-						'mt-12')
-				},
-				a_({
-					href: '/brookers',
-					class: class_(
-						'inline',
+						'mt-4',
 						'text-center')
-				},
-				raw_('Brookers&hellip;')))))
+				}, 'Brooke Brodack'),
+				ul_(
+					li_({
+						class: class_(
+							'text-center',
+							'mt-12')
+					},
+					a_({
+						href: '/brookers',
+						class: class_(
+							'inline',
+							'text-center')
+					},
+					raw_('Brookers&hellip;'))))
+			]
+			))
 	)
 }

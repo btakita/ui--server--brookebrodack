@@ -25,7 +25,7 @@ export function brookers__page_({ ctx }:{
 			{ ctx },
 			div_({
 				class: class_(
-					'brookers__page_c',
+					'brookers__page',
 					'min-h-screen',
 					'overflow-x-hidden',
 					'relative',
