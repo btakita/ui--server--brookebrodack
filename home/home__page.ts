@@ -33,7 +33,6 @@ export function home__page_({ ctx }:{ ctx:request_ctx_T }) {
 							'text-center')
 					},
 					raw_('Brookers&hellip;'))))
-			]
-			))
+			]))
 	)
 }

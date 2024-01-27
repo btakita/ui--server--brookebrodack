@@ -43,7 +43,7 @@ export function brookers__page_({ ctx }:{
 						'left-[calc(50%-16px)]')
 				}))),
 				brookers__page__hero_c_(),
-				brookers__back_link_c_(),
+				back_link_c_(),
 				brookers__page__detail_c_(),
 				brookers__page__master_c_(),
 				brookers__page__img_a_c_(),
@@ -70,13 +70,14 @@ export function brookers__page_({ ctx }:{
 			])
 		)
 	}
-	function brookers__back_link_c_() {
+	function back_link_c_() {
 	  return (
 			a_({
 				href: '/',
 				class: class_(
 					'back_link',
 					'fixed',
+					'z-40',
 					'top-2',
 					'right-2',
 					'flex-none',
@@ -588,7 +589,7 @@ function brookers__page__img_a_c_() {
 				'hidden',
 				'fixed',
 				'z-10',
-				'h-96',
+				'h-[370px]',
 				'bottom-0',
 				'w-full',
 			].join(' ')
