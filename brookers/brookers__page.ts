@@ -89,7 +89,6 @@ export function brookers__page_({ ctx }:{
 					'sm:w-[calc(100%-20rem)]',
 					'container',
 					'flex-1',
-					'sm:pt-24',
 					'sm:px-8',
 					'bg-white',
 					'dark:bg-black')
@@ -100,11 +99,10 @@ export function brookers__page_({ ctx }:{
 						'flex',
 						'flex-column',
 						'h-16',
-						'sm:hidden',
 						'dark:text-white')
 				}, [
 					div_({
-						id: 'html_op__title',
+						id: 'op__title',
 						class: class_(
 							'flex-grow',
 							'flex',
