@@ -1,24 +1,23 @@
 import { type brookers__timeline_op_T } from '@btakita/domain--any--brookebrodack'
 import { brookers__page__hy__bind__id } from '@btakita/ui--any--brookebrodack/brookers'
+import { fa_video_regular_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner_c_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { atb_ } from '@btakita/ui--server--blog/anchor'
 import { footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog/footnote'
 import { class_ } from '@ctx-core/html'
-import { background_image_style_ } from 'ctx-core/html'
 import { type Node_T, raw_, type relement_env_T, type tag__dom_T } from 'relementjs'
-import { a_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, template_, time_ } from 'relementjs/html'
+import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, template_, time_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
 import { type route_ctx_T } from 'relysjs/server'
 import { layout_c_ } from '../layout/index.ts'
+import '@btakita/ui--any--brookebrodack/neon'
 import './index.css'
 const [
 	cooler_in_space_gif,
-	fa_video_regular_svg,
 ] = await asset_path_a_(
 	import('../public/assets/images/cooler-in-space--look-aud-right.gif'),
-	import('../public/assets/images/fa/fa-video-regular.svg'),
 )
-export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }:{
+export function brookers__page_({ ctx }:{
 	ctx:route_ctx_T
 }) {
 	return (
@@ -222,6 +221,16 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 						description_a: [`judge for a student video competition`]
 					}),
 					brookers__timeline__item_c_({
+						at: 'circa 2006-2007',
+						title: 'Orange Juice',
+						description_a: ['Who drank my orange juice?'],
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'h0InxfwadiM'
+						}
+					}),
+					brookers__timeline__item_c_({
 						at: 'February 2007',
 						title: 'The Sound of Your Voice—Barenaked Ladies',
 						description_a: [
@@ -248,6 +257,22 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 						}
 					}),
 					brookers__timeline__item_c_({
+						at: 'Sep 7, 2007',
+						title: 'Who\'s Leg is this ?!',
+						description_a: [
+							'"there was a murder in my back yard if this leg is yours can you come and claim it ... its stinking' +
+							' up my yard..thanks"',
+							atb_({
+								href: 'https://web.archive.org/web/20120710175206/http://www.youtube.com/user/Brookers/videos',
+							}, 'Stats on Internet Archive')
+						],
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'uYfYu2pB-yE'
+						}
+					}),
+					brookers__timeline__item_c_({
 						at: 'Nov 18, 2007',
 						title: '"Brookers News"',
 						description_a: [
@@ -264,7 +289,7 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 						at: 'Aug 6, 2010',
 						title: 'Go Sukashi! - Episode #1',
 						description_a: [
-							"Brooke Brodack as Sukashi's girlfriend"
+							'Brooke Brodack as Sukashi\'s girlfriend'
 						],
 						op: {
 							type: 'youtube',
@@ -357,6 +382,18 @@ export function brookers__page_<env_T extends relement_env_T = 'server'>({ ctx }
 							bullet: 'video',
 							videoId: 's35NaNkKwR4'
 						}
+					}),
+					brookers__timeline__item_c_({
+						at: 'Feb 8, 2022',
+						title: 'I was the world\'s first Youtube star: Brooke Brodack',
+						description_a: [
+							'Colm Flynn\' documentary on Brookers & long form interview with Brooke Brodack.'
+						],
+						op: {
+							type: 'youtube',
+							bullet: 'video',
+							videoId: 'dvzfyCM5pVQ'
+						}
 					})
 				]),
 				footnote_list_c_({ ctx })
@@ -401,7 +438,11 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 				'mb-10',
 				'ml-4',
 				'first:mt-24',
-				'cursor-pointer'),
+				op?.bullet === 'video'
+					? ['cursor-pointer']
+					: undefined,
+				'group'
+			),
 			'data-op': JSON.stringify(op),
 		}, [
 			div_({
@@ -418,7 +459,8 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 							'mr-1',
 							'overflow-visible',
 							'text-lg',
-							'dark:invert'
+							'neon-teal',
+							'hover:animate-[neon-fade_0.03s_infinite_alternate]'
 						]
 						: [
 							'bg-gray-200',
@@ -428,11 +470,16 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 							'dark:border-gray-900',
 							'dark:bg-gray-700'
 						]),
-				style:
-					op?.bullet === 'video'
-						? background_image_style_(fa_video_regular_svg)
-						: undefined
-			}),
+			}, [
+				op?.bullet === 'video'
+					? fa_video_regular_({
+						class: class_(
+							'dark:stroke-gray-100',
+							'dark:fill-gray-100',
+							'group-hover:animate-[neon-fade_0.03s_infinite_alternate]')
+					})
+					: undefined
+			]),
 			time_({
 				class: class_(
 					'mb-1',
@@ -440,21 +487,33 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 					'font-normal',
 					'leading-none',
 					'text-gray-400',
-					'dark:text-gray-500')
+					'dark:text-gray-500',
+					op?.bullet === 'video'
+						? ['neon-teal', 'group-hover:animate-[neon-blink_0.03s_infinite_alternate]']
+						: undefined)
 			}, at),
 			h3_({
 				class: class_(
 					'text-lg',
 					'font-semibold',
 					'text-gray-900',
-					'dark:invert')
+					'dark:text-gray-100',
+					// 'dark:invert'
+					op?.bullet === 'video'
+						? ['neon-teal', 'group-hover:animate-[neon-blink_0.03s_infinite_alternate]']
+						: undefined
+				)
 			}, title),
 			p_({
 				class: class_(
 					'text-base',
 					'font-normal',
 					'text-gray-500',
-					'dark:text-gray-400')
+					'dark:text-gray-400',
+					op?.bullet === 'video'
+						? ['neon-teal', 'group-hover:animate-[neon-blink_0.03s_infinite_alternate]']
+						: undefined
+				)
 			}, ...(description_a || [])),
 			...children
 		])
