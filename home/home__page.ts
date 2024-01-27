@@ -1,15 +1,29 @@
-import { raw_, type relement_env_T } from 'relementjs'
+import { class_ } from 'ctx-core/html'
+import { raw_ } from 'relementjs'
 import { a_, div_, h1_, li_, ul_ } from 'relementjs/html'
-import type { route_ctx_T } from 'relysjs'
+import { type route_ctx_T } from 'relysjs/server'
 import { layout_c_ } from '../layout/index.ts'
-export function home__page_<env_T extends relement_env_T = 'server'>({ ctx }:{ ctx: route_ctx_T }) {
+export function home__page_({ ctx }:{ ctx:route_ctx_T }) {
 	return (
-		layout_c_<env_T>({ ctx },
-			div_({ class: 'home__page' },
-				h1_('Brooke Brodack')),
+		layout_c_({ ctx },
+			div_({
+				class: class_(
+					'home__page',
+					'mx-auto')
+			},
+			h1_('Brooke Brodack')),
 			ul_(
-				li_({ class: 'text-center mt-12' },
-					a_({ href: '/brookers', class: 'inline text-center' },
-						raw_('Brookers&hellip;')))))
+				li_({
+					class: class_(
+						'text-center',
+						'mt-12')
+				},
+				a_({
+					href: '/brookers',
+					class: class_(
+						'inline',
+						'text-center')
+				},
+				raw_('Brookers&hellip;')))))
 	)
 }
