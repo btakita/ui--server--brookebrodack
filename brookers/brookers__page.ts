@@ -3,10 +3,9 @@ import { brookers__page__hy__bind__id } from '@btakita/ui--any--brookebrodack/br
 import { heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner_c_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { atb_ } from '@btakita/ui--server--blog/anchor'
-import { footnote_c_, footnote_list_c_ } from '@btakita/ui--server--blog/footnote'
 import { class_ } from 'ctx-core/html'
 import { type Node_T, raw_, type relement_env_T, type tag__dom_T } from 'relementjs'
-import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, template_, time_ } from 'relementjs/html'
+import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, template_, time_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
 import { type route_ctx_T } from 'relysjs/server'
 import { layout_c_ } from '../layout/index.ts'
@@ -169,6 +168,23 @@ export function brookers__page_({ ctx }:{
 						title: 'Brookers first video on YouTube'
 					}),
 					brookers__timeline__item_c_({
+						at: 'Oct 23, 2005',
+						description_a: [
+							[
+								'>8.4 Million views ',
+								cite_(atb_({
+									href: 'https://web.archive.org/web/20160210225252/https://www.youtube.com/watch?v=N6j475XI1Xg'
+								}, 'Internet Archive'))
+							]
+						],
+						op: {
+							type: 'youtube',
+							title: 'CRAZED NUMA FAN !!!!',
+							bullet: 'video',
+							videoId: 'wflZKdXC8Vo'
+						}
+					}),
+					brookers__timeline__item_c_({
 						at: 'May 21, 2006',
 						op: {
 							type: 'youtube',
@@ -186,13 +202,15 @@ export function brookers__page_({ ctx }:{
 						at: 'June 2006',
 						title: 'Chips',
 						description_a: [
-							'A spoof suspense drama about eating potato chips, has been called "brilliant" by' +
-							' Entertainment Weekly, which has listed it among the "great moments in' +
-							' YouTube history."',
-							footnote_c_({ ctx, id: 'knowyourmeme' },
-								atb_({
-									href: 'https://knowyourmeme.com/memes/people/brookers'
-								}, 'knowyourmeme.com'))
+							[
+								'A spoof suspense drama about eating potato chips, has been called "brilliant" by' +
+								' Entertainment Weekly, which has listed it among the "great moments in' +
+								' YouTube history." ',
+								cite_(
+									atb_({
+										href: 'https://knowyourmeme.com/memes/people/brookers'
+									}, 'knowyourmeme.com'))
+							]
 						],
 						op: {
 							type: 'html',
@@ -214,16 +232,6 @@ export function brookers__page_({ ctx }:{
 						at: 'July 3 - Aug 7 2006',
 						title: 'Most-subscribed on YouTube',
 						description_a: ['> 64000 subscribers']
-					}),
-					brookers__timeline__item_c_({
-						at: 'July 5 2006',
-						description_a: ['Over 18 Million Views'],
-						op: {
-							type: 'youtube',
-							title: 'CRAZED NUMA FAN !!!!',
-							bullet: 'video',
-							videoId: 'wflZKdXC8Vo'
-						}
 					}),
 					brookers__timeline__item_c_({
 						at: 'December 6 2006',
@@ -271,9 +279,12 @@ export function brookers__page_({ ctx }:{
 						description_a: [
 							'"there was a murder in my back yard if this leg is yours can you come and claim it ... its stinking' +
 							' up my yard..thanks"',
-							atb_({
-								href: 'https://web.archive.org/web/20120710175206/http://www.youtube.com/user/Brookers/videos',
-							}, 'Stats on Internet Archive')
+							[
+								'>530k views',
+								cite_(
+									atb_({
+										href: 'https://web.archive.org/web/20120710175206/http://www.youtube.com/user/Brookers/videos',
+									}, 'Internet Archive'))]
 						],
 						op: {
 							type: 'youtube',
@@ -382,9 +393,12 @@ export function brookers__page_({ ctx }:{
 					brookers__timeline__item_c_({
 						at: 'Mar 10, 2012',
 						description_a: [
-							atb_({
-								href: 'https://web.archive.org/web/20150109114045/https://www.youtube.com/watch?v=SLbFDMplZDs'
-							}, 'Stats on Internet Archive'),
+							[
+								'>2.4 Million views ',
+								cite_(atb_({
+									href: 'https://web.archive.org/web/20150109114045/https://www.youtube.com/watch?v=SLbFDMplZDs'
+								}, 'Internet Archive'))
+							],
 						],
 						op: {
 							type: 'youtube',
@@ -406,7 +420,6 @@ export function brookers__page_({ ctx }:{
 						}
 					})
 				]),
-				footnote_list_c_({ ctx })
 			]))
 	}
 }
@@ -567,6 +580,9 @@ function brookers__page__img_a_c_() {
 			src: cooler_in_space_gif
 		}))
 	)
+}
+function cite_(...children:tag__dom_T[]) {
+	return sup_(children)
 }
 declare const brookers__timeline__item__sym:unique symbol
 export type brookers__timeline__item_T<env_T extends relement_env_T> = tag__dom_T<env_T>&{
