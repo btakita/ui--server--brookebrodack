@@ -28,7 +28,7 @@ export function brookers__page_({ ctx }:{
 					'min-h-screen',
 					'overflow-x-hidden',
 					'relative',
-					'dark:bg-black'),
+					'bg-black'),
 				hy__bind: brookers__page__hy__bind__id
 			}, [
 				template_({
@@ -63,10 +63,16 @@ export function brookers__page_({ ctx }:{
 					'flex-col',
 					'items-center',
 					'justify-top',
-					'dark:text-white')
+					'text-white')
 			}, [
-				h1_({ class: 'mt-4' }, `Hello, my name is Brooke Brodack`),
-				h2_(`& I am an artist`),
+				h1_({
+					class: class_(
+						'mt-4',
+						'text-white')
+				}, `Hello, my name is Brooke Brodack`),
+				h2_({
+					class: class_('text-white')
+				}, `& I am an artist`),
 			])
 		)
 	}
@@ -88,7 +94,7 @@ export function brookers__page_({ ctx }:{
 					'cursor-pointer')
 			}, [
 				heroicons_uturn_left_({
-					class: class_('dark:stroke-gray-100')
+					class: class_('stroke-gray-100')
 				})
 			])
 		)
@@ -113,8 +119,7 @@ export function brookers__page_({ ctx }:{
 					'container',
 					'flex-1',
 					'sm:px-8',
-					'bg-white',
-					'dark:bg-black')
+					'bg-black')
 			}, [
 				div_({
 					id: 'html_op__top',
@@ -122,7 +127,7 @@ export function brookers__page_({ ctx }:{
 						'flex',
 						'flex-column',
 						'h-16',
-						'dark:text-white')
+						'text-white')
 				}, [
 					div_({
 						id: 'op__title',
@@ -144,7 +149,7 @@ export function brookers__page_({ ctx }:{
 							'cursor-pointer')
 					}, [
 						heroicons_x_mark_({
-							class: class_('dark:stroke-gray-100')
+							class: class_('stroke-gray-100')
 						})
 					]),
 				]),
@@ -458,7 +463,7 @@ export function brookers__timeline_c_<env_T extends relement_env_T>({ style, ...
 			'flex-col',
 			'border-l',
 			'border-gray-200',
-			'dark:border-gray-700',
+			'border-gray-700',
 			$p.class),
 		style,
 	}, ...children) as Node_T<env_T, HTMLElementTagNameMap['ol']>
@@ -508,22 +513,21 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 							'overflow-visible',
 							'text-lg',
 							'neon-teal',
+							'dark',
 							'hover:animate-[neon-fade_0.03s_infinite_alternate]',
 							'active:animate-[neon-fade_0.03s_infinite_alternate]'
 						]
 						: [
-							'bg-gray-200',
 							'rounded-full',
 							'border',
-							'border-white',
-							'dark:border-gray-900',
-							'dark:bg-gray-700'
+							'border-gray-900',
+							'bg-gray-700'
 						]),
 			}, [
 				op?.bullet === 'video'
 					? heroicons_video_camera_({
 						class: class_(
-							'dark:stroke-gray-100',
+							'stroke-gray-100',
 							'group-hover:animate-[neon-fade_0.03s_infinite_alternate]',
 							'group-active:animate-[neon-fade_0.03s_infinite_alternate]')
 					})
@@ -535,11 +539,11 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 					'text-sm',
 					'font-normal',
 					'leading-none',
-					'text-gray-400',
-					'dark:text-gray-500',
+					'text-gray-500',
 					op?.bullet === 'video'
 						? [
 							'neon-teal',
+							'dark',
 							'group-hover:animate-[neon-blink_0.03s_infinite_alternate]',
 							'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
 						]
@@ -549,12 +553,11 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 				class: class_(
 					'text-lg',
 					'font-semibold',
-					'text-gray-900',
-					'dark:text-gray-100',
-					// 'dark:invert'
+					'text-gray-100',
 					op?.bullet === 'video'
 						? [
 							'neon-teal',
+							'dark',
 							'group-hover:animate-[neon-blink_0.03s_infinite_alternate]',
 							'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
 						]
@@ -566,11 +569,11 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 					class: class_(
 						'text-base',
 						'font-normal',
-						'text-gray-500',
-						'dark:text-gray-400',
+						'text-gray-400',
 						op?.bullet === 'video'
 							? [
 								'neon-teal',
+								'dark',
 								'group-hover:animate-[neon-blink_0.03s_infinite_alternate]',
 								'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
 							]
