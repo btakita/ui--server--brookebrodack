@@ -78,10 +78,6 @@ export function layout_c_({
 								? 'dark'
 								: 'light')
 				`.trim().replaceAll('					', ''))),
-				// language=js
-				script_(raw_(`
-					window.va = window.va || (()=>(window.vaq = window.vaq || []).push(arguments))
-				`.trim().replaceAll('					', ''))),
 				title_(title),
 			]),
 			body_(...children))
