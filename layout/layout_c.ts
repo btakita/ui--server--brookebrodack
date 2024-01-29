@@ -6,8 +6,10 @@ import { asset_path_a_, assets_, assets__new, type assets_T, type request_ctx_T,
 const google_site_verification = import_meta_env_().PUBLIC_GOOGLE_SITE_VERIFICATION
 const [
 	favicon_svg,
+	brooke_brodack_logo_jpg,
 ] = await asset_path_a_(
-	import('../public/assets/favicon.svg')
+	import('../public/assets/favicon.svg'),
+	import('../public/assets/images/brooke-brodack-logo.jpg'),
 )
 export function layout_c_({
 	ctx, assets, canonical_url, title, author, description, og_image
@@ -24,7 +26,7 @@ export function layout_c_({
 	title ??= 'Brooke Brodack'
 	description ??= 'Hello, my name is Brooke Brodack & I am an artist'
 	author ??= 'Brooke Brodack'
-	og_image ??= '/assets/images/brookebrodack-og.jpg'
+	og_image ??= brooke_brodack_logo_jpg
 	const social_image_url = new URL(og_image, request_url_(ctx).origin).href
 	assets = assets__new(assets_(ctx), assets)
 	return (
