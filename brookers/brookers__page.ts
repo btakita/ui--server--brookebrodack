@@ -2,9 +2,9 @@ import { type brookers__timeline_op_T } from '@btakita/domain--any--brookebrodac
 import { brookers__page__hy__bind__id } from '@btakita/ui--any--brookebrodack/brookers'
 import { heroicons_uturn_left_, heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner_c_ } from '@btakita/ui--any--brookebrodack/spinner'
-import { atb_ } from '@btakita/ui--server--blog/anchor'
+import { tb_a_ } from '@btakita/ui--server--blog/anchor'
 import { class_ } from 'ctx-core/html'
-import { type Node_T, raw_, type relement_env_T, type tag__dom_T } from 'relementjs'
+import { type Node_T, raw_, type relement_env_T, type tag_dom_T } from 'relementjs'
 import { a_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, template_, time_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
@@ -201,7 +201,7 @@ export function brookers__page_({ ctx }:{
 						description_a: [
 							[
 								'>8.4 Million views ',
-								cite_(atb_({
+								cite_(tb_a_({
 									href: 'https://web.archive.org/web/20160210225252/https://www.youtube.com/watch?v=N6j475XI1Xg'
 								}, 'Internet Archive'))
 							]
@@ -236,7 +236,7 @@ export function brookers__page_({ ctx }:{
 								' Entertainment Weekly, which has listed it among the "great moments in' +
 								' YouTube history." ',
 								cite_(
-									atb_({
+									tb_a_({
 										href: 'https://knowyourmeme.com/memes/people/brookers'
 									}, 'knowyourmeme.com'))
 							]
@@ -281,7 +281,7 @@ export function brookers__page_({ ctx }:{
 						at: 'February 2007',
 						description_a: [
 							'Appeared in ',
-							atb_({ href: 'https://www.youtube.com/watch?v=FoFMRXlNJ6Y' }, 'music video'),
+							tb_a_({ href: 'https://www.youtube.com/watch?v=FoFMRXlNJ6Y' }, 'music video'),
 							' with fellow YouTubers',
 						],
 						op: {
@@ -311,7 +311,7 @@ export function brookers__page_({ ctx }:{
 							[
 								'>530k views',
 								cite_(
-									atb_({
+									tb_a_({
 										href: 'https://web.archive.org/web/20120710175206/http://www.youtube.com/user/Brookers/videos',
 									}, 'Internet Archive'))]
 						],
@@ -424,7 +424,7 @@ export function brookers__page_({ ctx }:{
 						description_a: [
 							[
 								'>2.4 Million views ',
-								cite_(atb_({
+								cite_(tb_a_({
 									href: 'https://web.archive.org/web/20150109114045/https://www.youtube.com/watch?v=SLbFDMplZDs'
 								}, 'Internet Archive'))
 							],
@@ -455,7 +455,7 @@ export function brookers__page_({ ctx }:{
 export function brookers__timeline_c_<env_T extends relement_env_T>({ style, ...$p }:{
 	class?:string
 	style?:string
-}, ...children:tag__dom_T[]) {
+}, ...children:tag_dom_T[]) {
 	return ol_({
 		class: class_(
 			'brookers__timeline_c',
@@ -476,14 +476,14 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 }:{
 	at:string
 	title:string
-	description_a?:tag__dom_T[],
+	description_a?:tag_dom_T[],
 	op?:brookers__timeline_op_T
 }|{
 	at:string
 	title?:string
-	description_a?:tag__dom_T[],
+	description_a?:tag_dom_T[],
 	op:brookers__timeline_op_T
-}, ...children:tag__dom_T<env_T>[]):brookers__timeline__item_T<env_T> {
+}, ...children:tag_dom_T<env_T>[]):brookers__timeline__item_T<env_T> {
 	return (
 		li_({
 			class: class_(
@@ -608,10 +608,10 @@ function brookers__page__img_a_c_() {
 		}))
 	)
 }
-function cite_(...children:tag__dom_T[]) {
+function cite_(...children:tag_dom_T[]) {
 	return sup_(children)
 }
 declare const brookers__timeline__item__sym:unique symbol
-export type brookers__timeline__item_T<env_T extends relement_env_T> = tag__dom_T<env_T>&{
+export type brookers__timeline__item_T<env_T extends relement_env_T> = tag_dom_T<env_T>&{
 	[brookers__timeline__item__sym]:never
 }
