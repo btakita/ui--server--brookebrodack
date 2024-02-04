@@ -58,6 +58,7 @@ export function brookers__doc_html_({ ctx }:{
 			div_({
 				class: class_(
 					'brookers_hero__div',
+					'invisible',
 					'absolute',
 					'z-20',
 					'top-0',
