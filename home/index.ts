@@ -1,1 +1,1 @@
-export * from './home__page.js'
+export * from './home__doc_html.js'

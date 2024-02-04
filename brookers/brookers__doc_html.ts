@@ -1,59 +1,63 @@
+import '@btakita/ui--any--brookebrodack/neon'
 import { type brookers__timeline_op_T } from '@btakita/domain--any--brookebrodack'
-import { brookers__page__hy__bind__id } from '@btakita/ui--any--brookebrodack/brookers'
 import { heroicons_uturn_left_, heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
-import { spinner_c_ } from '@btakita/ui--any--brookebrodack/spinner'
+import { spinner__div_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { tb_a_ } from '@btakita/ui--server--blog/anchor'
 import { class_ } from 'ctx-core/html'
-import { type Node_T, raw_, type relement_env_T, type tag_dom_T } from 'relementjs'
+import { raw_, type relement_env_T, type tag_dom_T } from 'relementjs'
 import { a_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, template_, time_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
-import { layout_c_ } from '../layout/index.ts'
-import '@btakita/ui--any--brookebrodack/neon'
-import './index.css'
+import { layout__doc_html_ } from '../layout/index.js'
 const [
 	cooler_in_space_gif,
 ] = await asset_path_a_(
 	import('../public/assets/images/cooler-in-space--look-aud-right.gif'),
 )
-export function brookers__page_({ ctx }:{
+export function brookers__doc_html_({ ctx }:{
 	ctx:request_ctx_T
 }) {
 	return (
-		layout_c_(
-			{ ctx },
+		layout__doc_html_({
+			ctx,
+			html_props: {
+				class: class_('brookers__doc_html')
+			}
+		}, [
 			div_({
 				class: class_(
-					'brookers__page',
 					'min-h-screen',
 					'overflow-x-hidden',
 					'relative',
 					'bg-black'),
-				hy__bind: brookers__page__hy__bind__id
+				hy__bind: 'brookers'
 			}, [
 				template_({
 					id: 'spinner_template',
 					class: 'hidden'
-				}, raw_('' + spinner_c_({
-					class: class_(
-						'spinner',
-						'absolute',
-						'z-10',
-						'top-56',
-						'left-[calc(50%-16px)]')
-				}))),
-				brookers__page__hero_c_(),
-				back_link_c_(),
-				brookers__page__detail_c_(),
-				brookers__page__master_c_(),
-				brookers__page__img_a_c_(),
-			]))
+				}, [
+					raw_('' + spinner__div_({
+						class: class_(
+							'spinner',
+							'absolute',
+							'z-10',
+							'top-56',
+							'left-[calc(50%-16px)]')
+					}))
+				]),
+				brookers_hero__div_(),
+				brookers_back_link__a_(),
+				brookers_detail__div_(),
+				brookers_master__div_(),
+				brookers_img__div_(),
+			])
+		])
 	)
-	function brookers__page__hero_c_() {
+	function brookers_hero__div_() {
 		return (
 			div_({
 				class: class_(
-					'brookers__page__hero_c',
+					'brookers_hero__div',
 					'absolute',
 					'z-20',
 					'top-0',
@@ -76,8 +80,8 @@ export function brookers__page_({ ctx }:{
 			])
 		)
 	}
-	function back_link_c_() {
-	  return (
+	function brookers_back_link__a_() {
+		return (
 			a_({
 				href: '/',
 				class: class_(
@@ -99,13 +103,13 @@ export function brookers__page_({ ctx }:{
 			])
 		)
 	}
-	function brookers__page__detail_c_() {
+	function brookers_detail__div_() {
 		return (
 			div_({
 				class: class_(
-					'brookers__page__detail_c',
-					'fixed',
+					'brookers_detail__div',
 					'hidden',
+					'fixed',
 					'sm:block',
 					'z-30',
 					'sm:z-0',
@@ -122,7 +126,7 @@ export function brookers__page_({ ctx }:{
 					'bg-black')
 			}, [
 				div_({
-					id: 'html_op__top',
+					id: 'html_op_top__div',
 					class: class_(
 						'flex',
 						'flex-column',
@@ -130,7 +134,7 @@ export function brookers__page_({ ctx }:{
 						'text-white')
 				}, [
 					div_({
-						id: 'op__title',
+						id: 'op_title__div',
 						class: class_(
 							'flex-grow',
 							'flex',
@@ -138,7 +142,7 @@ export function brookers__page_({ ctx }:{
 							'mt-2')
 					}),
 					div_({
-						id: 'html_op__close',
+						id: 'html_op_close__div',
 						class: class_(
 							'sm:hidden',
 							'flex-none',
@@ -154,7 +158,7 @@ export function brookers__page_({ ctx }:{
 					]),
 				]),
 				div_({
-					id: 'html_op__container',
+					id: 'html_op__div',
 					class: class_(
 						'hidden',
 						'relative',
@@ -166,7 +170,7 @@ export function brookers__page_({ ctx }:{
 						'overflow-auto')
 				}),
 				div_({
-					id: 'YT_iframe_placeholder',
+					id: 'YT_iframe__div',
 					class: class_(
 						'hidden',
 						'relative',
@@ -179,11 +183,12 @@ export function brookers__page_({ ctx }:{
 			])
 		)
 	}
-	function brookers__page__master_c_() {
+	function brookers_master__div_() {
 		return (
 			div_({
 				class: class_(
-					'brookers__page__master_c',
+					'brookers_master__div',
+					'hidden',
 					'relative',
 					'mt--24',
 					'min-h-screen',
@@ -191,17 +196,17 @@ export function brookers__page_({ ctx }:{
 					'max-w-xs',
 					'ml-4')
 			}, [
-				brookers__timeline_c_({}, [
-					brookers__timeline__item_c_({
+				brookers_timeline__ol_({}, [
+					brookers_timeline__li_({
 						at: 'September 2005',
 						title: 'Brookers first video on YouTube'
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Oct 23, 2005',
 						description_a: [
 							[
 								'>8.4 Million views ',
-								cite_(tb_a_({
+								cite__sup_(tb_a_({
 									href: 'https://web.archive.org/web/20160210225252/https://www.youtube.com/watch?v=N6j475XI1Xg'
 								}, 'Internet Archive'))
 							]
@@ -213,7 +218,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 'wflZKdXC8Vo'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'May 21, 2006',
 						op: {
 							type: 'youtube',
@@ -222,12 +227,12 @@ export function brookers__page_({ ctx }:{
 							videoId: 'jRA9ujhIs2I'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'June 2006',
 						title: 'Carson Daly NBC',
 						description_a: ['18 month development contract']
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'June 2006',
 						title: 'Chips',
 						description_a: [
@@ -235,7 +240,7 @@ export function brookers__page_({ ctx }:{
 								'A spoof suspense drama about eating potato chips, has been called "brilliant" by' +
 								' Entertainment Weekly, which has listed it among the "great moments in' +
 								' YouTube history." ',
-								cite_(
+								cite__sup_(
 									tb_a_({
 										href: 'https://knowyourmeme.com/memes/people/brookers'
 									}, 'knowyourmeme.com'))
@@ -257,17 +262,17 @@ export function brookers__page_({ ctx }:{
 							})
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'July 3 - Aug 7 2006',
 						title: 'Most-subscribed on YouTube',
 						description_a: ['> 64000 subscribers']
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'December 6 2006',
 						title: 'Tyra Banks Show',
 						description_a: [`judge for a student video competition`]
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'circa 2006-2007',
 						description_a: ['Who drank my orange juice?'],
 						op: {
@@ -277,7 +282,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 'h0InxfwadiM'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'February 2007',
 						description_a: [
 							'Appeared in ',
@@ -291,7 +296,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 'FoFMRXlNJ6Y'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'February 7, 2007',
 						description_a: [
 							'"Web Celebrity" published by Brookers on IYS on Feb 7, 2007 and then quickly removed.',
@@ -303,17 +308,18 @@ export function brookers__page_({ ctx }:{
 							videoId: 'izc8q91Yet0'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Sep 7, 2007',
 						description_a: [
 							'"there was a murder in my back yard if this leg is yours can you come and claim it ... its stinking' +
 							' up my yard..thanks"',
 							[
 								'>530k views',
-								cite_(
+								cite__sup_(
 									tb_a_({
 										href: 'https://web.archive.org/web/20120710175206/http://www.youtube.com/user/Brookers/videos',
-									}, 'Internet Archive'))]
+									}, 'Internet Archive'))
+							]
 						],
 						op: {
 							type: 'youtube',
@@ -322,7 +328,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 'uYfYu2pB-yE'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Nov 18, 2007',
 						description_a: [
 							'Old laddys,',
@@ -335,7 +341,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 'x_7oyWcg7AU'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Aug 6, 2010',
 						description_a: [
 							'Brooke Brodack as Sukashi\'s girlfriend'
@@ -347,7 +353,7 @@ export function brookers__page_({ ctx }:{
 							videoId: '8KqD2RNFW5E'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Aug 13, 2010',
 						op: {
 							type: 'youtube',
@@ -356,7 +362,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 'H3GpZ82uVQE'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Aug 23, 2010',
 						op: {
 							type: 'youtube',
@@ -365,7 +371,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 'zleNliomOGA'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Sep 10, 2010',
 						op: {
 							type: 'youtube',
@@ -374,7 +380,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 'LwmdQSSiYRw'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Dec 22, 2010',
 						op: {
 							type: 'youtube',
@@ -383,7 +389,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 'd7G4nCppWy4'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Feb 7, 2011',
 						op: {
 							type: 'youtube',
@@ -392,7 +398,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 'P3D5B2Pt-Lo'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Feb 9, 2011',
 						op: {
 							type: 'youtube',
@@ -401,7 +407,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 'Qaf5TYm8CNE'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Feb 24, 2011',
 						op: {
 							type: 'youtube',
@@ -410,7 +416,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 'Gc25NsgO_qg'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Apr 5, 2011',
 						op: {
 							type: 'youtube',
@@ -419,12 +425,12 @@ export function brookers__page_({ ctx }:{
 							videoId: 'enuphAemSRo'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Mar 10, 2012',
 						description_a: [
 							[
 								'>2.4 Million views ',
-								cite_(tb_a_({
+								cite__sup_(tb_a_({
 									href: 'https://web.archive.org/web/20150109114045/https://www.youtube.com/watch?v=SLbFDMplZDs'
 								}, 'Internet Archive'))
 							],
@@ -436,7 +442,7 @@ export function brookers__page_({ ctx }:{
 							videoId: 's35NaNkKwR4'
 						}
 					}),
-					brookers__timeline__item_c_({
+					brookers_timeline__li_({
 						at: 'Feb 8, 2022',
 						description_a: [
 							'Colm Flynn\' documentary on Brookers & long form interview with Brooke Brodack.'
@@ -452,13 +458,13 @@ export function brookers__page_({ ctx }:{
 			]))
 	}
 }
-export function brookers__timeline_c_<env_T extends relement_env_T>({ style, ...$p }:{
+export function brookers_timeline__ol_<env_T extends relement_env_T>({ style, ...$p }:{
 	class?:string
 	style?:string
 }, ...children:tag_dom_T[]) {
-	return ol_({
+	return ol_<env_T>({
 		class: class_(
-			'brookers__timeline_c',
+			'brookers_timeline__ol',
 			'flex',
 			'flex-col',
 			'border-l',
@@ -466,9 +472,9 @@ export function brookers__timeline_c_<env_T extends relement_env_T>({ style, ...
 			'border-gray-700',
 			$p.class),
 		style,
-	}, ...children) as Node_T<env_T, HTMLElementTagNameMap['ol']>
+	}, ...children)
 }
-export function brookers__timeline__item_c_<env_T extends relement_env_T>({
+export function brookers_timeline__li_<env_T extends relement_env_T>({
 	at,
 	title,
 	description_a,
@@ -483,11 +489,11 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 	title?:string
 	description_a?:tag_dom_T[],
 	op:brookers__timeline_op_T
-}, ...children:tag_dom_T<env_T>[]):brookers__timeline__item_T<env_T> {
+}, ...children:tag_dom_T<env_T>[]) {
 	return (
-		li_({
+		li_<env_T>({
 			class: class_(
-				'brookers__timeline__item_c',
+				'brookers_timeline__li',
 				'mb-10',
 				'ml-4',
 				'first:mt-24',
@@ -582,13 +588,13 @@ export function brookers__timeline__item_c_<env_T extends relement_env_T>({
 				}, line)),
 			...children
 		])
-	) as brookers__timeline__item_T<env_T>
+	)
 }
-function brookers__page__img_a_c_() {
+function brookers_img__div_() {
 	return (
 		div_({
 			class: [
-				'brookers__page__img_a_c',
+				'brookers_img__div',
 				'hidden',
 				'fixed',
 				'z-10',
@@ -596,22 +602,19 @@ function brookers__page__img_a_c_() {
 				'bottom-0',
 				'w-full',
 			].join(' ')
-		},
-		img_({
-			class: [
-				'cooler-in-space',
-				'absolute',
-				'top-0',
-				'm-auto',
-			].join(' '),
-			src: cooler_in_space_gif
-		}))
+		}, [
+			img_({
+				class: [
+					'cooler-in-space',
+					'absolute',
+					'top-0',
+					'm-auto',
+				].join(' '),
+				src: cooler_in_space_gif
+			})
+		])
 	)
 }
-function cite_(...children:tag_dom_T[]) {
+function cite__sup_(...children:tag_dom_T[]) {
 	return sup_(children)
-}
-declare const brookers__timeline__item__sym:unique symbol
-export type brookers__timeline__item_T<env_T extends relement_env_T> = tag_dom_T<env_T>&{
-	[brookers__timeline__item__sym]:never
 }

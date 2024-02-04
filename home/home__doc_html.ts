@@ -3,13 +3,18 @@ import { class_ } from 'ctx-core/html'
 import { raw_, type tag_T } from 'relementjs'
 import { a_, div_, h1_, li_, ul_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import { layout_c_ } from '../layout/index.ts'
-export function home__page_({ ctx }:{ ctx:request_ctx_T }) {
+import { layout__doc_html_ } from '../layout/index.js'
+export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	return (
-		layout_c_({ ctx },
+		layout__doc_html_({
+			ctx,
+			title: 'Brooke Brodack',
+			html_props: {
+				class: class_('home__doc_html'),
+			}
+		}, [
 			div_({
 				class: class_(
-					'home__page',
 					'min-h-screen',
 					'overflow-x-hidden',
 					'relative',
@@ -21,7 +26,7 @@ export function home__page_({ ctx }:{ ctx:request_ctx_T }) {
 						'mt-4',
 						'text-center')
 				}, 'Brooke Brodack'),
-				ul_(
+				ul_([
 					li_({
 						class: class_(
 							'text-center',
@@ -33,7 +38,8 @@ export function home__page_({ ctx }:{ ctx:request_ctx_T }) {
 							'inline',
 							'text-center')
 					},
-					raw_('Brookers&hellip;')))),
+					raw_('Brookers&hellip;')))
+				]),
 				ul_({
 					class: class_(
 						'fixed',
@@ -64,7 +70,8 @@ export function home__page_({ ctx }:{ ctx:request_ctx_T }) {
 							class: class_('dark:fill-gray-100')
 						}))
 					])))
-			]))
+			])
+		])
 	)
 }
 type social_aa = [href:string, icon_:tag_T][]

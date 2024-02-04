@@ -1,5 +1,7 @@
 import { import_meta_env_ } from 'ctx-core/env'
-import { raw_, type tag__dom_T } from 'relementjs'
+import { class_ } from 'ctx-core/html'
+import { raw_, type tag_dom_T } from 'relementjs'
+import { type tag_props_T } from 'relementjs/any'
 import { body_, head_, link_, meta_, script_, title_ } from 'relementjs/html'
 import { doc_html_ } from 'relementjs/server'
 import { asset_path_a_, assets_, assets__new, type assets_T, type request_ctx_T, request_url_ } from 'relysjs/server'
@@ -11,17 +13,25 @@ const [
 	import('../public/assets/favicon.svg'),
 	import('../public/assets/images/brooke-brodack-logo.jpg'),
 )
-export function layout_c_({
-	ctx, assets, canonical_url, title, author, description, og_image
+export function layout__doc_html_({
+	ctx,
+	html_props,
+	assets,
+	canonical_url,
+	title,
+	author,
+	description,
+	og_image,
 }:{
 	ctx:request_ctx_T
+	html_props?:tag_props_T&{ class?:string }
 	assets?:assets_T
 	canonical_url?:string
 	title?:string
 	author?:string
 	description?:string
 	og_image?:string
-}, ...children:tag__dom_T[]) {
+}, ...children:tag_dom_T[]) {
 	canonical_url ??= request_url_(ctx).href
 	title ??= 'Brooke Brodack'
 	description ??= 'Hello, my name is Brooke Brodack & I am an artist'
@@ -30,7 +40,12 @@ export function layout_c_({
 	const social_image_url = new URL(og_image, request_url_(ctx).origin).href
 	assets = assets__new(assets_(ctx), assets)
 	return (
-		doc_html_(
+		doc_html_({
+			...html_props,
+			class: class_(
+				'doc__html',
+				html_props?.class)
+		}, [
 			head_([
 				meta_({ charset: 'UTF-8' }),
 				meta_({ name: 'viewport', content: 'width=device-width' }),
@@ -80,6 +95,7 @@ export function layout_c_({
 				`.trim().replaceAll('					', ''))),
 				title_(title),
 			]),
-			body_(...children))
+			body_(...children)
+		])
 	)
 }

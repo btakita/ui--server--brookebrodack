@@ -1,1 +1,1 @@
-export * from './reponsive.ts'
+export * from './reponsive.js'
