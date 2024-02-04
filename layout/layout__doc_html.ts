@@ -34,7 +34,7 @@ export function layout__doc_html_({
 }, ...children:tag_dom_T[]) {
 	canonical_url ??= request_url_(ctx).href
 	title ??= 'Brooke Brodack'
-	description ??= 'Hello, my name is Brooke Brodack & I am an artist'
+	description ??= 'YouTubing since 2004'
 	author ??= 'Brooke Brodack'
 	og_image ??= brooke_brodack_logo_jpg
 	const social_image_url = new URL(og_image, request_url_(ctx).origin).href

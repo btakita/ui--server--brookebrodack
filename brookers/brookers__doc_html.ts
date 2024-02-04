@@ -78,13 +78,13 @@ export function brookers__doc_html_({ ctx }:{
 						'opacity-0',
 						'noscript:opacity-100',
 						'text-white')
-				}, `Hello, my name is Brooke Brodack`),
+				}, `Brooke Brodack`),
 				h2_({
 					class: class_(
 						'opacity-0',
 						'noscript:opacity-100',
 						'text-white')
-				}, `& I am an artist`),
+				}, 'YouTubing since 2004'),
 			])
 		)
 	}
@@ -95,7 +95,7 @@ export function brookers__doc_html_({ ctx }:{
 				class: class_(
 					'back_link',
 					'fixed',
-					'z-40',
+					'z-30',
 					'top-2',
 					'right-2',
 					'flex-none',
