@@ -95,14 +95,12 @@ export function brookers__doc_html_({ ctx }:{
 				class: class_(
 					'back_link',
 					'fixed',
+					'top-4',
+					'right-4',
 					'z-30',
-					'top-2',
-					'right-2',
 					'flex-none',
 					'h-6',
 					'w-6',
-					'mt-2',
-					'mr-2',
 					'cursor-pointer')
 			}, [
 				heroicons_uturn_left_({
@@ -134,7 +132,7 @@ export function brookers__doc_html_({ ctx }:{
 					'bg-black')
 			}, [
 				div_({
-					id: 'html_op_top__div',
+					id: 'op_top__div',
 					class: class_(
 						'flex',
 						'flex-column',
@@ -150,14 +148,14 @@ export function brookers__doc_html_({ ctx }:{
 							'mt-2')
 					}),
 					div_({
-						id: 'html_op_close__div',
+						id: 'op_close__div',
 						class: class_(
 							'sm:hidden',
 							'flex-none',
 							'h-6',
 							'w-6',
-							'mt-2',
-							'mr-2',
+							'mt-4',
+							'mr-4',
 							'cursor-pointer')
 					}, [
 						heroicons_x_mark_({
