@@ -68,12 +68,13 @@ export function brookers__doc_html_({ ctx }:{
 					'mb-4',
 					'flex',
 					'flex-col',
-					'items-center',
 					'justify-top',
 					'text-white')
 			}, [
 				h1_({
 					class: class_(
+						'relative',
+						'left-0',
 						'mt-4',
 						'opacity-0',
 						'noscript:opacity-100',
@@ -82,6 +83,7 @@ export function brookers__doc_html_({ ctx }:{
 				h2_({
 					class: class_(
 						'opacity-0',
+						'left-0',
 						'noscript:opacity-100',
 						'text-white')
 				}, 'YouTubing since 2004'),
@@ -600,16 +602,17 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 function brookers_img__div_() {
 	return (
 		div_({
-			class: [
+			class: class_(
 				'brookers_img__div',
 				'opacity-0',
 				'noscript:opacity-100',
 				'fixed',
 				'z-10',
-				'h-[370px]',
-				'bottom-0',
+				'sm:h-[370px]',
 				'w-full',
-			].join(' ')
+				'sm:w-[420px]',
+				'aspect-[420/370]',
+				'bottom-0')
 		}, [
 			img_({
 				class: [
