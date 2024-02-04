@@ -58,7 +58,8 @@ export function brookers__doc_html_({ ctx }:{
 			div_({
 				class: class_(
 					'brookers_hero__div',
-					'invisible',
+					'opacity-0',
+					'noscript:opacity-100',
 					'absolute',
 					'z-20',
 					'top-0',
@@ -74,10 +75,15 @@ export function brookers__doc_html_({ ctx }:{
 				h1_({
 					class: class_(
 						'mt-4',
+						'opacity-0',
+						'noscript:opacity-100',
 						'text-white')
 				}, `Hello, my name is Brooke Brodack`),
 				h2_({
-					class: class_('text-white')
+					class: class_(
+						'opacity-0',
+						'noscript:opacity-100',
+						'text-white')
 				}, `& I am an artist`),
 			])
 		)
@@ -190,7 +196,8 @@ export function brookers__doc_html_({ ctx }:{
 			div_({
 				class: class_(
 					'brookers_master__div',
-					'hidden',
+					'opacity-0',
+					'noscript:opacity-100',
 					'relative',
 					'mt--24',
 					'min-h-screen',
@@ -597,7 +604,8 @@ function brookers_img__div_() {
 		div_({
 			class: [
 				'brookers_img__div',
-				'hidden',
+				'opacity-0',
+				'noscript:opacity-100',
 				'fixed',
 				'z-10',
 				'h-[370px]',

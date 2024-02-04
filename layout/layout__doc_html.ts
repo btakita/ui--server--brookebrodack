@@ -44,9 +44,12 @@ export function layout__doc_html_({
 			...html_props,
 			class: class_(
 				'doc__html',
+				'noscript',
 				html_props?.class)
 		}, [
 			head_([
+				// language=js
+				script_(raw_('document.documentElement.classList.remove("noscript")')),
 				meta_({ charset: 'UTF-8' }),
 				meta_({ name: 'viewport', content: 'width=device-width' }),
 				meta_({ name: 'title', content: title }),
