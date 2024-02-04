@@ -63,6 +63,7 @@ export function brookers__doc_html_({ ctx }:{
 					'z-20',
 					'top-0',
 					'h-24',
+					'mx-auto',
 					'mb-4',
 					'flex',
 					'flex-col',
