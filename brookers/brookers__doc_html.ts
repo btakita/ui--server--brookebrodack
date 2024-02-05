@@ -338,19 +338,6 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
-						at: 'Nov 18, 2007',
-						description_a: [
-							'Old laddys,',
-							'Little squichy purple balls thing will make you die!'
-						],
-						op: {
-							type: 'youtube',
-							title: '"Brookers News"',
-							bullet: 'video',
-							videoId: 'x_7oyWcg7AU'
-						}
-					}),
-					brookers_timeline__li_({
 						at: 'Aug 6, 2010',
 						description_a: [
 							'Brooke Brodack as Sukashi\'s girlfriend'
