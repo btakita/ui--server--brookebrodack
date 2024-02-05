@@ -1,9 +1,18 @@
+import { instagram_url, linkedin_url, patreon_url, youtube_url } from '@btakita/domain--any--brookebrodack'
 import { fa_instagram_, fa_linkedin_in_, fa_patreon_, fa_youtube_ } from '@btakita/ui--any--brookebrodack/icon'
-import { class_ } from 'ctx-core/html'
-import { raw_, type tag_T } from 'relementjs'
-import { a_, div_, h1_, li_, ul_ } from 'relementjs/html'
+import { class_, style_ } from 'ctx-core/html'
+import { raw_, tag_dom_T, type tag_T } from 'relementjs'
+import { a_, details_, div_, h1_, img_, li_, summary_, ul_ } from 'relementjs/html'
+import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_ } from '../layout/index.js'
+const [
+	brooke_brodack_profile_jpg,
+	nature_origami_bg_jpg,
+] = await asset_path_a_(
+	import('../public/assets/images/brooke-brodack-profile.jpg'),
+	import('../public/assets/images/nature-origami-bg.jpg'),
+)
 export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	return (
 		layout__doc_html_({
@@ -18,28 +27,28 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'min-h-screen',
 					'overflow-x-hidden',
 					'relative',
-					'dark:bg-black',
-					'dark:text-white')
+					'bg-cover',
+					'bg-no-repeat'),
+				style: style_({
+					'background-image': 'url(' + nature_origami_bg_jpg + ')'
+				})
 			}, [
+				img_({
+					src: brooke_brodack_profile_jpg,
+					class: class_(
+						'h-24',
+						'w-24',
+						'mt-4',
+						'mx-auto',
+						'rounded-full')
+				}),
 				h1_({
 					class: class_(
 						'mt-4',
-						'text-center')
+						'text-center',
+						'text-3xl')
 				}, 'Brooke Brodack'),
-				ul_([
-					li_({
-						class: class_(
-							'text-center',
-							'mt-12')
-					},
-					a_({
-						href: '/brookers',
-						class: class_(
-							'inline',
-							'text-center')
-					},
-					raw_('Brookers&hellip;')))
-				]),
+				home_link__ul_(),
 				ul_({
 					class: class_(
 						'fixed',
@@ -52,10 +61,10 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 						'items-center',
 						'justify-center')
 				}, ([
-					['https://www.youtube.com/@BrookeABrodack', fa_youtube_],
-					['https://www.patreon.com/BrookeBrodack', fa_patreon_],
-					['https://www.instagram.com/brookebrodack', fa_instagram_],
-					['https://www.linkedin.com/in/brooke-brodack-2223427', fa_linkedin_in_],
+					[youtube_url, fa_youtube_],
+					[patreon_url, fa_patreon_],
+					[instagram_url, fa_instagram_],
+					[linkedin_url, fa_linkedin_in_],
 				] as social_aa).map(([href, icon_])=>
 					li_({
 						class: class_(
@@ -73,5 +82,156 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 			])
 		])
 	)
+	function home_link__ul_() {
+		return (
+			ul_({
+				class: class_(
+					'flex',
+					'flex-col',
+					'items-center',
+					'justify-center',
+					'mt-12')
+			}, [
+				home_link__li_({}, [
+					a_({
+						href: '/brookers',
+						class: class_(
+							'inline',
+							'text-center')
+					}, [
+						raw_('Brookers Timeline&hellip;')
+					])
+				]),
+				home_link__li_({}, [
+					a_({
+						href: youtube_url,
+						target: '_blank',
+						class: class_(
+							'inline',
+							'text-center')
+					}, [
+						'Youtube',
+						div_({
+							class: class_(
+								'inline-block',
+								'h-6',
+								'w-6',
+								'translate-y-2',
+								'translate-x-2',
+								'text-center')
+						}, [
+							fa_youtube_({
+								class: class_('dark:fill-gray-100')
+							})
+						])
+					])
+				]),
+				home_link__li_({}, [
+					a_({
+						href: patreon_url,
+						target: '_blank',
+						class: class_(
+							'inline',
+							'text-center')
+					}, [
+						'Patreon',
+						a_({
+							youtube_url,
+							target: '_blank',
+							class: class_(
+								'inline-block',
+								'h-6',
+								'w-6',
+								'translate-x-2',
+								'text-center')
+						}, [
+							fa_patreon_({
+								class: class_('dark:fill-gray-100')
+							})
+						])
+					])
+				]),
+				home_link__li_({}, [
+					a_({
+						href: instagram_url,
+						target: '_blank',
+						class: class_(
+							'inline',
+							'text-center')
+					}, [
+						'Instagram',
+						a_({
+							youtube_url,
+							target: '_blank',
+							class: class_(
+								'inline-block',
+								'h-6',
+								'w-6',
+								'translate-x-2',
+								'text-center')
+						}, [
+							fa_instagram_({
+								class: class_('dark:fill-gray-100')
+							})
+						])
+					])
+				]),
+				home_link__li_({}, [
+					a_({
+						href: linkedin_url,
+						target: '_blank',
+						class: class_(
+							'inline',
+							'text-center')
+					}, [
+						'LinkedIn',
+						a_({
+							youtube_url,
+							target: '_blank',
+							class: class_(
+								'inline-block',
+								'h-6',
+								'w-6',
+								'translate-x-2',
+								'text-center')
+						}, [
+							fa_linkedin_in_({
+								class: class_('dark:fill-gray-100')
+							})
+						])
+					])
+				])
+			])
+		)
+	}
+	function home_link__li_({
+		class: _class,
+		hy__bind,
+	}:{
+		class?:string
+		hy__bind?:string
+	}, ...children:tag_dom_T[]) {
+		return (
+			li_({
+				class: class_(
+					'flex',
+					'items-center',
+					'justify-center',
+					'min-h-10',
+					'w-full',
+					'max-w-3xl',
+					'mb-3',
+					'py-1',
+					'px-4',
+					'rounded-md',
+					'bg-[rgba(243,244,246,0.6)]',
+					'text-center',
+					'hover:scale-105',
+					'transition-all',
+					_class),
+				hy__bind,
+			}, ...children)
+		)
+	}
 }
 type social_aa = [href:string, icon_:tag_T][]

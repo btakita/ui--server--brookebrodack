@@ -2,15 +2,15 @@
 	"name": "@btakita/ui--server--brookebrodack",
 	"type": "module",
 	"version": "0.0.0",
-	"module": "src/index.ts",
-	"types": "src/index.ts",
+	"types": "./index.ts",
 	"exports": {
 		".": "./index.ts",
 		"./brookers": "./brookers/index.ts",
 		"./css": "./css/index.ts",
 		"./dom": "./dom/index.ts",
 		"./home": "./home/index.ts",
-		"./layout": "./layout/index.ts"
+		"./layout": "./layout/index.ts",
+		"./package.json": "./package.json"
 	},
 	"bin": {
 		"ui--server--brookebrodack__public__ln": "bun ./bin/ui--server--brookebrodack__public__ln.js"
@@ -24,7 +24,8 @@
 		"css",
 		"dom",
 		"home",
-		"layout"
+		"layout",
+		"youtube"
 	],
 	"dependencies": {
 		"@btakita/domain--any--brookebrodack": "workspace:*",
