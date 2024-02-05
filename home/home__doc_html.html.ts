@@ -1,5 +1,11 @@
 import { instagram_url, linkedin_url, patreon_url, youtube_url } from '@btakita/domain--any--brookebrodack'
-import { fa_instagram_, fa_linkedin_in_, fa_patreon_, fa_youtube_ } from '@btakita/ui--any--brookebrodack/icon'
+import {
+	fa_instagram_,
+	fa_linkedin_in_,
+	fa_patreon_,
+	fa_youtube_,
+	heroicons_film_
+} from '@btakita/ui--any--brookebrodack/icon'
 import { class_, style_ } from 'ctx-core/html'
 import { raw_, tag_dom_T, type tag_T } from 'relementjs'
 import { a_, details_, div_, h1_, img_, li_, summary_, ul_ } from 'relementjs/html'
@@ -99,7 +105,20 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 							'inline',
 							'text-center')
 					}, [
-						raw_('Brookers Timeline&hellip;')
+						'Brookers Timeline',
+						div_({
+							class: class_(
+								'inline-block',
+								'h-6',
+								'w-6',
+								'translate-y-[7px]',
+								'translate-x-2',
+								'text-center')
+						}, [
+							heroicons_film_({
+								class: class_('dark:fill-gray-100')
+							})
+						])
 					])
 				]),
 				home_link__li_({}, [
