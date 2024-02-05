@@ -82,7 +82,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 							href,
 							target: '_blank'
 						}, icon_({
-							class: class_('dark:fill-gray-100')
+							class: class_('fill-gray-900')
 						}))
 					])))
 			])
@@ -116,7 +116,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 								'text-center')
 						}, [
 							heroicons_film_({
-								class: class_('dark:fill-gray-100')
+								class: class_('fill-gray-900')
 							})
 						])
 					])
@@ -140,7 +140,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 								'text-center')
 						}, [
 							fa_youtube_({
-								class: class_('dark:fill-gray-100')
+								class: class_('fill-gray-900')
 							})
 						])
 					])
@@ -165,7 +165,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 								'text-center')
 						}, [
 							fa_patreon_({
-								class: class_('dark:fill-gray-100')
+								class: class_('fill-gray-900')
 							})
 						])
 					])
@@ -190,7 +190,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 								'text-center')
 						}, [
 							fa_instagram_({
-								class: class_('dark:fill-gray-100')
+								class: class_('fill-gray-900')
 							})
 						])
 					])
@@ -215,7 +215,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 								'text-center')
 						}, [
 							fa_linkedin_in_({
-								class: class_('dark:fill-gray-100')
+								class: class_('fill-gray-900')
 							})
 						])
 					])
