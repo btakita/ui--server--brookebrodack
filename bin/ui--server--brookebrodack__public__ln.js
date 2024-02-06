@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 import { param_r_ } from 'ctx-core/cli-args'
 import { link, rm } from 'node:fs/promises'
-import { dirname, join } from 'path'
+import { dirname, join } from 'node:path'
 const param_r = param_r_(process.argv.slice(2), {
 	help: '-h, --help',
 	public: '-p, --public'
