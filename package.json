@@ -32,9 +32,8 @@
 	"dependencies": {
 		"@btakita/domain--any--brookebrodack": "workspace:*",
 		"@btakita/ui--any--brookebrodack": "workspace:*",
-		"@rappstack/ui--any": "workspace:*",
 		"@rappstack/ui--server--blog": "workspace:*",
-		"@ctx-core/html": "^11.8.7",
+		"@rappstack/ui--any": "workspace:*",
 		"ctx-core": "^5.38.1",
 		"relementjs": "^0.64.2",
 		"relysjs": "^1.7.1"
