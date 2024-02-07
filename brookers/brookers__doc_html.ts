@@ -127,7 +127,7 @@ export function brookers__doc_html_({ ctx }:{
 					'h-screen',
 					'max-h-screen',
 					'w-screen',
-					'sm:w-[calc(100%-20rem)]',
+					'sm:min-w-[calc(100dvw-20rem)]',
 					'container',
 					'flex-1',
 					'sm:px-8',
