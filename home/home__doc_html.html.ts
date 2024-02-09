@@ -1,4 +1,4 @@
-import { instagram_url, linkedin_url, patreon_url, youtube_url } from '@btakita/domain--any--brookebrodack'
+import { instagram_url, linkedin_url, patreon_url, youtube_url } from '@btakita/domain--any--brookebrodack/social'
 import {
 	fa_instagram_,
 	fa_linkedin_in_,

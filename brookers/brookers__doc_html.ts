@@ -1,5 +1,5 @@
 import '@btakita/ui--any--brookebrodack/neon'
-import { type brookers_timeline_op_T } from '@btakita/domain--any--brookebrodack'
+import { type brookers_timeline_op_T } from '@btakita/domain--any--brookebrodack/brookers'
 import { heroicons_uturn_left_, heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__div_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { tb_a_ } from '@rappstack/ui--any/anchor'
