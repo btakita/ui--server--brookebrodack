@@ -34,9 +34,9 @@
 		"@btakita/ui--any--brookebrodack": "workspace:*",
 		"@rappstack/ui--server--blog": "workspace:*",
 		"@rappstack/ui--any": "workspace:*",
-		"ctx-core": "^6.1.0",
-		"relementjs": "^0.66.0",
-		"relysjs": "^1.11.0"
+		"ctx-core": "^6.1.1",
+		"relementjs": "^0.68.1",
+		"relysjs": "^1.11.1"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
