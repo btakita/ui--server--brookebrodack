@@ -30,7 +30,7 @@ export function brookers__doc_html_({ ctx }:{
 					'overflow-x-hidden',
 					'relative',
 					'bg-black'),
-				hy__bind: 'brookers'
+				hy_op: 'brookers',
 			}, [
 				template_({
 					id: 'spinner_template',
