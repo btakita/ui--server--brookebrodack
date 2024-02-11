@@ -225,10 +225,10 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	}
 	function home_link__li_({
 		class: _class,
-		hy_op,
+		hyop,
 	}:{
 		class?:string
-		hy_op?:string
+		hyop?:string
 	}, ...children:tag_dom_T[]) {
 		return (
 			li_({
@@ -248,7 +248,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'hover:scale-105',
 					'transition-all',
 					_class),
-				hy_op,
+				hyop,
 			}, ...children)
 		)
 	}
