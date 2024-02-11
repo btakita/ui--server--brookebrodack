@@ -8,7 +8,7 @@ import {
 } from '@btakita/ui--any--brookebrodack/icon'
 import { class_, style_ } from 'ctx-core/html'
 import { type tag_dom_T, type tag_T } from 'relementjs'
-import { a_, div_, h1_, img_, li_, ul_ } from 'relementjs/html'
+import { a_, div_, h1_, header_, img_, li_, ul_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_ } from '../layout/index.js'
@@ -39,21 +39,46 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'background-image': 'url(' + nature_origami_bg_jpg + ')'
 				})
 			}, [
-				img_({
-					src: brooke_brodack_profile_jpg,
+				header_({
 					class: class_(
-						'h-24',
-						'w-24',
-						'mt-4',
-						'mx-auto',
-						'rounded-full')
-				}),
-				h1_({
-					class: class_(
-						'mt-4',
-						'text-center',
-						'text-3xl')
-				}, 'Brooke Brodack'),
+						'flex',
+						'items-center',
+						'justify-center')
+				}, [
+					div_({
+						class: class_(
+							'flex-1',
+							'flex',
+							'items-center',
+							'justify-end',
+							'pr-2')
+					}, [
+						img_({
+							src: brooke_brodack_profile_jpg,
+							class: class_(
+								'inline-block',
+								'h-24',
+								'w-24',
+								'mt-4',
+								'rounded-full')
+						})
+					]),
+					div_({
+						class: class_(
+							'flex-1',
+							'flex',
+							'items-center',
+							'justify-start',
+							'pl-2')
+					}, [
+						h1_({
+							class: class_(
+								'mt-4',
+								'text-center',
+								'text-3xl')
+						}, 'Brooke Brodack')
+					])
+				]),
 				home_link__ul_(),
 				ul_({
 					class: class_(
