@@ -10,6 +10,7 @@
 		"./dom": "./dom/index.ts",
 		"./home": "./home/index.ts",
 		"./layout": "./layout/index.ts",
+		"./media": "./media/index.ts",
 		"./store": "./store/index.ts",
 		"./package.json": "./package.json"
 	},
@@ -26,6 +27,7 @@
 		"dom",
 		"home",
 		"layout",
+		"media",
 		"store",
 		"youtube"
 	],
