@@ -4,7 +4,8 @@ import {
 	fa_linkedin_in_,
 	fa_patreon_,
 	fa_youtube_,
-	heroicons_film_
+	heroicons_film_,
+	heroicons_video_camera_
 } from '@btakita/ui--any--brookebrodack/icon'
 import { class_, style_ } from 'ctx-core/html'
 import { type tag_dom_T } from 'relementjs'
@@ -36,7 +37,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'background-image': 'url(' + nature_origami_bg_jpg + ')'
 				})
 			}, [
-				site__header_(),
+				site__header_({}),
 				home_link__ul_(),
 				site__footer_()
 			])
@@ -52,6 +53,29 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'justify-center',
 					'mt-12')
 			}, [
+				home_link__li_({}, [
+					a_({
+						href: '/content',
+						class: class_(
+							'inline',
+							'text-center')
+					}, [
+						'Content Feed',
+						div_({
+							class: class_(
+								'inline-block',
+								'h-6',
+								'w-6',
+								'translate-y-[7px]',
+								'translate-x-2',
+								'text-center')
+						}, [
+							heroicons_video_camera_({
+								class: class_('fill-gray-900')
+							})
+						])
+					])
+				]),
 				home_link__li_({}, [
 					a_({
 						href: '/brookers',

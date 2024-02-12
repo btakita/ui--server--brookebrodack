@@ -1,1 +1,1 @@
-export * from './media__doc_html.html.js'
+export * from './content__doc_html.html.js'
