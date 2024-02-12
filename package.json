@@ -6,11 +6,11 @@
 	"exports": {
 		".": "./index.ts",
 		"./brookers": "./brookers/index.ts",
+		"./content": "./content/index.ts",
 		"./css": "./css/index.ts",
 		"./dom": "./dom/index.ts",
 		"./home": "./home/index.ts",
 		"./layout": "./layout/index.ts",
-		"./media": "./media/index.ts",
 		"./store": "./store/index.ts",
 		"./package.json": "./package.json"
 	},
@@ -23,11 +23,11 @@
 		"*.json",
 		"bin",
 		"brookers",
+		"content",
 		"css",
 		"dom",
 		"home",
 		"layout",
-		"media",
 		"store",
 		"youtube"
 	],
