@@ -1,5 +1,6 @@
+import { brookebrodack_youtube_video_a1_ } from '@btakita/domain--server--brookebrodack/youtube'
 import { class_, style_ } from 'ctx-core/html'
-import { div_ } from 'relementjs/html'
+import { div_, h2_, img_, section_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
@@ -30,17 +31,28 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				site__header_({
 					title: 'Content Feed'
 				}),
-				content_feed__div_(),
+				content_feed__section_({ ctx }),
 				site__footer_(),
 			])
 		])
 	)
 }
-export function content_feed__div_() {
+export function content_feed__section_({ ctx }:{
+	ctx:request_ctx_T
+}) {
 	return (
-		div_({
+		section_({
 			class: class_(
 				'content_feed')
-		})
+		}, brookebrodack_youtube_video_a1_(ctx)!.map(brookebrodack_youtube_video=>
+			div_({}, [
+				h2_(brookebrodack_youtube_video.title),
+				brookebrodack_youtube_video.description
+					? div_(brookebrodack_youtube_video.description)
+					: undefined,
+				img_({
+					src: brookebrodack_youtube_video.thumbnail
+				})
+			])))
 	)
 }

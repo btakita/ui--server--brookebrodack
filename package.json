@@ -2,6 +2,7 @@
 	"name": "@btakita/ui--server--brookebrodack",
 	"type": "module",
 	"version": "0.0.0",
+	"description": "UI library targeting the server for brookebrodack",
 	"types": "./index.ts",
 	"exports": {
 		".": "./index.ts",
@@ -33,6 +34,7 @@
 	],
 	"dependencies": {
 		"@btakita/domain--any--brookebrodack": "workspace:*",
+		"@btakita/domain--server--brookebrodack": "workspace:*",
 		"@btakita/ui--any--brookebrodack": "workspace:*",
 		"@rappstack/ui--server--blog": "workspace:*",
 		"@rappstack/ui--any": "workspace:*",
