@@ -1,3 +1,4 @@
+import { heroicons_link_ } from '@btakita/ui--any--brookebrodack/icon'
 import { class_ } from 'ctx-core/html'
 import { a_, div_, h1_, header_, img_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
@@ -27,7 +28,11 @@ export function site__header_({
 					'pr-2')
 			}, [
 				a_({
-					href: '/'
+					href: '/',
+					class: class_(
+						'relative',
+						'overflow-visible',
+						'group')
 				}, [
 					img_({
 						src: brooke_brodack_profile_jpg,
@@ -37,6 +42,17 @@ export function site__header_({
 							'w-24',
 							'mt-4',
 							'rounded-full')
+					}),
+					heroicons_link_({
+						class: class_(
+							'absolute',
+							'top-1/2',
+							'-right-8',
+							'-translate-y-[18.75%]',
+							'z-10',
+							'h-6',
+							'w-6',
+							'group-hover:stroke-white')
 					})
 				]),
 			]),
@@ -46,7 +62,8 @@ export function site__header_({
 					'flex',
 					'items-center',
 					'justify-start',
-					'pl-2')
+					'pl-2',
+					'ml-6')
 			}, [
 				h1_({
 					class: class_(
