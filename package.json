@@ -39,7 +39,7 @@
 		"@rappstack/ui--server--blog": "workspace:*",
 		"@rappstack/ui--any": "workspace:*",
 		"ctx-core": "^6.2.1",
-		"relementjs": "^0.72.1",
+		"relementjs": "^0.72.2",
 		"relysjs": "^1.12.1"
 	},
 	"devDependencies": {
