@@ -75,6 +75,8 @@ export function content_feed__section_({ ctx }:{
 				img_({
 					src: brookebrodack_youtube_video.thumbnail,
 					class: class_(
+						'w-full',
+						'aspect-[4/3]',
 						'rounded-lg')
 				}),
 				h2_({
