@@ -13,6 +13,7 @@
 		"./home": "./home/index.ts",
 		"./layout": "./layout/index.ts",
 		"./store": "./store/index.ts",
+		"./youtube": "./youtube/index.ts",
 		"./package.json": "./package.json"
 	},
 	"bin": {

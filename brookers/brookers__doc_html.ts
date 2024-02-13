@@ -9,6 +9,7 @@ import { a_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, template_, 
 import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_ } from '../layout/index.js'
+import { YT_iframe__div_ } from '../youtube/index.js'
 const [
 	cooler_in_space_gif,
 ] = await asset_path_a_(
@@ -178,16 +179,14 @@ export function brookers__doc_html_({ ctx }:{
 						'w-full',
 						'overflow-auto')
 				}),
-				div_({
-					id: 'YT_iframe__div',
+				YT_iframe__div_({
 					class: class_(
 						'hidden',
 						'relative',
 						'top-16',
 						'left-0',
 						'w-full',
-						'aspect-video'
-					)
+						'aspect-video')
 				})
 			])
 		)
