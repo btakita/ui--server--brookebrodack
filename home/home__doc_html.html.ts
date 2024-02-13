@@ -9,7 +9,7 @@ import {
 } from '@btakita/ui--any--brookebrodack/icon'
 import { class_, style_ } from 'ctx-core/html'
 import { type tag_dom_T } from 'relementjs'
-import { a_, div_, li_, ul_ } from 'relementjs/html'
+import { a_, div_, section_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
@@ -38,14 +38,14 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				})
 			}, [
 				site__header_({}),
-				home_link__ul_(),
+				home_link__section_(),
 				site__footer_()
 			])
 		])
 	)
-	function home_link__ul_() {
+	function home_link__section_() {
 		return (
-			ul_({
+			section_({
 				class: class_(
 					'flex',
 					'flex-col',
@@ -53,163 +53,73 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'justify-center',
 					'mt-12')
 			}, [
-				home_link__li_({}, [
-					a_({
-						href: '/content',
-						class: class_(
-							'inline',
-							'text-center')
-					}, [
-						'Content Feed',
-						div_({
-							class: class_(
-								'inline-block',
-								'h-6',
-								'w-6',
-								'translate-y-[7px]',
-								'translate-x-2',
-								'text-center')
-						}, [
-							heroicons_video_camera_({
-								class: class_('fill-gray-900')
-							})
-						])
-					])
+				home_link__a_({
+					href: '/content',
+				}, [
+					'Content Feed',
+					home_link__a__icon_({
+						class: 'translate-y-[7px]'
+					}, heroicons_video_camera_)
 				]),
-				home_link__li_({}, [
-					a_({
-						href: '/brookers',
-						class: class_(
-							'inline',
-							'text-center')
-					}, [
-						'Brookers Timeline',
-						div_({
-							class: class_(
-								'inline-block',
-								'h-6',
-								'w-6',
-								'translate-y-[7px]',
-								'translate-x-2',
-								'text-center')
-						}, [
-							heroicons_film_({
-								class: class_('fill-gray-900')
-							})
-						])
-					])
+				home_link__a_({
+					href: '/brookers',
+				}, [
+					'Brookers Timeline',
+					home_link__a__icon_({
+						class: 'translate-y-[7px]'
+					}, heroicons_film_)
 				]),
-				home_link__li_({}, [
-					a_({
-						href: youtube_url,
-						target: '_blank',
-						class: class_(
-							'inline',
-							'text-center')
-					}, [
-						'Youtube',
-						div_({
-							class: class_(
-								'inline-block',
-								'h-6',
-								'w-6',
-								'translate-y-2',
-								'translate-x-2',
-								'text-center')
-						}, [
-							fa_youtube_({
-								class: class_('fill-gray-900')
-							})
-						])
-					])
+				home_link__a_({
+					href: youtube_url,
+					external: true
+				}, [
+					'Youtube',
+					home_link__a__icon_({
+						class: 'translate-y-2'
+					}, fa_youtube_)
 				]),
-				home_link__li_({}, [
-					a_({
-						href: patreon_url,
-						target: '_blank',
-						class: class_(
-							'inline',
-							'text-center')
-					}, [
-						'Patreon',
-						a_({
-							youtube_url,
-							target: '_blank',
-							class: class_(
-								'inline-block',
-								'h-6',
-								'w-6',
-								'translate-x-2',
-								'text-center')
-						}, [
-							fa_patreon_({
-								class: class_('fill-gray-900')
-							})
-						])
-					])
+				home_link__a_({
+					href: patreon_url,
+					external: true
+				}, [
+					'Patreon',
+					home_link__a__icon_({}, fa_patreon_)
 				]),
-				home_link__li_({}, [
-					a_({
-						href: instagram_url,
-						target: '_blank',
-						class: class_(
-							'inline',
-							'text-center')
-					}, [
-						'Instagram',
-						a_({
-							youtube_url,
-							target: '_blank',
-							class: class_(
-								'inline-block',
-								'h-6',
-								'w-6',
-								'translate-x-2',
-								'text-center')
-						}, [
-							fa_instagram_({
-								class: class_('fill-gray-900')
-							})
-						])
-					])
+				home_link__a_({
+					href: instagram_url,
+					external: true
+				}, [
+					'Instagram',
+					home_link__a__icon_({}, fa_instagram_)
 				]),
-				home_link__li_({}, [
-					a_({
-						href: linkedin_url,
-						target: '_blank',
-						class: class_(
-							'inline',
-							'text-center')
-					}, [
-						'LinkedIn',
-						a_({
-							youtube_url,
-							target: '_blank',
-							class: class_(
-								'inline-block',
-								'h-6',
-								'w-6',
-								'translate-x-2',
-								'text-center')
-						}, [
-							fa_linkedin_in_({
-								class: class_('fill-gray-900')
-							})
-						])
-					])
+				home_link__a_({
+					href: linkedin_url,
+					external: true
+				}, [
+					'LinkedIn',
+					home_link__a__icon_({}, fa_linkedin_in_)
 				])
 			])
 		)
 	}
-	function home_link__li_({
+	function home_link__a_({
+		href,
 		class: _class,
-		hyop,
+		external,
 	}:{
+		href:string
 		class?:string
-		hyop?:string
+		external?:boolean
 	}, ...children:tag_dom_T[]) {
 		return (
-			li_({
+			a_({
+				href,
+				...external
+					? {
+						target: '_blank',
+						rel: 'noopener',
+					}
+					: {},
 				class: class_(
 					'flex',
 					'items-center',
@@ -226,8 +136,27 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'hover:scale-105',
 					'transition-all',
 					_class),
-				hyop,
 			}, ...children)
+		)
+	}
+	function home_link__a__icon_(
+		{ class: _class }:{ class?:string },
+		icon_:(props:{ class?:string })=>tag_dom_T
+	) {
+		return (
+			div_({
+				class: class_(
+					'inline-block',
+					'h-6',
+					'w-6',
+					'translate-x-2',
+					'text-center',
+					_class)
+			}, [
+				icon_({
+					class: class_('fill-gray-900')
+				})
+			])
 		)
 	}
 }

@@ -1,1 +1,1 @@
-export * from './content__doc_html.sw.js'
+export * from './content__doc_html.js'

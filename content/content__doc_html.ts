@@ -4,6 +4,7 @@ import { a_, div_, h2_, img_, section_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
+import { YT_iframe__div_ } from '../youtube/index.js'
 const [
 	nature_origami_bg_jpg,
 ] = await asset_path_a_(
@@ -24,12 +25,19 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'relative',
 					'bg-cover',
 					'bg-no-repeat'),
+				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__hyop} */
+				hyop: 'content__hyop',
 				style: style_({
 					'background-image': 'url(' + nature_origami_bg_jpg + ')'
 				})
 			}, [
 				site__header_({
 					title: 'Content Feed'
+				}),
+				YT_iframe__div_({
+					class: class_(
+						'hidden',
+						'w-full')
 				}),
 				content_feed__section_({ ctx }),
 				site__footer_(),
