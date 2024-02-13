@@ -30,6 +30,7 @@ export function brookers__doc_html_({ ctx }:{
 					'overflow-x-hidden',
 					'relative',
 					'bg-black'),
+				/** @see {import('@btakita/ui--browser--brookebrodack/brookers').brookers__hyop} */
 				hyop: 'brookers__hyop',
 			}, [
 				template_({
