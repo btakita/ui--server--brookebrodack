@@ -57,6 +57,7 @@ export function content_feed__section_({ ctx }:{
 				href: 'https://www.youtube.com/watch?v=' + brookebrodack_youtube_video.videoId,
 				target: '_blank',
 				rel: 'noopener',
+				title: brookebrodack_youtube_video.title,
 				class: class_(
 					'w-96',
 					'sm:w-96',
@@ -67,7 +68,9 @@ export function content_feed__section_({ ctx }:{
 					'p-4',
 					'rounded-lg',
 					'bg-white/50',
-					'no-underline')
+					'no-underline',
+					'hover:scale-105',
+					'focus:scale-105')
 			}, [
 				img_({
 					src: brookebrodack_youtube_video.thumbnail,
