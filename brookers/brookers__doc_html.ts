@@ -1,15 +1,15 @@
 import '@btakita/ui--any--brookebrodack/neon'
 import { type brookers_timeline_op_T } from '@btakita/domain--any--brookebrodack/brookers'
 import { heroicons_uturn_left_, heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
-import { spinner__div_ } from '@btakita/ui--any--brookebrodack/spinner'
+import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { tb_a_ } from '@rappstack/ui--any/anchor'
 import { class_ } from 'ctx-core/html'
-import { raw_, type relement_env_T, type tag_dom_T } from 'relementjs'
-import { a_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, template_, time_ } from 'relementjs/html'
+import { type relement_env_T, type tag_dom_T } from 'relementjs'
+import { a_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_ } from '../layout/index.js'
-import { YT_iframe__div_ } from '../youtube/index.js'
+import { YT_player__div_ } from '../youtube/index.js'
 const [
 	cooler_in_space_gif,
 ] = await asset_path_a_(
@@ -34,19 +34,13 @@ export function brookers__doc_html_({ ctx }:{
 				/** @see {import('@btakita/ui--browser--brookebrodack/brookers').brookers__hyop} */
 				hyop: 'brookers__hyop',
 			}, [
-				template_({
-					id: 'spinner_template',
-					class: 'hidden'
-				}, [
-					raw_('' + spinner__div_({
-						class: class_(
-							'spinner',
-							'absolute',
-							'z-10',
-							'top-56',
-							'left-[calc(50%-16px)]')
-					}))
-				]),
+				spinner__template_({
+					spinner_class: class_(
+						'absolute',
+						'z-10',
+						'top-56',
+						'left-[calc(50%-16px)]')
+				}),
 				brookers_hero__div_(),
 				brookers_back_link__a_(),
 				brookers_detail__div_(),
@@ -179,7 +173,7 @@ export function brookers__doc_html_({ ctx }:{
 						'w-full',
 						'overflow-auto')
 				}),
-				YT_iframe__div_({
+				YT_player__div_({
 					class: class_(
 						'hidden',
 						'relative',

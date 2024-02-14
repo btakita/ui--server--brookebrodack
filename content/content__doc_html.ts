@@ -1,10 +1,11 @@
 import { brookebrodack_youtube_video_a1_ } from '@btakita/domain--server--brookebrodack/youtube'
+import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { class_, style_ } from 'ctx-core/html'
 import { a_, div_, h2_, img_, section_ } from 'relementjs/html'
 import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
-import { YT_iframe__div_ } from '../youtube/index.js'
+import { YT_player__div_ } from '../youtube/index.js'
 const [
 	nature_origami_bg_jpg,
 ] = await asset_path_a_(
@@ -31,13 +32,18 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'background-image': 'url(' + nature_origami_bg_jpg + ')'
 				})
 			}, [
+				spinner__template_({}),
 				site__header_({
 					title: 'Content Feed'
 				}),
-				YT_iframe__div_({
+				YT_player__div_({
 					class: class_(
 						'hidden',
-						'w-full')
+						'h-[600px]',
+						'max-h-80dvh',
+						'aspect-video',
+						'mx-auto',
+						'scale-0')
 				}),
 				content_feed__section_({ ctx }),
 				site__footer_(),
@@ -50,8 +56,8 @@ export function content_feed__section_({ ctx }:{
 }) {
 	return (
 		section_({
+			id: 'content_feed',
 			class: class_(
-				'content_feed',
 				'mt-16',
 				'flex',
 				'flex-wrap',
@@ -60,12 +66,14 @@ export function content_feed__section_({ ctx }:{
 				'grid-flow-row',
 				'max-w-7xl',
 				'mx-auto')
-		}, brookebrodack_youtube_video_a1_(ctx)!.map(brookebrodack_youtube_video=>
-			a_({
-				href: 'https://www.youtube.com/watch?v=' + brookebrodack_youtube_video.videoId,
+		}, brookebrodack_youtube_video_a1_(ctx)!.map(brookebrodack_youtube_video=>{
+			const { description, thumbnail, title, videoId } = brookebrodack_youtube_video
+			return a_({
+				href: 'https://www.youtube.com/watch?v=' + videoId,
 				target: '_blank',
 				rel: 'noopener',
-				title: brookebrodack_youtube_video.title,
+				title,
+				'data-op': JSON.stringify({ videoId }),
 				class: class_(
 					'w-96',
 					'sm:w-96',
@@ -81,7 +89,7 @@ export function content_feed__section_({ ctx }:{
 					'focus:scale-105')
 			}, [
 				img_({
-					src: brookebrodack_youtube_video.thumbnail,
+					src: thumbnail,
 					class: class_(
 						'w-full',
 						'aspect-[4/3]',
@@ -91,12 +99,13 @@ export function content_feed__section_({ ctx }:{
 					class: class_(
 						'text-xl',
 						'font-bold')
-				}, brookebrodack_youtube_video.title),
-				brookebrodack_youtube_video.description
+				}, title),
+				description
 					? div_({
 						class: class_('text-l')
-					}, brookebrodack_youtube_video.description)
+					}, description)
 					: undefined,
-			])))
+			])
+		}))
 	)
 }
