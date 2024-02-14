@@ -58,7 +58,6 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				}, [
 					'Content Feed',
 					home_link__a__icon_({
-						class: 'translate-y-[7px]'
 					}, heroicons_video_camera_)
 				]),
 				home_link__a_({
@@ -66,7 +65,6 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				}, [
 					'Brookers Timeline',
 					home_link__a__icon_({
-						class: 'translate-y-[7px]'
 					}, heroicons_film_)
 				]),
 				home_link__a_({
@@ -75,7 +73,6 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				}, [
 					'Youtube',
 					home_link__a__icon_({
-						class: 'translate-y-2'
 					}, fa_youtube_)
 				]),
 				home_link__a_({

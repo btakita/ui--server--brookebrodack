@@ -35,11 +35,10 @@ export function brookers__doc_html_({ ctx }:{
 				hyop: 'brookers__hyop',
 			}, [
 				spinner__template_({
+					center_x: true,
 					spinner_class: class_(
-						'absolute',
 						'z-10',
-						'top-56',
-						'left-[calc(50%-16px)]')
+						'top-56')
 				}),
 				brookers_hero__div_(),
 				brookers_back_link__a_(),

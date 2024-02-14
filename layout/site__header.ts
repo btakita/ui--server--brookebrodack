@@ -17,7 +17,8 @@ export function site__header_({
 				'site__header',
 				'flex',
 				'items-center',
-				'justify-center')
+				'justify-center',
+				'h-32')
 		}, [
 			div_({
 				class: class_(
@@ -40,7 +41,6 @@ export function site__header_({
 							'inline-block',
 							'h-24',
 							'w-24',
-							'mt-4',
 							'rounded-full')
 					}),
 					heroicons_link_({
@@ -48,7 +48,7 @@ export function site__header_({
 							'absolute',
 							'top-1/2',
 							'-right-8',
-							'-translate-y-[18.75%]',
+							'-translate-y-[45%]',
 							'z-10',
 							'h-6',
 							'w-6',
@@ -56,22 +56,17 @@ export function site__header_({
 					})
 				]),
 			]),
-			div_({
+			h1_({
 				class: class_(
 					'flex-1',
 					'flex',
 					'items-center',
 					'justify-start',
+					'h-full',
 					'pl-2',
-					'ml-6')
-			}, [
-				h1_({
-					class: class_(
-						'mt-4',
-						'text-center',
-						'text-3xl')
-				}, title ?? 'Brooke Brodack')
-			])
+					'ml-6',
+					'text-3xl')
+			}, title ?? 'Brooke Brodack')
 		])
 	)
 }
