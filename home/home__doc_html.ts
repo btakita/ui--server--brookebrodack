@@ -37,7 +37,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'background-image': 'url(' + nature_origami_bg_jpg + ')'
 				})
 			}, [
-				site__header_({}),
+				site__header_({ ctx }),
 				home_link__section_(),
 				site__footer_()
 			])

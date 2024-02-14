@@ -1,5 +1,5 @@
 import { brookebrodack_youtube_video_a1_ } from '@btakita/domain--server--brookebrodack/youtube'
-import { heroicons_pause_, heroicons_video_camera_ } from '@btakita/ui--any--brookebrodack/icon'
+import { heroicons_pause_, heroicons_uturn_left_, heroicons_video_camera_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { class_, style_ } from 'ctx-core/html'
 import { a_, div_, h2_, img_, section_ } from 'relementjs/html'
@@ -23,7 +23,6 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 			div_({
 				class: class_(
 					'min-h-screen',
-					'overflow-x-hidden',
 					'relative',
 					'bg-cover',
 					'bg-no-repeat'),
@@ -36,43 +35,83 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				spinner__template_({
 					center: true
 				}),
-				div_({
-					class: class_(
-						'max-h-50dvh',
-						'overflow-hidden')
+				site__header_({
+					ctx,
+					title: 'Content Feed'
 				}, [
-					site__header_({
-						title: 'Content Feed'
-					}),
-					div_({
+					a_({
+						href: '/',
 						class: class_(
-							'video__div',
-							'relative',
-							'motion-reduce:h-[600px]')
+							'back_link',
+							'fixed',
+							'top-4',
+							'right-4',
+							'z-30',
+							'flex-none',
+							'h-6',
+							'w-6',
+							'cursor-pointer')
 					}, [
-						YT_player__div_({
+						heroicons_uturn_left_({
 							class: class_(
-								'hidden',
-								'h-full',
-								'w-full',
-								'max-h-[600px]',
-								'max-w-7xl',
-								'aspect-video',
-								'mx-auto',
-								'scale-0',
-								'motion-reduce:scale-100')
+								'shadow-sm',
+								'stroke-gray-500')
 						})
-					]),
+					])
 				]),
-				div_({
-					class: 'overflow-y-auto',
-				}, [
-					content_feed__section_({ ctx }),
-					site__footer_(),
-				])
+				top_half__div_(),
+				bottom_half__div_(),
 			])
 		])
 	)
+	function top_half__div_() {
+		return (
+			div_({
+				id: 'top_half__div',
+				class: class_(
+					'max-h-50dvh',
+					'top-0',
+					'z-10',
+					'pb-4',
+					'motion-reduce:bg-cyan-600/90')
+			}, [
+				div_({
+					class: class_(
+						'video__div',
+						'relative',
+						'h-1/3',
+						'max-h-1/3',
+						'lg:h-[600px]',
+						'lg:max-h-[600px]',
+						'motion-reduce:lg:h-[600px]',
+					)
+				}, [
+					YT_player__div_({
+						class: class_(
+							'hidden',
+							'h-full',
+							'w-full',
+							'max-h-[600px]',
+							'max-w-7xl',
+							'aspect-video',
+							'mx-auto',
+							'scale-0',
+							'motion-reduce:scale-100')
+					})
+				]),
+			])
+		)
+	}
+	function bottom_half__div_() {
+	  return (
+			div_({
+				class: 'overflow-y-auto',
+			}, [
+				content_feed__section_({ ctx }),
+				site__footer_(),
+			])
+		)
+	}
 }
 export function content_feed__section_({ ctx }:{
 	ctx:request_ctx_T
@@ -85,7 +124,8 @@ export function content_feed__section_({ ctx }:{
 				'flex',
 				'flex-wrap',
 				'sm:grid',
-				'sm:grid-cols-3',
+				'lg:grid-cols-2',
+				'xl:grid-cols-3',
 				'grid-flow-row',
 				'max-w-7xl',
 				'mx-auto')
