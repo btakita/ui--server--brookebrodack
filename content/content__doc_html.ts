@@ -79,9 +79,9 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					class: class_(
 						'video__div',
 						'relative',
-						'h-1/3',
+						'noscript:h-1/3',
+						'noscript:lg:h-[600px]',
 						'max-h-1/3',
-						'lg:h-[600px]',
 						'lg:max-h-[600px]',
 						'motion-reduce:lg:h-[600px]',
 					)
