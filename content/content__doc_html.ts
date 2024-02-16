@@ -1,4 +1,4 @@
-import { youtube_video_a1_ } from '@btakita/domain--server--brookebrodack/youtube'
+import { videoId_thumbnail_url_, youtube_video_a1_ } from '@btakita/domain--server--brookebrodack/youtube'
 import { heroicons_pause_, heroicons_uturn_left_, heroicons_video_camera_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { class_, style_ } from 'ctx-core/html'
@@ -130,7 +130,7 @@ export function content_feed__section_({ ctx }:{
 				'max-w-7xl',
 				'mx-auto')
 		}, youtube_video_a1_(ctx)!.map(brookebrodack_youtube_video=>{
-			const { description, thumbnail, title, videoId } = brookebrodack_youtube_video
+			const { description, title, videoId } = brookebrodack_youtube_video
 			return a_({
 				href: 'https://www.youtube.com/watch?v=' + videoId,
 				target: '_blank',
@@ -181,7 +181,7 @@ export function content_feed__section_({ ctx }:{
 					)
 				}),
 				img_({
-					src: thumbnail,
+					src: videoId_thumbnail_url_(videoId, 'high'),
 					class: class_(
 						'w-full',
 						'aspect-[4/3]',
