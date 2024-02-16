@@ -66,7 +66,7 @@ export function site__header_({
 							class: class_(
 								'absolute',
 								'top-1/2',
-								'-right-6',
+								'-right-7',
 								'sm:-right-8',
 								'-translate-y-[45%]',
 								'z-10',

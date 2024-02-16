@@ -3,22 +3,31 @@ import { fa_instagram_, fa_linkedin_in_, fa_patreon_, fa_youtube_ } from '@btaki
 import { class_ } from 'ctx-core/html'
 import type { tag_T } from 'relementjs'
 import { a_, footer_, li_, ul_ } from 'relementjs/html'
-export function site__footer_() {
+export function site__footer_({
+	class:_class,
+	icon_class,
+}:{
+	class?:string
+	icon_class?:string
+}) {
 	return (
 		footer_({
 			class: class_(
 				'fixed',
-				'bottom-2',
+				'bottom-0',
 				'z-10',
-				'h-6',
-				'w-screen')
+				'h-8',
+				'w-screen',
+				'py-1',
+				_class)
 		}, [
 			ul_({
 				class: class_(
 					'flex',
 					'flex-column',
 					'items-center',
-					'justify-center')
+					'justify-center',
+					'h-6')
 			}, ([
 				[youtube_url, fa_youtube_],
 				[patreon_url, fa_patreon_],
@@ -36,7 +45,11 @@ export function site__footer_() {
 						target: '_blank'
 					}, [
 						icon_({
-							class: class_('fill-gray-900')
+							class: class_(
+								'fill-gray-900',
+								'h-6',
+								'w-6',
+								icon_class)
 						})
 					])
 				])))

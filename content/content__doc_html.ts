@@ -108,7 +108,10 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				class: 'overflow-y-auto',
 			}, [
 				content_feed__section_({ ctx }),
-				site__footer_(),
+				site__footer_({
+					class: 'bg-cyan-600/90',
+					icon_class: 'fill-white'
+				}),
 			])
 		)
 	}
