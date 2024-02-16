@@ -142,7 +142,7 @@ export function brookers__doc_html_({ ctx }:{
 							'flex-grow',
 							'flex',
 							'justify-center',
-							'mt-2')
+							'mt-4')
 					}),
 					div_({
 						id: 'op_close__div',
