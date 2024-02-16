@@ -98,7 +98,18 @@ export function layout__doc_html_({
 				`.trim().replaceAll('					', ''))),
 				title_(title),
 			]),
-			body_(...children)
+			body_([
+				raw_(`
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E2YTV44HXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-E2YTV44HXX');
+</script>
+				`.trim()),
+				children])
 		])
 	)
 }
