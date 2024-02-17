@@ -74,7 +74,10 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'top-0',
 					'z-10',
 					'pb-4',
-					'motion-reduce:bg-cyan-600/90')
+					'motion-reduce:bg-cyan-600/90',
+					'motion-reduce:border-b-1px',
+					'motion-reduce:border-white/.3',
+					'motion-reduce:shadow-md')
 			}, [
 				div_({
 					class: class_(
