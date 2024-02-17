@@ -2,7 +2,7 @@ import { videoId_thumbnail_url_, youtube_video_a1_ } from '@btakita/domain--serv
 import { heroicons_pause_, heroicons_uturn_left_, heroicons_video_camera_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { class_, style_ } from 'ctx-core/html'
-import { a_, div_, h2_, img_, section_ } from 'relementjs/html'
+import { a_, div_, h2_, img_, main_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_jpg from '../public/assets/images/nature-origami-bg.jpg'
@@ -14,22 +14,27 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 			title: 'Brooke Brodack Content Feed',
 			html_props: {
 				class: class_('content__doc_html'),
-			}
-		}, [
-			div_({
+			},
+			body__props: {
 				class: class_(
-					'min-h-screen',
-					'relative',
 					'bg-cover',
 					'bg-no-repeat'),
-				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__hyop} */
-				hyop: 'content__hyop',
 				style: style_({
 					'background-image': 'url(' + nature_origami_bg_jpg + ')'
 				})
+			}
+		}, [
+			main_({
+				class: class_(
+					'min-h-screen',
+					'relative',
+					'backdrop-blur-3xl'),
+				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__hyop} */
+				hyop: 'content__hyop',
 			}, [
 				spinner__template_({
-					center: true
+					center_x: true,
+					spinner_class: class_('top-32')
 				}),
 				site__header_({
 					ctx,
@@ -139,8 +144,6 @@ export function content_feed__section_({ ctx }:{
 				class: class_(
 					'relative',
 					'w-96',
-					'sm:w-96',
-					'h-128',
 					'mb-16',
 					'mx-[3px]',
 					'sm:mx-auto',
@@ -156,28 +159,24 @@ export function content_feed__section_({ ctx }:{
 				heroicons_video_camera_({
 					class: class_(
 						'absolute',
-						'top-0',
-						'translate-y-6',
+						'top-12',
 						'aspect-video',
 						'w-[calc(100%-36px)]',
 						'hidden',
 						'group-[.play]:block',
 						'opacity-50',
-						'stroke-white'
-					)
+						'stroke-white')
 				}),
 				heroicons_pause_({
 					class: class_(
 						'absolute',
-						'top-0',
-						'translate-y-6',
+						'top-12',
 						'aspect-video',
 						'w-[calc(100%-36px)]',
 						'hidden',
 						'group-[.pause]:block',
 						'opacity-50',
-						'stroke-white'
-					)
+						'stroke-white')
 				}),
 				img_({
 					src: videoId_thumbnail_url_(videoId, 'high'),

@@ -10,6 +10,7 @@ const google_site_verification = import_meta_env_().PUBLIC_GOOGLE_SITE_VERIFICAT
 export function layout__doc_html_({
 	ctx,
 	html_props,
+	body__props,
 	assets,
 	canonical_url,
 	title,
@@ -19,6 +20,7 @@ export function layout__doc_html_({
 }:{
 	ctx:request_ctx_T
 	html_props?:tag_props_T&{ class?:string }
+	body__props?:tag_props_T&{ class?:string }
 	assets?:assets_T
 	canonical_url?:string
 	title?:string
@@ -92,7 +94,9 @@ export function layout__doc_html_({
 				`.trim().replaceAll('					', ''))),
 				title_(title),
 			]),
-			body_([
+			body_({
+				...(body__props ?? {})
+			}, [
 				raw_(`
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2YTV44HXX"></script>
