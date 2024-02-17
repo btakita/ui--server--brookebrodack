@@ -10,13 +10,9 @@ import {
 import { class_, style_ } from 'ctx-core/html'
 import { type tag_dom_T } from 'relementjs'
 import { a_, div_, section_ } from 'relementjs/html'
-import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
-const [
-	nature_origami_bg_jpg,
-] = await asset_path_a_(
-	import('../public/assets/images/nature-origami-bg.jpg'))
+import nature_origami_bg_jpg from '../public/assets/images/nature-origami-bg.jpg'
 export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	return (
 		layout__doc_html_({

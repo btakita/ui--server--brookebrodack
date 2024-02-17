@@ -3,14 +3,10 @@ import { heroicons_pause_, heroicons_uturn_left_, heroicons_video_camera_ } from
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { class_, style_ } from 'ctx-core/html'
 import { a_, div_, h2_, img_, section_ } from 'relementjs/html'
-import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
+import nature_origami_bg_jpg from '../public/assets/images/nature-origami-bg.jpg'
 import { YT_player__div_ } from '../youtube/index.js'
-const [
-	nature_origami_bg_jpg,
-] = await asset_path_a_(
-	import('../public/assets/images/nature-origami-bg.jpg'))
 export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	return (
 		layout__doc_html_({

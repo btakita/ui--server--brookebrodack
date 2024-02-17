@@ -4,15 +4,10 @@ import { raw_, type tag_dom_T } from 'relementjs'
 import { type tag_props_T } from 'relementjs/any'
 import { body_, head_, link_, meta_, script_, title_ } from 'relementjs/html'
 import { doc_html_ } from 'relementjs/server'
-import { asset_path_a_, assets_, assets__new, type assets_T, type request_ctx_T, request_url_ } from 'relysjs/server'
+import { assets_, assets__new, type assets_T, type request_ctx_T, request_url_ } from 'relysjs/server'
+import brooke_brodack_logo_jpg from '../public/assets/images/brooke-brodack-logo.jpg'
+import favicon_svg from '../public/assets/images/heroicons/film.svg'
 const google_site_verification = import_meta_env_().PUBLIC_GOOGLE_SITE_VERIFICATION
-const [
-	film_svg,
-	brooke_brodack_logo_jpg,
-] = await asset_path_a_(
-	import('../public/assets/images/heroicons/film.svg'),
-	import('../public/assets/images/brooke-brodack-logo.jpg'),
-)
 export function layout__doc_html_({
 	ctx,
 	html_props,
@@ -75,7 +70,7 @@ export function layout__doc_html_({
 					rel: 'stylesheet'
 				}),
 				meta_({ name: 'theme-color', content: '' }),
-				link_({ rel: 'icon', type: 'image/svg+xml', href: film_svg }),
+				link_({ rel: 'icon', type: 'image/svg+xml', href: favicon_svg }),
 				link_({ rel: 'canonical', href: canonical_url }),
 				link_({ rel: 'sitemap', href: '/sitemap-index.xml' }),
 				google_site_verification

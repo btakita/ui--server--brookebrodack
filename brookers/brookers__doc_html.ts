@@ -6,15 +6,10 @@ import { tb_a_ } from '@rappstack/ui--any/anchor'
 import { class_ } from 'ctx-core/html'
 import { type relement_env_T, type tag_dom_T } from 'relementjs'
 import { a_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
-import { asset_path_a_ } from 'relysjs'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_ } from '../layout/index.js'
+import cooler_in_space_gif from '../public/assets/images/cooler-in-space--look-aud-right.gif'
 import { YT_player__div_ } from '../youtube/index.js'
-const [
-	cooler_in_space_gif,
-] = await asset_path_a_(
-	import('../public/assets/images/cooler-in-space--look-aud-right.gif'),
-)
 export function brookers__doc_html_({ ctx }:{
 	ctx:request_ctx_T
 }) {
