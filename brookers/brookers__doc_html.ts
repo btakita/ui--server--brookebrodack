@@ -108,19 +108,19 @@ export function brookers__doc_html_({ ctx }:{
 					'brookers_detail__div',
 					'hidden',
 					'fixed',
-					'sm:block',
 					'z-30',
-					'sm:z-0',
+					'lg:z-0',
 					'top-0',
 					'right-0',
+					'landscape:left-0',
+					'landscape:lg:left-auto',
 					'bottom-0',
 					'h-screen',
 					'max-h-screen',
 					'w-screen',
-					'sm:min-w-[calc(100dvw-20rem)]',
-					'container',
+					'lg:w-[calc(100dvw-20rem)]',
 					'flex-1',
-					'sm:px-8',
+					'lg:px-8',
 					'bg-black')
 			}, [
 				div_({
@@ -129,6 +129,13 @@ export function brookers__doc_html_({ ctx }:{
 						'flex',
 						'flex-column',
 						'h-16',
+						'landscape:absolute',
+						'landscape:lg:static',
+						'landscape:w-4',
+						'landscape:lg:w-auto',
+						'top-0',
+						'right-0',
+						'z-30',
 						'text-white')
 				}, [
 					div_({
@@ -136,23 +143,31 @@ export function brookers__doc_html_({ ctx }:{
 						class: class_(
 							'flex-grow',
 							'flex',
+							'landscape:hidden',
+							'landscape:lg:flex',
 							'justify-center',
 							'mt-4')
 					}),
 					div_({
 						id: 'op_close__div',
 						class: class_(
-							'sm:hidden',
+							'lg:hidden',
+							'absolute',
+							'top-4',
+							'landscape:top-[50dvh]',
+							'landscape:lg:top-4',
+							'landscape:-translate-y-1/2',
+							'landscape:lg:translate-y-0',
+							'right-4',
 							'flex-none',
 							'h-6',
 							'w-6',
-							'mt-4',
-							'mr-4',
 							'cursor-pointer')
 					}, [
 						heroicons_x_mark_({
-							class: class_('stroke-gray-100')
-						})
+							class: class_(
+								'stroke-gray-100')
+						}),
 					]),
 				]),
 				div_({
@@ -161,6 +176,8 @@ export function brookers__doc_html_({ ctx }:{
 						'hidden',
 						'relative',
 						'top-16',
+						'landscape:top-0',
+						'landscape:lg:top-16',
 						'left-0',
 						'z-20',
 						'h-full',
@@ -172,6 +189,8 @@ export function brookers__doc_html_({ ctx }:{
 						'hidden',
 						'relative',
 						'top-16',
+						'landscape:top-0',
+						'landscape:lg:top-16',
 						'left-0',
 						'w-full',
 						'aspect-video')

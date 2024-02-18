@@ -1,5 +1,10 @@
 import { videoId_thumbnail_url_, youtube_video_a1_ } from '@btakita/domain--server--brookebrodack/youtube'
-import { heroicons_pause_, heroicons_uturn_left_, heroicons_video_camera_ } from '@btakita/ui--any--brookebrodack/icon'
+import {
+	heroicons_pause_,
+	heroicons_uturn_left_,
+	heroicons_video_camera_,
+	heroicons_x_mark_
+} from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { class_, style_ } from 'ctx-core/html'
 import { a_, div_, h2_, img_, main_, section_ } from 'relementjs/html'
@@ -60,54 +65,76 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 						})
 					])
 				]),
-				top_half__div_(),
+				video__div_(),
 				bottom_half__div_(),
 			])
 		])
 	)
-	function top_half__div_() {
+	function video__div_() {
 		return (
 			div_({
-				id: 'top_half__div',
+				id: 'video__div',
 				class: class_(
-					'max-h-50dvh',
+					'relative',
+					'noscript:h-1/3',
+					'noscript:lg:h-[600px]',
+					'landscape:h-screen',
+					'noscript:landscape:h-screen',
+					'landscape:lg:h-full',
+					'max-h-1/3',
+					'lg:max-h-[600px]',
 					'top-0',
 					'z-10',
-					'pb-4',
+					'pb-0',
+					'lg:pb-4',
 					'motion-reduce:bg-cyan-600/90',
 					'motion-reduce:border-b-1px',
 					'motion-reduce:border-white/.3',
-					'motion-reduce:shadow-md')
+					'motion-reduce:shadow-md',
+					'motion-reduce:lg:h-[600px]',
+				)
 			}, [
-				div_({
+				YT_player__div_({
 					class: class_(
-						'video__div',
-						'relative',
-						'noscript:h-1/3',
-						'noscript:lg:h-[600px]',
-						'max-h-1/3',
-						'lg:max-h-[600px]',
-						'motion-reduce:lg:h-[600px]',
-					)
+						'hidden',
+						'h-full',
+						'landscape:h-screen',
+						'landscape:lg:h-full',
+						'w-full',
+						'max-h-[600px]',
+						'landscape:max-h-screen',
+						'landscape:lg:max-h-[600px]',
+						'max-w-7xl',
+						'aspect-video',
+						'mx-auto',
+						'scale-0',
+						'motion-reduce:scale-100')
+				}),
+				div_({
+					id: 'video_close__div',
+					class: class_(
+						'hidden',
+						'motion-reduce:block',
+						'absolute',
+						'z-10',
+						'top-1/2',
+						'-translate-y-1/2',
+						'right-4',
+						'flex-none',
+						'h-6',
+						'w-6',
+						'cursor-pointer')
 				}, [
-					YT_player__div_({
+					heroicons_x_mark_({
 						class: class_(
-							'hidden',
-							'h-full',
-							'w-full',
-							'max-h-[600px]',
-							'max-w-7xl',
-							'aspect-video',
-							'mx-auto',
-							'scale-0',
-							'motion-reduce:scale-100')
+							'stroke-gray-100')
 					})
-				]),
+				])
 			])
 		)
 	}
 	function bottom_half__div_() {
-	  return (
+		return (
 			div_({
 				class: 'overflow-y-auto',
 			}, [
