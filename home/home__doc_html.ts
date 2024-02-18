@@ -47,7 +47,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'flex-col',
 					'items-center',
 					'justify-center',
-					'mt-12')
+					'my-12')
 			}, [
 				home_link__a_({
 					href: '/content',
