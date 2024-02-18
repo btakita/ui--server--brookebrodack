@@ -27,7 +27,7 @@ export function site__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'min-h-screen',
 					'relative',
 					'backdrop-blur-3xl',
-					'mb-12'),
+					'pb-12'),
 			}, [
 				site__header_({
 					ctx,
