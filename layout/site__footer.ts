@@ -18,6 +18,7 @@ export function site__footer_({
 		icon_class)
 	return (
 		footer_({
+			id: 'site__footer',
 			class: class_(
 				'fixed',
 				'bottom-0',

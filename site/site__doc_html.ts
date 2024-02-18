@@ -1,7 +1,7 @@
 import { md__raw_ } from '@rappstack/ui--any--blog/md'
 import { tb_a_ } from '@rappstack/ui--any/anchor'
 import { class_, style_ } from 'ctx-core/html'
-import { div_, main_, p_ } from 'relementjs/html'
+import { div_, main_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
 import nature_origami_bg_jpg from '../../../public/assets/images/nature-origami-bg.jpg'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
