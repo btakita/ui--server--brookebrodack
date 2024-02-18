@@ -61,6 +61,7 @@ This site is developed by [Brian Takita](https://briantakita.me) under the Apach
 - ${tb_a_({ href: 'https://github.com/relysjs/relysjs' }, 'relysjs')}
 - ${tb_a_({ href: 'https://github.com/relementjs/relementjs' }, 'relysjs')}
 - ${tb_a_({ href: 'https://github.com/ctx-core/ctx-core' }, 'ctx-core')}
+- ${tb_a_({ href: 'https://tailwindcss.com/' }, 'TailwindCSS')}
 - ${tb_a_({ href: 'https://github.com/elysiajs/elysia' }, 'elysiajs')}
 - ${tb_a_({ href: 'https://orm.drizzle.team/' }, 'Drizzle ORM')}
 - ${tb_a_({ href: 'https://www.sqlite.org/index.html' }, 'SQLite')}
