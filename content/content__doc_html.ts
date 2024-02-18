@@ -1,15 +1,10 @@
 import { videoId_thumbnail_url_, youtube_video_a1_ } from '@btakita/domain--server--brookebrodack/youtube'
-import {
-	heroicons_pause_,
-	heroicons_uturn_left_,
-	heroicons_video_camera_,
-	heroicons_x_mark_
-} from '@btakita/ui--any--brookebrodack/icon'
+import { heroicons_pause_, heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { class_, style_ } from 'ctx-core/html'
 import { a_, div_, h2_, img_, main_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
+import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_jpg from '../public/assets/images/nature-origami-bg.jpg'
 import { YT_player__div_ } from '../youtube/index.js'
 export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
@@ -45,29 +40,12 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					ctx,
 					title: 'Content Feed'
 				}, [
-					a_({
-						href: '/',
-						class: class_(
-							'back_link',
-							'fixed',
-							'top-4',
-							'right-4',
-							'z-30',
-							'flex-none',
-							'h-6',
-							'w-6',
-							'cursor-pointer')
-					}, [
-						heroicons_uturn_left_({
-							class: class_(
-								'shadow-sm',
-								'stroke-gray-500')
-						})
-					])
+					back_link__a_({}),
 				]),
 				video__div_(),
-				bottom_half__div_(),
-			])
+				content_feed__section_({ ctx }),
+			]),
+			site__footer_({})
 		])
 	)
 	function video__div_() {
@@ -133,19 +111,6 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 			])
 		)
 	}
-	function bottom_half__div_() {
-		return (
-			div_({
-				class: 'overflow-y-auto',
-			}, [
-				content_feed__section_({ ctx }),
-				site__footer_({
-					class: 'bg-cyan-600/90',
-					icon_class: 'fill-white'
-				}),
-			])
-		)
-	}
 }
 export function content_feed__section_({ ctx }:{
 	ctx:request_ctx_T
@@ -162,7 +127,8 @@ export function content_feed__section_({ ctx }:{
 				'xl:grid-cols-3',
 				'grid-flow-row',
 				'max-w-7xl',
-				'mx-auto')
+				'mx-auto',
+				'overflow-y-auto')
 		}, youtube_video_a1_(ctx)!.map(brookebrodack_youtube_video=>{
 			const { description, title, videoId } = brookebrodack_youtube_video
 			return a_({

@@ -12,6 +12,7 @@
 		"./dom": "./dom/index.ts",
 		"./home": "./home/index.ts",
 		"./layout": "./layout/index.ts",
+		"./site": "./site/index.ts",
 		"./store": "./store/index.ts",
 		"./youtube": "./youtube/index.ts",
 		"./package.json": "./package.json"
@@ -30,6 +31,7 @@
 		"dom",
 		"home",
 		"layout",
+		"site",
 		"store",
 		"youtube"
 	],

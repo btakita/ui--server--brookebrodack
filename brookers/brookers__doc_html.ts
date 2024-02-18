@@ -1,13 +1,13 @@
 import '@btakita/ui--any--brookebrodack/neon'
 import { type brookers_timeline_op_T } from '@btakita/domain--any--brookebrodack/brookers'
-import { heroicons_uturn_left_, heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
+import { heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { tb_a_ } from '@rappstack/ui--any/anchor'
 import { class_ } from 'ctx-core/html'
 import { type relement_env_T, type tag_dom_T } from 'relementjs'
-import { a_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
+import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import { layout__doc_html_ } from '../layout/index.js'
+import { back_link__a_, layout__doc_html_ } from '../layout/index.js'
 import cooler_in_space_gif from '../public/assets/images/cooler-in-space--look-aud-right.gif'
 import { YT_player__div_ } from '../youtube/index.js'
 export function brookers__doc_html_({ ctx }:{
@@ -36,7 +36,7 @@ export function brookers__doc_html_({ ctx }:{
 						'top-56')
 				}),
 				brookers_hero__div_(),
-				brookers_back_link__a_(),
+				back_link__a_({}),
 				brookers_detail__div_(),
 				brookers_master__div_(),
 				brookers_img__div_(),
@@ -77,27 +77,6 @@ export function brookers__doc_html_({ ctx }:{
 						'noscript:opacity-100',
 						'text-white')
 				}, 'YouTubing since 2004'),
-			])
-		)
-	}
-	function brookers_back_link__a_() {
-		return (
-			a_({
-				href: '/',
-				class: class_(
-					'back_link',
-					'fixed',
-					'top-4',
-					'right-4',
-					'z-30',
-					'flex-none',
-					'h-6',
-					'w-6',
-					'cursor-pointer')
-			}, [
-				heroicons_uturn_left_({
-					class: class_('stroke-gray-100')
-				})
 			])
 		)
 	}
