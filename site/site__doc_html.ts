@@ -26,7 +26,8 @@ export function site__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				class: class_(
 					'min-h-screen',
 					'relative',
-					'backdrop-blur-3xl'),
+					'backdrop-blur-3xl',
+					'mb-12'),
 			}, [
 				site__header_({
 					ctx,
@@ -61,8 +62,13 @@ This site is developed by [Brian Takita](https://briantakita.me) under the Apach
 - ${tb_a_({ href: 'https://github.com/relementjs/relementjs' }, 'relysjs')}
 - ${tb_a_({ href: 'https://github.com/ctx-core/ctx-core' }, 'ctx-core')}
 - ${tb_a_({ href: 'https://github.com/elysiajs/elysia' }, 'elysiajs')}
+- ${tb_a_({ href: 'https://orm.drizzle.team/' }, 'Drizzle ORM')}
+- ${tb_a_({ href: 'https://www.sqlite.org/index.html' }, 'SQLite')}
 - ${tb_a_({ href: 'https://bun.sh/' }, 'bunjs')}
 - ${tb_a_({ href: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API' }, 'web animations')}
+- ${tb_a_({ href: 'https://developers.google.com/youtube/iframe_api_reference' }, 'YouTube Player API')}
+- ${tb_a_({ href: 'https://developers.google.com/youtube/v3' }, 'YouTube Data API')}
+- ${tb_a_({ href: 'http://web.archive.org/' }, 'WayBack Machine')}
 				`),
 				]),
 			]),
