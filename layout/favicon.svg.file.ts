@@ -1,5 +1,5 @@
 import { heroicons_film_ } from '@btakita/ui--any--brookebrodack/icon'
-export function favicon__svg_() {
+export default function() {
 	return '' + heroicons_film_<'server'>({
 		width: '24px',
 		height: '24px',
