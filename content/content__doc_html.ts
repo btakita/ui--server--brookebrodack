@@ -39,12 +39,11 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				site__header_({
 					ctx,
 					title: 'Content Feed'
-				}, [
-					back_link__a_({}),
-				]),
+				}),
 				video__div_(),
 				content_feed__section_({ ctx }),
 			]),
+			back_link__a_({}),
 			site__footer_({})
 		])
 	)

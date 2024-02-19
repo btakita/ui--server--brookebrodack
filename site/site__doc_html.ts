@@ -32,9 +32,7 @@ export function site__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				site__header_({
 					ctx,
 					title: 'About this site'
-				}, [
-					back_link__a_({})
-				]),
+				}),
 				div_({
 					class: class_(
 						'm-auto',
@@ -73,6 +71,7 @@ This site is developed by ${tb_a_({ href: 'https://briantakita.me' }, 'Brian Tak
 				`),
 				]),
 			]),
+			back_link__a_({}),
 			site__footer_({})
 		])
 	)
