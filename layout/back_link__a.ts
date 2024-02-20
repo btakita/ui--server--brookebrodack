@@ -8,7 +8,7 @@ export function back_link__a_({
 		a_({
 			href: '/',
 			class: class_(
-				'back_link',
+				'back_link__a',
 				'fixed',
 				'top-4',
 				'right-4',
