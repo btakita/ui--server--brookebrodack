@@ -68,8 +68,7 @@ export function site__footer_({
 					'mr-2',
 					'-translate-y-2/3',
 					'bottom-2',
-					'right-2'
-				)
+					'right-2')
 			}, [
 				a_({
 					href: '/site',
