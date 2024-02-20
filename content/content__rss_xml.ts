@@ -1,4 +1,4 @@
-import { site__description_ } from '@rappstack/domain--server--blog/site'
+import { site__description_ } from '@rappstack/domain--server/site'
 import { channel_, description_, rss_, title_ } from '@rappstack/ui--server/rss'
 import { fragment_, raw_ } from 'relementjs'
 import { type request_ctx_T } from 'relysjs/server'

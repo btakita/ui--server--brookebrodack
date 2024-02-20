@@ -39,6 +39,7 @@
 		"@btakita/domain--any--brookebrodack": "workspace:*",
 		"@btakita/domain--server--brookebrodack": "workspace:*",
 		"@btakita/ui--any--brookebrodack": "workspace:*",
+		"@rappstack/domain--server": "workspace:*",
 		"@rappstack/ui--server": "workspace:*",
 		"@rappstack/ui--server--blog": "workspace:*",
 		"@rappstack/ui--any": "workspace:*",
