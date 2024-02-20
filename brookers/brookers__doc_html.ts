@@ -306,8 +306,7 @@ export function brookers__doc_html_({ ctx }:{
 					brookers_timeline__li_({
 						at: 'Sep 7, 2007',
 						description_a: [
-							'"there was a murder in my back yard if this leg is yours can you come and claim it ... its stinking' +
-							' up my yard..thanks"',
+							'"if this leg is yours can you come and claim it ... its stinking up my yard..thanks"',
 							[
 								'>530k views',
 								cite__sup_(
