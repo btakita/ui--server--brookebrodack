@@ -44,7 +44,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				content_feed__section_({ ctx }),
 			]),
 			back_link__a_({}),
-			site__footer_({})
+			site__footer_({ ctx })
 		])
 	)
 	function video__div_() {

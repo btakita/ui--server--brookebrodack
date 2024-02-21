@@ -7,6 +7,7 @@ import {
 	heroicons_film_,
 	heroicons_video_camera_
 } from '@btakita/ui--any--brookebrodack/icon'
+import { iconify_rss_ } from '@rappstack/ui--any--blog/icon'
 import { class_, style_ } from 'ctx-core/html'
 import { type tag_dom_T } from 'relementjs'
 import { a_, div_, section_ } from 'relementjs/html'
@@ -35,7 +36,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 			}, [
 				site__header_({ ctx }),
 				home_link__section_(),
-				site__footer_({})
+				site__footer_({ ctx })
 			])
 		])
 	)
@@ -91,6 +92,13 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				}, [
 					'LinkedIn',
 					home_link__a__icon_({}, fa_linkedin_in_)
+				]),
+				home_link__a_({
+					href: '/rss',
+					external: true
+				}, [
+					'RSS Feed',
+					home_link__a__icon_({}, iconify_rss_)
 				])
 			])
 		)

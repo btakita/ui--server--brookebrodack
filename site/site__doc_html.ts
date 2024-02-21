@@ -48,6 +48,7 @@ export function site__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 						'[&>h2]:text-2xl',
 					)
 				}, [
+					// @formatter:off
 					// language=md
 					md__raw_(`
 This site is developed by ${tb_a_({ href: 'https://briantakita.me' }, 'Brian Takita')} under the Apache 2 license for Brooke Brodack & her audience. You are free to study the ${tb_a_({ href: 'https://github.com/btakita/brookebrodack-dev' }, 'source code')}, modify it, fork it, contribute pull requests, etc.
@@ -56,10 +57,11 @@ This site is developed by ${tb_a_({ href: 'https://briantakita.me' }, 'Brian Tak
 
 ${tb_a_({ href: 'https://github.com/rappstack' }, 'rappstack')} ${tb_a_({ href: 'https://github.com/ctx-core/rmemo' }, 'rmemo')} ${tb_a_({ href: 'https://github.com/relysjs/relysjs' }, 'relysjs')} ${tb_a_({ href: 'https://github.com/relementjs/relementjs' }, 'relysjs')} ${tb_a_({ href: 'https://github.com/ctx-core/ctx-core' }, 'ctx-core')} ${tb_a_({ href: 'https://tailwindcss.com/' }, 'TailwindCSS')} ${tb_a_({ href: 'https://github.com/elysiajs/elysia' }, 'elysiajs')} ${tb_a_({ href: 'https://orm.drizzle.team/' }, 'Drizzle ORM')} ${tb_a_({ href: 'https://www.sqlite.org/index.html' }, 'SQLite')} ${tb_a_({ href: 'https://bun.sh/' }, 'bunjs')} ${tb_a_({ href: 'https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API' }, 'web animations')} ${tb_a_({ href: 'https://developers.google.com/youtube/iframe_api_reference' }, 'YouTube Player API')} ${tb_a_({ href: 'https://developers.google.com/youtube/v3' }, 'YouTube Data API')} ${tb_a_({ href: 'http://web.archive.org/' }, 'WayBack Machine')}
 				`),
+				// @formatter:on
 				]),
 			]),
 			back_link__a_({}),
-			site__footer_({})
+			site__footer_({ ctx })
 		])
 	)
 }

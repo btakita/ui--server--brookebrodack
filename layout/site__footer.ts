@@ -1,12 +1,15 @@
-import { instagram_url, linkedin_url, patreon_url, youtube_url } from '@btakita/domain--any--brookebrodack/social'
-import { fa_instagram_, fa_linkedin_in_, fa_osi_, fa_patreon_, fa_youtube_ } from '@btakita/ui--any--brookebrodack/icon'
+import { fa_osi_ } from '@btakita/ui--any--brookebrodack/icon'
+import { social_a1_ } from '@rappstack/domain--server/social'
+import { iconify_rss_ } from '@rappstack/ui--any--blog/icon'
 import { class_ } from 'ctx-core/html'
-import type { tag_T } from 'relementjs'
+import { type tag_T, type wide_ctx_T } from 'relementjs'
 import { a_, div_, footer_, li_, ul_ } from 'relementjs/html'
 export function site__footer_({
+	ctx,
 	class: _class,
 	icon_class,
 }:{
+	ctx:wide_ctx_T
 	class?:string
 	icon_class?:string
 }) {
@@ -37,12 +40,7 @@ export function site__footer_({
 					'justify-center',
 					'h-6')
 			}, [
-				([
-					[youtube_url, fa_youtube_],
-					[patreon_url, fa_patreon_],
-					[instagram_url, fa_instagram_],
-					[linkedin_url, fa_linkedin_in_],
-				] as social_aa).map(([href, icon_])=>
+				(social_a1_(ctx)).map(social=>
 					li_({
 						class: class_(
 							'h-6',
@@ -50,14 +48,27 @@ export function site__footer_({
 							'mx-1')
 					}, [
 						a_({
-							href,
+							href: social.href,
+							title: social.link_title,
 							target: '_blank'
 						}, [
-							icon_({
-								class: class_(icon_class)
+							social.icon_({
+								class: icon_class
 							})
 						])
 					])),
+				li_({
+					class: class_(
+						'h-6',
+						'w-6',
+						'mx-1')
+				}, [
+					a_({
+						href: '/rss',
+					}, [
+						iconify_rss_({ class: icon_class })
+					])
+				])
 			]),
 			div_({
 				class: class_(
