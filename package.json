@@ -13,6 +13,7 @@
 		"./home": "./home/index.ts",
 		"./layout": "./layout/index.ts",
 		"./site": "./site/index.ts",
+		"./sitemap": "./sitemap/index.ts",
 		"./store": "./store/index.ts",
 		"./youtube": "./youtube/index.ts",
 		"./package.json": "./package.json"
@@ -32,6 +33,7 @@
 		"home",
 		"layout",
 		"site",
+		"sitemap",
 		"store",
 		"youtube"
 	],
