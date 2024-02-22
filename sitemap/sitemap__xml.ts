@@ -7,7 +7,8 @@ export function sitemap__xml_({
 }:{
 	ctx:request_ctx_T
 }) {
-	const { origin } = request_url_(ctx)
+	const { host } = request_url_(ctx)
+	const origin = 'https://' + host
 	return doc__render(
 		xml_doctype,
 		urlset_([
