@@ -1,7 +1,7 @@
 import { instagram_url, linkedin_url, patreon_url, youtube_url } from '@btakita/domain--any--brookebrodack/social'
 import {
 	fa_instagram_,
-	fa_linkedin_in_,
+	fa_linkedin_,
 	fa_patreon_,
 	fa_youtube_,
 	heroicons_film_,
@@ -91,7 +91,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					external: true
 				}, [
 					'LinkedIn',
-					home_link__a__icon_({}, fa_linkedin_in_)
+					home_link__a__icon_({}, fa_linkedin_)
 				]),
 				home_link__a_({
 					href: '/rss',
