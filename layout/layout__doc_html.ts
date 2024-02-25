@@ -74,7 +74,7 @@ export function layout__doc_html_({
 				meta_({ name: 'theme-color', content: '' }),
 				link_({ rel: 'icon', type: 'image/svg+xml', href: favicon_svg }),
 				link_({ rel: 'canonical', href: canonical_url }),
-				link_({ rel: 'sitemap', href: '/sitemap-index.xml' }),
+				link_({ rel: 'sitemap', href: '/sitemap.xml' }),
 				google_site_verification
 				&& meta_({ name: 'google-site-verification', content: google_site_verification }),
 				...assets.css_a.map(href=>
