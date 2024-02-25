@@ -2,7 +2,7 @@ import { fa_osi_ } from '@btakita/ui--any--brookebrodack/icon'
 import { social_a1_ } from '@rappstack/domain--server/social'
 import { iconify_rss_ } from '@rappstack/ui--any--blog/icon'
 import { class_ } from 'ctx-core/html'
-import { type tag_T, type wide_ctx_T } from 'relementjs'
+import { type wide_ctx_T } from 'relementjs'
 import { a_, div_, footer_, li_, ul_ } from 'relementjs/html'
 export function site__footer_({
 	ctx,
