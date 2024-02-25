@@ -92,4 +92,3 @@ export function site__footer_({
 		])
 	)
 }
-type social_aa = [href:string, icon_:tag_T][]
