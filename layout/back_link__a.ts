@@ -2,8 +2,12 @@ import { heroicons_uturn_left_ } from '@btakita/ui--any--brookebrodack/icon'
 import { class_ } from 'ctx-core/html'
 import { a_ } from 'relementjs/html'
 export function back_link__a_({
-	class: _class
-}:{ class?:string }) {
+	class: _class,
+	hyop
+}:{
+	class?:string
+	hyop?:string
+}) {
 	return (
 		a_({
 			href: '/',
@@ -17,7 +21,8 @@ export function back_link__a_({
 				'h-6',
 				'w-6',
 				'cursor-pointer',
-				_class)
+				_class),
+			hyop,
 		}, [
 			heroicons_uturn_left_({
 				class: class_(

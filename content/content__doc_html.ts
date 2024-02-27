@@ -38,12 +38,17 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				}),
 				site__header_({
 					ctx,
-					title: 'Content Feed'
+					title: 'Content Feed',
+					/** @see {import('@btakita/ui--browser--brookebrodack/content').content__site__header__hyop} */
+					hyop: 'content__site__header__hyop'
 				}),
 				video__div_(),
 				content_feed__section_({ ctx }),
 			]),
-			back_link__a_({}),
+			back_link__a_({
+				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__back_link__a__hyop} */
+				hyop: 'content__back_link__a__hyop'
+			}),
 			site__footer_({ ctx })
 		])
 	)
@@ -68,8 +73,9 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'motion-reduce:border-b-1px',
 					'motion-reduce:border-white/.3',
 					'motion-reduce:shadow-md',
-					'motion-reduce:lg:h-[600px]',
-				)
+					'motion-reduce:lg:h-[600px]'),
+				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__video__div__hyop} */
+				hyop: 'content__video__div__hyop'
 			}, [
 				YT_player__div_({
 					class: class_(
@@ -100,7 +106,9 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 						'flex-none',
 						'h-6',
 						'w-6',
-						'cursor-pointer')
+						'cursor-pointer'),
+					/** @see {import('@btakita/ui--browser--brookebrodack/content').content__video_close__div__hyop} */
+					hyop: 'content__video_close__div__hyop'
 				}, [
 					heroicons_x_mark_({
 						class: class_(
@@ -149,7 +157,9 @@ export function content_feed__section_({ ctx }:{
 					'no-underline',
 					'hover:scale-105',
 					'focus:scale-105',
-					'group')
+					'group'),
+				/** @see {import('@btakita/ui--browser--brookebrodack/content').content_feed__a__hyop} */
+				hyop: 'content_feed__a__hyop'
 			}, [
 				heroicons_video_camera_({
 					class: class_(

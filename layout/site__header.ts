@@ -7,11 +7,13 @@ import brooke_brodack_profile_jpg from '../public/assets/images/brooke-brodack-p
 export function site__header_({
 	ctx,
 	title,
-	class:_class
+	class:_class,
+	hyop
 }:{
 	ctx:request_ctx_T
 	title?:string
 	class?:string
+	hyop?:string
 }, ...children:tag_dom_T[]) {
 	return (
 		header_({
@@ -27,7 +29,8 @@ export function site__header_({
 				'sm:h-32',
 				'pl-5',
 				'sm:pl-0',
-				_class)
+				_class),
+			hyop,
 		}, [
 			div_({
 				class: class_(
