@@ -188,7 +188,8 @@ export function content_feed__section_({ ctx }:{
 					class: class_(
 						'w-full',
 						'aspect-[4/3]',
-						'rounded-lg')
+						'rounded-lg'),
+					loading: 'lazy'
 				}),
 				h2_({
 					class: class_(

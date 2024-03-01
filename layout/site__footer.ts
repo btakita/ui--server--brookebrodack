@@ -40,7 +40,7 @@ export function site__footer_({
 					'justify-center',
 					'h-6')
 			}, [
-				(social_a1_(ctx)).map(social=>
+				social_a1_(ctx).map(social=>
 					li_({
 						class: class_(
 							'h-6',
