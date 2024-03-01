@@ -185,6 +185,7 @@ export function content_feed__section_({ ctx }:{
 				}),
 				img_({
 					src: videoId_thumbnail_url_(videoId, 'high'),
+					alt: title,
 					class: class_(
 						'w-full',
 						'aspect-[4/3]',

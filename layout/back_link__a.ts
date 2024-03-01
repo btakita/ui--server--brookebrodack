@@ -11,6 +11,7 @@ export function back_link__a_({
 	return (
 		a_({
 			href: '/',
+			title: 'Back to home page',
 			class: class_(
 				'back_link__a',
 				'fixed',
