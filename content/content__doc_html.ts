@@ -136,7 +136,7 @@ export function content_feed__section_({ ctx }:{
 				'max-w-7xl',
 				'mx-auto',
 				'overflow-y-auto')
-		}, youtube_video_a1_(ctx)!.map(brookebrodack_youtube_video=>{
+		}, youtube_video_a1_(ctx)!.map((brookebrodack_youtube_video, idx)=>{
 			const { description, title, videoId } = brookebrodack_youtube_video
 			return a_({
 				href: 'https://www.youtube.com/watch?v=' + videoId,
@@ -190,7 +190,7 @@ export function content_feed__section_({ ctx }:{
 						'w-full',
 						'aspect-[4/3]',
 						'rounded-lg'),
-					loading: 'lazy'
+					loading: idx ? 'lazy' : 'eager'
 				}),
 				h2_({
 					class: class_(
