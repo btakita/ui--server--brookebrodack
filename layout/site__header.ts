@@ -51,6 +51,7 @@ export function site__header_({
 				}, [
 					img_({
 						src: brooke_brodack_profile_webp,
+						alt: 'Brooke Brodack',
 						class: class_(
 							'inline-block',
 							'h-12',

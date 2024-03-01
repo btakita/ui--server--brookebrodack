@@ -65,6 +65,7 @@ export function site__footer_({
 				}, [
 					a_({
 						href: '/rss',
+						title: 'RSS Feed'
 					}, [
 						iconify_rss_({ class: icon_class })
 					])
@@ -83,6 +84,7 @@ export function site__footer_({
 			}, [
 				a_({
 					href: '/site',
+					title: 'About this Site'
 				}, [
 					fa_osi_({
 						class: class_(icon_class)
