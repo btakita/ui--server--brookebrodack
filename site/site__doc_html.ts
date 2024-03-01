@@ -3,7 +3,7 @@ import { md__raw_ } from '@rappstack/ui--any/md'
 import { class_, style_ } from 'ctx-core/html'
 import { div_, main_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import nature_origami_bg_jpg from '../../../public/assets/images/nature-origami-bg.jpg'
+import nature_origami_bg_webp from '../../../public/assets/images/nature-origami-bg.webp'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 export function site__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	return (
@@ -18,7 +18,7 @@ export function site__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'bg-cover',
 					'bg-no-repeat'),
 				style: style_({
-					'background-image': 'url(' + nature_origami_bg_jpg + ')'
+					'background-image': 'url(' + nature_origami_bg_webp + ')'
 				})
 			}
 		}, [

@@ -13,7 +13,7 @@ import { type tag_dom_T } from 'relementjs'
 import { a_, div_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
-import nature_origami_bg_jpg from '../public/assets/images/nature-origami-bg.jpg'
+import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	return (
 		layout__doc_html_({
@@ -31,7 +31,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'bg-cover',
 					'bg-no-repeat'),
 				style: style_({
-					'background-image': 'url(' + nature_origami_bg_jpg + ')'
+					'background-image': 'url(' + nature_origami_bg_webp + ')'
 				})
 			}, [
 				site__header_({ ctx }),

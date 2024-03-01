@@ -3,7 +3,7 @@ import { class_ } from 'ctx-core/html'
 import { type tag_dom_T } from 'relementjs'
 import { a_, div_, h1_, header_, img_ } from 'relementjs/html'
 import { type request_ctx_T, request_url_ } from 'relysjs/server'
-import brooke_brodack_profile_jpg from '../public/assets/images/brooke-brodack-profile.jpg'
+import brooke_brodack_profile_webp from '../public/assets/images/brooke-brodack-profile.webp'
 export function site__header_({
 	ctx,
 	title,
@@ -50,7 +50,7 @@ export function site__header_({
 						'group')
 				}, [
 					img_({
-						src: brooke_brodack_profile_jpg,
+						src: brooke_brodack_profile_webp,
 						class: class_(
 							'inline-block',
 							'h-12',

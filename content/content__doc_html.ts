@@ -5,7 +5,7 @@ import { class_, style_ } from 'ctx-core/html'
 import { a_, div_, h2_, img_, main_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
-import nature_origami_bg_jpg from '../public/assets/images/nature-origami-bg.jpg'
+import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 import { YT_player__div_ } from '../youtube/index.js'
 export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	return (
@@ -20,7 +20,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'bg-cover',
 					'bg-no-repeat'),
 				style: style_({
-					'background-image': 'url(' + nature_origami_bg_jpg + ')'
+					'background-image': 'url(' + nature_origami_bg_webp + ')'
 				})
 			}
 		}, [

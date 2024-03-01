@@ -38,6 +38,7 @@ export function layout__doc_html_({
 	assets = assets__new(assets_(ctx), assets)
 	return (
 		doc_html_({
+			lang: 'en',
 			...html_props,
 			class: class_(
 				'doc__html',
