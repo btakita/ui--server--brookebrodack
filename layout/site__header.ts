@@ -6,12 +6,12 @@ import { type request_ctx_T, request_url_ } from 'relysjs/server'
 import brooke_brodack_profile_webp from '../public/assets/images/brooke-brodack-profile.webp'
 export function site__header_({
 	ctx,
-	title,
+	h1_text,
 	class:_class,
 	hyop
 }:{
 	ctx:request_ctx_T
-	title?:string
+	h1_text:string
 	class?:string
 	hyop?:string
 }, ...children:tag_dom_T[]) {
@@ -84,9 +84,9 @@ export function site__header_({
 						'justify-start',
 						'pl-2',
 						...(request_url_(ctx).pathname === '/' ? [] : ['ml-6']),
-						'text-xl',
+						'text-lg',
 						'sm:text-3xl')
-				}, title ?? 'Brooke Brodack')
+				}, h1_text)
 			]),
 			...children
 		])

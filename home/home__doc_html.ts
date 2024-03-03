@@ -34,7 +34,10 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'background-image': 'url(' + nature_origami_bg_webp + ')'
 				})
 			}, [
-				site__header_({ ctx }),
+				site__header_({
+					ctx,
+					h1_text: 'Brooke Brodack'
+				}),
 				home_link__section_(),
 				site__footer_({ ctx })
 			])

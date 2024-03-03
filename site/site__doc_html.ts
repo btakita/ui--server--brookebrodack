@@ -31,7 +31,7 @@ export function site__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 			}, [
 				site__header_({
 					ctx,
-					title: 'About this site'
+					h1_text: 'About this site'
 				}),
 				div_({
 					class: class_(

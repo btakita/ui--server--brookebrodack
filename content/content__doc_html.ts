@@ -38,7 +38,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				}),
 				site__header_({
 					ctx,
-					title: 'Content Feed',
+					h1_text: 'Brooke Brodack\'s Content Feed',
 					/** @see {import('@btakita/ui--browser--brookebrodack/content').content__site__header__hyop} */
 					hyop: 'content__site__header__hyop'
 				}),
