@@ -483,7 +483,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 					: undefined,
 				'group'
 			),
-			'data-op': encodeURIComponent(JSON.stringify(op)),
+			'data-op': op ? encodeURIComponent(JSON.stringify(op)) : undefined,
 		}, [
 			div_({
 				class: class_(
@@ -501,8 +501,8 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 							'text-lg',
 							'neon-teal',
 							'dark',
-							'hover:animate-[neon-fade_0.03s_infinite_alternate]',
-							'active:animate-[neon-fade_0.03s_infinite_alternate]'
+							'group-hover:animate-[neon-fade_0.03s_infinite_alternate]',
+							'group-active:animate-[neon-fade_0.03s_infinite_alternate]',
 						]
 						: [
 							'rounded-full',
