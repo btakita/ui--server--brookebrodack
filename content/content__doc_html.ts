@@ -15,7 +15,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 			html_props: {
 				class: class_('content__doc_html'),
 			},
-			body__props: {
+			body_props: {
 				class: class_(
 					'bg-cover',
 					'bg-no-repeat'),

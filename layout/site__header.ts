@@ -1,13 +1,14 @@
 import { heroicons_link_ } from '@btakita/ui--any--brookebrodack/icon'
+import { logo_image_ } from '@rappstack/domain--server/logo'
+import { request_url__pathname_ } from '@rappstack/domain--server/request'
 import { class_ } from 'ctx-core/html'
 import { type tag_dom_T } from 'relementjs'
-import { a_, div_, h1_, header_, img_ } from 'relementjs/html'
-import { type request_ctx_T, request_url_ } from 'relysjs/server'
-import brooke_brodack_profile_webp from '../public/assets/images/brooke-brodack-profile.webp'
+import { a_, div_, h1_, header_ } from 'relementjs/html'
+import { type request_ctx_T } from 'relysjs/server'
 export function site__header_({
 	ctx,
 	h1_text,
-	class:_class,
+	class: _class,
 	hyop
 }:{
 	ctx:request_ctx_T
@@ -40,7 +41,7 @@ export function site__header_({
 					'place-content-center',
 					'pr-2')
 			}, [
-				(request_url_(ctx).pathname === '/' ? div_ : a_)({
+				(request_url__pathname_(ctx) === '/' ? div_ : a_)({
 					href: '/',
 					class: class_(
 						'relative',
@@ -49,19 +50,14 @@ export function site__header_({
 						'justify-end',
 						'group')
 				}, [
-					img_({
-						src: brooke_brodack_profile_webp,
-						alt: 'Brooke Brodack',
+					logo_image_(ctx, {
 						class: class_(
-							'inline-block',
 							'h-12',
 							'sm:h-24',
 							'w-12',
-							'sm:w-24',
-							'aspect-square',
-							'rounded-full')
+							'sm:w-24')
 					}),
-					request_url_(ctx).pathname !== '/'
+					request_url__pathname_(ctx) !== '/'
 						? heroicons_link_({
 							class: class_(
 								'absolute',
@@ -83,7 +79,7 @@ export function site__header_({
 						'items-center',
 						'justify-start',
 						'pl-2',
-						...(request_url_(ctx).pathname === '/' ? [] : ['ml-6']),
+						...(request_url__pathname_(ctx) === '/' ? [] : ['ml-6']),
 						'text-lg',
 						'sm:text-3xl')
 				}, h1_text)

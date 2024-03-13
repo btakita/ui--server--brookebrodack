@@ -1,41 +1,57 @@
-import { import_meta_env_ } from 'ctx-core/env'
+import { request_url__href_, request_url__origin_ } from '@rappstack/domain--server/request'
+import {
+	type icon_link_props_T,
+	site__author_,
+	site__body_class_,
+	site__description_,
+	site__google_site_verification_,
+	site__gtag_id_,
+	site__favicon_,
+	site__light_and_dark_mode_,
+	site__social_image_url_,
+	site__title_
+} from '@rappstack/domain--server/site'
 import { class_ } from 'ctx-core/html'
 import { raw_, type tag_dom_T } from 'relementjs'
 import { type tag_props_T } from 'relementjs/any'
 import { body_, head_, link_, meta_, script_, title_ } from 'relementjs/html'
 import { doc_html_ } from 'relementjs/server'
-import { assets_, assets__new, type assets_T, type request_ctx_T, request_url_ } from 'relysjs/server'
-import brooke_brodack_logo_jpg from '../public/assets/images/brooke-brodack-logo.jpg'
-import favicon_svg from './favicon.svg.file.js'
-const google_site_verification = import_meta_env_().PUBLIC_GOOGLE_SITE_VERIFICATION
+import { assets_, assets__new, type assets_T, type request_ctx_T } from 'relysjs/server'
 export function layout__doc_html_({
 	ctx,
 	html_props,
-	body__props,
 	assets,
 	canonical_url,
 	title,
 	author,
 	description,
-	og_image,
+	favicon,
+	social_image_url,
+	body_class,
+	body_props,
 }:{
 	ctx:request_ctx_T
 	html_props?:tag_props_T&{ class?:string }
-	body__props?:tag_props_T&{ class?:string }
 	assets?:assets_T
 	canonical_url?:string
 	title?:string
 	author?:string
 	description?:string
-	og_image?:string
+	favicon?:icon_link_props_T
+	social_image_url?:string
+	body_class?:string
+	body_props?:Exclude<tag_props_T, 'class'>
 }, ...children:tag_dom_T[]) {
-	canonical_url ??= request_url_(ctx).href
-	title ??= 'Brooke Brodack'
-	description ??= 'YouTubing since 2004'
-	author ??= 'Brooke Brodack'
-	og_image ??= brooke_brodack_logo_jpg
-	const social_image_url = new URL(og_image, request_url_(ctx).origin).href
+	canonical_url ??= request_url__href_(ctx)
+	title ??= site__title_(ctx)
+	description ??= site__description_(ctx)
+	author ??= site__author_(ctx)
+	favicon ??= site__favicon_(ctx)
+	social_image_url = new URL(social_image_url ?? site__social_image_url_(ctx), request_url__origin_(ctx)).href
+	const google_site_verification = site__google_site_verification_(ctx)
+	const site__light_and_dark_mode = site__light_and_dark_mode_(ctx)
 	assets = assets__new(assets_(ctx), assets)
+	const site__gtag_id = site__gtag_id_(ctx)
 	return (
 		doc_html_({
 			lang: 'en',
@@ -64,7 +80,12 @@ export function layout__doc_html_({
 				meta_({ property: 'twitter:title', content: title }),
 				meta_({ property: 'twitter:description', content: description }),
 				meta_({ property: 'twitter:image', content: social_image_url }),
-				meta_({ name: 'darkreader', content: 'disable' }),
+				site__light_and_dark_mode
+					? [
+						meta_({ name: 'darkreader-lock' }),
+						meta_({ name: 'darkreader', content: 'disable' }),
+					]
+					: null,
 				// Google Font
 				meta_({ rel: 'preconnect', href: 'https://fonts.googleapis.com' }),
 				meta_({ rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 1 }),
@@ -73,7 +94,7 @@ export function layout__doc_html_({
 					rel: 'stylesheet'
 				}),
 				meta_({ name: 'theme-color', content: '' }),
-				link_({ rel: 'icon', type: 'image/svg+xml', href: favicon_svg }),
+				link_({ rel: 'icon', ...favicon }),
 				link_({ rel: 'canonical', href: canonical_url }),
 				link_({ rel: 'sitemap', href: '/sitemap.xml' }),
 				google_site_verification
@@ -82,8 +103,10 @@ export function layout__doc_html_({
 					link_({ rel: 'stylesheet', type: 'text/css', href })),
 				...assets.script_a.map(src=>
 					script_({ type: 'module', src })),
-				// language=js
-				script_(raw_(`
+				site__light_and_dark_mode
+					? [
+						// language=js
+						script_({ type: 'module' }, raw_(`
 					// remove fouc
 					const localStorage__theme = localStorage.getItem('theme')
 					document.firstElementChild.setAttribute(
@@ -93,23 +116,42 @@ export function layout__doc_html_({
 							: window.matchMedia('(prefers-color-scheme: dark)').matches
 								? 'dark'
 								: 'light')
-				`.trim().replaceAll('					', ''))),
+				`.trim().replaceAll('					', '')))
+					]
+					: null,
 				title_(title),
 			]),
 			body_({
-				...(body__props ?? {})
+				...(body_props ?? {}),
+				class: class_(
+					site__body_class_(ctx),
+					body_class)
 			}, [
-				raw_(`
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-E2YTV44HXX"></script>
+				site__gtag_id
+					? [
+						// Google tag (gtag.js)
+						// language=html
+						raw_(`
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-E2YTV44HXX');
+  window.dataLayer = window.dataLayer || []
+  function gtag(){dataLayer.push(arguments)}
+  gtag('js', new Date())
+  gtag('config', '${site__gtag_id}')
+  window.addEventListener('load', ()=>{
+		setTimeout(()=>{
+			let script = document.createElement('script')
+			script.src = 'https://www.googletagmanager.com/gtag/js?id=${site__gtag_id}'
+			script.async = true
+			script.defer = true
+			document.head.appendChild(script)
+		}, 1500)
+  })
 </script>
-				`.trim()),
-				children])
+				`.trim())
+					]
+					: null,
+				children
+			])
 		])
 	)
 }

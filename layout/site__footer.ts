@@ -1,5 +1,5 @@
 import { fa_osi_ } from '@btakita/ui--any--brookebrodack/icon'
-import { social_a1_ } from '@rappstack/domain--server/social'
+import { site__social_a1_ } from '@rappstack/domain--server/site'
 import { iconify_rss_ } from '@rappstack/ui--any--blog/icon'
 import { class_ } from 'ctx-core/html'
 import { type wide_ctx_T } from 'relementjs'
@@ -40,7 +40,7 @@ export function site__footer_({
 					'justify-center',
 					'h-6')
 			}, [
-				social_a1_(ctx).map(social=>
+				(site__social_a1_(ctx) ?? []).map(social=>
 					li_({
 						class: class_(
 							'h-6',
