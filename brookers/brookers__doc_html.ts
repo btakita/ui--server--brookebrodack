@@ -10,7 +10,6 @@ import {
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
 import {
-	schema_org_Article_rdfa,
 	schema_org_CreativeWork_rdfa,
 	type schema_org_props_rdfa_T,
 	schema_org_rdfa_
@@ -215,7 +214,6 @@ export function brookers__doc_html_({ ctx }:{
 					'mt-auto',
 					'max-w-xs',
 					'ml-4'),
-				...schema_org_Article_rdfa,
 			}, [
 				brookers_timeline__ol_({}, [
 					brookers_timeline__li_({
