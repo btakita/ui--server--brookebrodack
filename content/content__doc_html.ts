@@ -16,7 +16,7 @@ import { class_, style_ } from 'ctx-core/html'
 import { url__join } from 'ctx-core/uri'
 import { a_, div_, h2_, img_, main_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { CollectionPage, CreativeWork, VideoObject, WebPageElement } from 'schema-dts'
+import type { CollectionPage, CreativeWork, VideoObject, WebContent } from 'schema-dts'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -51,7 +51,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'backdrop-blur-3xl'),
 				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__hyop} */
 				hyop: 'content__hyop',
-				...schema_org_rdfa_<WebPageElement>('WebPageElement'),
+				...schema_org_rdfa_<WebContent>('WebContent'),
 				...<schema_org_props_rdfa_T<CollectionPage>>{
 					property: 'mainContentOfPage'
 				}

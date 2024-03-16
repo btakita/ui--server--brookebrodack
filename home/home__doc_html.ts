@@ -14,7 +14,7 @@ import { class_, style_ } from 'ctx-core/html'
 import { type tag_dom_T } from 'relementjs'
 import { a_, div_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { CollectionPage, WebPageElement } from 'schema-dts'
+import type { CollectionPage, WebContent } from 'schema-dts'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
@@ -35,7 +35,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 		}, [
 			schema_org_Article__link_a1_(ctx),
 			div_({
-				...schema_org_rdfa_<WebPageElement>('WebPageElement'),
+				...schema_org_rdfa_<WebContent>('WebContent'),
 				...<schema_org_props_rdfa_T<CollectionPage>>{
 					property: 'mainContentOfPage',
 				},

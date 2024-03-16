@@ -22,7 +22,7 @@ import { url__join } from 'ctx-core/uri'
 import { type relement_env_T, type tag_dom_T } from 'relementjs'
 import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { CollectionPage, CreativeWork, WebPageElement } from 'schema-dts'
+import type { CollectionPage, CreativeWork, WebContent } from 'schema-dts'
 import { back_link__a_, layout__doc_html_ } from '../layout/index.js'
 import cooler_in_space_gif from '../public/assets/images/cooler-in-space--look-aud-right.gif'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -522,7 +522,7 @@ export function brookers_timeline__ol_<env_T extends relement_env_T>({ style, ..
 		...<schema_org_props_rdfa_T<CollectionPage>>{
 			property: 'mainContentOfPage'
 		},
-		...schema_org_rdfa_<WebPageElement>('WebPageElement'),
+		...schema_org_rdfa_<WebContent>('WebContent'),
 	}, ...children)
 }
 export function brookers_timeline__li_<env_T extends relement_env_T>({
