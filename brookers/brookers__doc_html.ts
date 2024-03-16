@@ -3,7 +3,8 @@ import { type brookers_timeline_op_T } from '@btakita/domain--any--brookebrodack
 import { heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import {
-	WebPage__description__set, WebPage__hasPart__push,
+	WebPage__description__set,
+	WebPage__hasPart__push,
 	WebPage__headline__set,
 	WebPage__name__set,
 	WebPage__type__set
@@ -19,7 +20,7 @@ import { tb_a_ } from '@rappstack/ui--any/anchor'
 import { class_ } from 'ctx-core/html'
 import { url__join } from 'ctx-core/uri'
 import { type relement_env_T, type tag_dom_T } from 'relementjs'
-import { article_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
+import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
 import type { Article, CreativeWork } from 'schema-dts'
 import { back_link__a_, layout__doc_html_ } from '../layout/index.js'
@@ -43,34 +44,27 @@ export function brookers__doc_html_({ ctx }:{
 				class: class_('brookers__doc_html')
 			}
 		}, [
-			article_({
-				...schema_org_Article_rdfa,
+			div_({
+				class: class_(
+					'min-h-screen',
+					'overflow-x-hidden',
+					'relative',
+					'bg-black'),
+				/** @see {import('@btakita/ui--browser--brookebrodack/brookers').brookers__hyop} */
+				hyop: 'brookers__hyop',
 			}, [
-				div_({
-					...<schema_org_props_rdfa_T<Article>>{
-						property: 'articleBody'
-					},
-					class: class_(
-						'min-h-screen',
-						'overflow-x-hidden',
-						'relative',
-						'bg-black'),
-					/** @see {import('@btakita/ui--browser--brookebrodack/brookers').brookers__hyop} */
-					hyop: 'brookers__hyop',
-				}, [
-					spinner__template_({
-						center_x: true,
-						spinner_class: class_(
-							'z-10',
-							'top-56')
-					}),
-					brookers_hero__div_(),
-					back_link__a_({}),
-					brookers_detail__div_(),
-					brookers_master__div_(),
-					brookers_img__div_(),
-				])
-			]),
+				spinner__template_({
+					center_x: true,
+					spinner_class: class_(
+						'z-10',
+						'top-56')
+				}),
+				brookers_hero__div_(),
+				back_link__a_({}),
+				brookers_detail__div_(),
+				brookers_master__div_(),
+				brookers_img__div_(),
+			])
 		])
 	)
 	function brookers_hero__div_() {
@@ -219,7 +213,8 @@ export function brookers__doc_html_({ ctx }:{
 					'min-h-screen',
 					'mt-auto',
 					'max-w-xs',
-					'ml-4')
+					'ml-4'),
+				...schema_org_Article_rdfa,
 			}, [
 				brookers_timeline__ol_({}, [
 					brookers_timeline__li_({
@@ -525,6 +520,9 @@ export function brookers_timeline__ol_<env_T extends relement_env_T>({ style, ..
 			'border-gray-700',
 			$p.class),
 		style,
+		...<schema_org_props_rdfa_T<Article>>{
+			property: 'articleBody'
+		}
 	}, ...children)
 }
 export function brookers_timeline__li_<env_T extends relement_env_T>({
