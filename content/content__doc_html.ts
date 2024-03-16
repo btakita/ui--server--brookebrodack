@@ -11,8 +11,8 @@ import {
 } from '@rappstack/domain--server/jsonld'
 import {
 	schema_org_Article_rdfa,
-	schema_org_CreativeWork_rdfa,
-	type schema_org_props_rdfa_T, schema_org_thing_rdfa_
+	type schema_org_props_rdfa_T,
+	schema_org_thing_rdfa_
 } from '@rappstack/domain--server/rdfa'
 import { request_url__pathname_ } from '@rappstack/domain--server/request'
 import { site__website_ } from '@rappstack/domain--server/site'
@@ -178,8 +178,8 @@ export function content_feed__section_({ ctx }:{
 		idx:number
 	) {
 		const { description, title, videoId } = brookebrodack_youtube_video
-		const CreativeWork_id = url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#${videoId}_CreativeWork`)
-		WebPage__hasPart__push(ctx, { '@id': CreativeWork_id })
+		const Episode_id = url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#${videoId}_Episode`)
+		WebPage__hasPart__push(ctx, { '@id': Episode_id })
 		const schema_org_Episode_rdfa = schema_org_thing_rdfa_<Episode>('Episode')
 		return a_({
 			href: 'https://www.youtube.com/watch?v=' + videoId,
@@ -187,7 +187,7 @@ export function content_feed__section_({ ctx }:{
 			rel: 'noopener',
 			title,
 			...schema_org_Episode_rdfa,
-			resource: CreativeWork_id,
+			resource: Episode_id,
 			/** @see {https://stackoverflow.com/a/46018087/142571} */
 			rev: 'isPartOf',
 			'data-op': encodeURIComponent(JSON.stringify({ videoId })),

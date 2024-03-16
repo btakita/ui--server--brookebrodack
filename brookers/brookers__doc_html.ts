@@ -2,14 +2,26 @@ import '@btakita/ui--any--brookebrodack/neon'
 import { type brookers_timeline_op_T } from '@btakita/domain--any--brookebrodack/brookers'
 import { heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
-import { WebPage__description__set, WebPage__headline__set, WebPage__name__set } from '@rappstack/domain--server/jsonld'
-import { schema_org_Article_rdfa, type schema_org_props_rdfa_T } from '@rappstack/domain--server/rdfa'
+import {
+	WebPage__description__set, WebPage__hasPart__push,
+	WebPage__headline__set,
+	WebPage__name__set,
+	WebPage__type__set
+} from '@rappstack/domain--server/jsonld'
+import {
+	schema_org_Article_rdfa,
+	schema_org_CreativeWork_rdfa,
+	type schema_org_props_rdfa_T
+} from '@rappstack/domain--server/rdfa'
+import { request_url__pathname_ } from '@rappstack/domain--server/request'
+import { site__website_ } from '@rappstack/domain--server/site'
 import { tb_a_ } from '@rappstack/ui--any/anchor'
 import { class_ } from 'ctx-core/html'
+import { url__join } from 'ctx-core/uri'
 import { type relement_env_T, type tag_dom_T } from 'relementjs'
 import { article_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { Article } from 'schema-dts'
+import type { Article, CreativeWork } from 'schema-dts'
 import { back_link__a_, layout__doc_html_ } from '../layout/index.js'
 import cooler_in_space_gif from '../public/assets/images/cooler-in-space--look-aud-right.gif'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -21,6 +33,7 @@ export function brookers__doc_html_({ ctx }:{
 	WebPage__name__set(ctx, title)
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
+	WebPage__type__set(ctx, 'CollectionPage')
 	return (
 		layout__doc_html_({
 			ctx,
@@ -210,10 +223,14 @@ export function brookers__doc_html_({ ctx }:{
 			}, [
 				brookers_timeline__ol_({}, [
 					brookers_timeline__li_({
+						ctx,
+						id: 'brookers-first-video',
 						at: 'September 2005',
 						title: 'Brookers first video on YouTube'
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'chips',
 						at: 'Oct 23, 2005',
 						description_a: [
 							[
@@ -231,6 +248,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'what-is',
 						at: 'May 21, 2006',
 						op: {
 							type: 'youtube',
@@ -240,11 +259,15 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'carson-daly-nbc',
 						at: 'June 2006',
 						title: 'Carson Daly NBC',
 						description_a: ['18 month development contract']
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'chips',
 						at: 'June 2006',
 						title: 'Chips',
 						description_a: [
@@ -273,16 +296,22 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'most-subscribed-youtube',
 						at: 'July 3 - Aug 7 2006',
 						title: 'Most-subscribed on YouTube',
 						description_a: ['> 64000 subscribers']
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'tyra-banks',
 						at: 'December 6 2006',
 						title: 'Tyra Banks Show',
 						description_a: [`judge for a student video competition`]
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'who-drank-my-orange-juice',
 						at: 'circa 2006-2007',
 						description_a: ['Who drank my orange juice?'],
 						op: {
@@ -293,6 +322,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'the-sound-of-your-voice-barenaked-ladies',
 						at: 'February 2007',
 						description_a: [
 							'Appeared in ',
@@ -307,6 +338,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'web-celebrity',
 						at: 'February 7, 2007',
 						description_a: [
 							'"Web Celebrity" published by Brookers on IYS on Feb 7, 2007 and then quickly removed.',
@@ -319,6 +352,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'whos-leg-is-this',
 						at: 'Sep 7, 2007',
 						description_a: [
 							'"if this leg is yours can you come and claim it ... its stinking up my yard..thanks"',
@@ -338,6 +373,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'go-sukashi-ep-1',
 						at: 'Aug 6, 2010',
 						description_a: [
 							'Brooke Brodack as Sukashi\'s girlfriend'
@@ -350,6 +387,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'go-sukashi-the-picnic',
 						at: 'Aug 13, 2010',
 						op: {
 							type: 'youtube',
@@ -359,6 +398,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'go-sukashi-a-green-menace',
 						at: 'Aug 23, 2010',
 						op: {
 							type: 'youtube',
@@ -368,6 +409,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'go-sukashi-love-whispers-not',
 						at: 'Sep 10, 2010',
 						op: {
 							type: 'youtube',
@@ -377,6 +420,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'go-sukashi-christmas-special',
 						at: 'Dec 22, 2010',
 						op: {
 							type: 'youtube',
@@ -386,6 +431,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'go-sukashi-recap-traier',
 						at: 'Feb 7, 2011',
 						op: {
 							type: 'youtube',
@@ -395,6 +442,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'go-sukashi-season2-ep1',
 						at: 'Feb 9, 2011',
 						op: {
 							type: 'youtube',
@@ -404,6 +453,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'go-sukashi-season2-ep2',
 						at: 'Feb 24, 2011',
 						op: {
 							type: 'youtube',
@@ -413,6 +464,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'go-sukashi-outtakes-and-bloopers',
 						at: 'Apr 5, 2011',
 						op: {
 							type: 'youtube',
@@ -422,6 +475,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'united-states-of-whateva',
 						at: 'Mar 10, 2012',
 						description_a: [
 							[
@@ -439,6 +494,8 @@ export function brookers__doc_html_({ ctx }:{
 						}
 					}),
 					brookers_timeline__li_({
+						ctx,
+						id: 'colm-flynn',
 						at: 'Feb 8, 2022',
 						description_a: [
 							'Colm Flynn\' documentary on Brookers & long form interview with Brooke Brodack.'
@@ -471,21 +528,29 @@ export function brookers_timeline__ol_<env_T extends relement_env_T>({ style, ..
 	}, ...children)
 }
 export function brookers_timeline__li_<env_T extends relement_env_T>({
+	ctx,
+	id,
 	at,
 	title,
 	description_a,
 	op
 }:{
+	ctx:request_ctx_T,
+	id:string
 	at:string
 	title:string
 	description_a?:tag_dom_T[],
 	op?:brookers_timeline_op_T
 }|{
+	ctx:request_ctx_T
+	id:string
 	at:string
 	title?:string
 	description_a?:tag_dom_T[],
 	op:brookers_timeline_op_T
 }, ...children:tag_dom_T<env_T>[]) {
+	const CreativeWork_id = url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#${id}_CreativeWork`)
+	WebPage__hasPart__push(ctx, { '@id': CreativeWork_id })
 	return (
 		li_<env_T>({
 			class: class_(
@@ -499,6 +564,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 				'group'
 			),
 			'data-op': op ? encodeURIComponent(JSON.stringify(op)) : undefined,
+			...schema_org_CreativeWork_rdfa,
 		}, [
 			div_({
 				class: class_(
@@ -563,8 +629,10 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 							'group-hover:animate-[neon-blink_0.03s_infinite_alternate]',
 							'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
 						]
-						: undefined
-				)
+						: undefined),
+				...<schema_org_props_rdfa_T<CreativeWork>>{
+					property: 'name'
+				}
 			}, op?.title ?? title),
 			(description_a || []).map(line=>
 				p_({
@@ -579,8 +647,10 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 								'group-hover:animate-[neon-blink_0.03s_infinite_alternate]',
 								'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
 							]
-							: undefined
-					)
+							: undefined),
+					...<schema_org_props_rdfa_T<CreativeWork>>{
+						property: 'description'
+					}
 				}, line)),
 			...children
 		])
