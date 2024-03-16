@@ -20,7 +20,7 @@ import { class_, style_ } from 'ctx-core/html'
 import { url__join } from 'ctx-core/uri'
 import { a_, article_, div_, h2_, img_, main_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { Article, CreativeWork, Episode } from 'schema-dts'
+import type { Article, CreativeWork, VideoObject } from 'schema-dts'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -178,9 +178,9 @@ export function content_feed__section_({ ctx }:{
 		idx:number
 	) {
 		const { description, title, videoId } = brookebrodack_youtube_video
-		const Episode_id = url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#${videoId}_Episode`)
+		const Episode_id = url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#${videoId}_VideoObject`)
 		WebPage__hasPart__push(ctx, { '@id': Episode_id })
-		const schema_org_Episode_rdfa = schema_org_thing_rdfa_<Episode>('Episode')
+		const schema_org_Episode_rdfa = schema_org_thing_rdfa_<VideoObject>('VideoObject')
 		return a_({
 			href: 'https://www.youtube.com/watch?v=' + videoId,
 			target: '_blank',
