@@ -16,7 +16,7 @@ import {
 } from '@btakita/ui--any--brookebrodack/icon'
 import { WebPage__description__set, WebPage__headline__set, WebPage__name__set } from '@rappstack/domain--server/jsonld'
 import { schema_org_Article_rdfa, type schema_org_props_rdfa_T } from '@rappstack/domain--server/rdfa'
-import { site__title_ } from '@rappstack/domain--server/site'
+import { site__social_a1_, site__title_ } from '@rappstack/domain--server/site'
 import { iconify_rss_ } from '@rappstack/ui--any--blog/icon'
 import { schema_org_Article__link_a1_ } from '@rappstack/ui--server/rdfa'
 import { class_, style_ } from 'ctx-core/html'
@@ -83,45 +83,22 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					href: '/content',
 				}, [
 					'Content Feed',
-					home_link__a__icon_({
-					}, heroicons_video_camera_)
+					home_link__a__icon_({}, heroicons_video_camera_)
 				]),
 				home_link__a_({
 					href: '/brookers',
 				}, [
 					'Brookers Timeline',
-					home_link__a__icon_({
-					}, heroicons_film_)
+					home_link__a__icon_({}, heroicons_film_)
 				]),
-				home_link__a_({
-					href: youtube_url,
-					external: true
-				}, [
-					'Youtube',
-					home_link__a__icon_({
-					}, fa_youtube_)
-				]),
-				home_link__a_({
-					href: patreon_url,
-					external: true
-				}, [
-					'Patreon',
-					home_link__a__icon_({}, fa_patreon_)
-				]),
-				home_link__a_({
-					href: instagram_url,
-					external: true
-				}, [
-					'Instagram',
-					home_link__a__icon_({}, fa_instagram_)
-				]),
-				home_link__a_({
-					href: linkedin_url,
-					external: true
-				}, [
-					'LinkedIn',
-					home_link__a__icon_({}, fa_linkedin_)
-				]),
+				...site__social_a1_(ctx)!.map(({ href, link_title, icon_ })=>
+					home_link__a_({
+						href,
+						external: true
+					}, [
+						link_title,
+						home_link__a__icon_({}, icon_)
+					])),
 				home_link__a_({
 					href: email_url,
 					external: true

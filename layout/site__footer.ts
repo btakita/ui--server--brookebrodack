@@ -1,5 +1,6 @@
-import { fa_osi_ } from '@btakita/ui--any--brookebrodack/icon'
-import { site__social_a1_ } from '@rappstack/domain--server/site'
+import { email_url } from '@btakita/domain--any--brookebrodack/social'
+import { fa_email_, fa_osi_ } from '@btakita/ui--any--brookebrodack/icon'
+import { site__author_, site__social_a1_, site__title_ } from '@rappstack/domain--server/site'
 import { iconify_rss_ } from '@rappstack/ui--any--blog/icon'
 import { class_ } from 'ctx-core/html'
 import { type wide_ctx_T } from 'relementjs'
@@ -49,7 +50,7 @@ export function site__footer_({
 					}, [
 						a_({
 							href: social.href,
-							title: social.link_title,
+							title: `${site__title_(ctx)}'s ${social.link_title}`,
 							target: '_blank'
 						}, [
 							social.icon_({
@@ -64,12 +65,25 @@ export function site__footer_({
 						'mx-1')
 				}, [
 					a_({
+						href: email_url,
+						title: 'Email ' + site__author_(ctx)
+					}, [
+						fa_email_({ class: icon_class })
+					])
+				]),
+				li_({
+					class: class_(
+						'h-6',
+						'w-6',
+						'mx-1')
+				}, [
+					a_({
 						href: '/rss',
 						title: 'RSS Feed'
 					}, [
 						iconify_rss_({ class: icon_class })
 					])
-				])
+				]),
 			]),
 			div_({
 				class: class_(
