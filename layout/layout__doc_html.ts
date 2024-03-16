@@ -1,3 +1,4 @@
+import { jsonld_Graph_ } from '@rappstack/domain--server/jsonld'
 import { request_url__href_, request_url__origin_ } from '@rappstack/domain--server/request'
 import {
 	type icon_link_props_T,
@@ -11,6 +12,7 @@ import {
 	site__social_image_url_,
 	site__title_
 } from '@rappstack/domain--server/site'
+import { jsonld__script_ } from '@rappstack/ui--server/jsonld'
 import { class_ } from 'ctx-core/html'
 import { raw_, type tag_dom_T } from 'relementjs'
 import { type tag_props_T } from 'relementjs/any'
@@ -127,6 +129,7 @@ export function layout__doc_html_({
 					site__body_class_(ctx),
 					body_class)
 			}, [
+				children,
 				site__gtag_id
 					? [
 						// Google tag (gtag.js)
@@ -150,7 +153,7 @@ export function layout__doc_html_({
 				`.trim())
 					]
 					: null,
-				children
+				jsonld__script_(jsonld_Graph_(ctx)),
 			])
 		])
 	)
