@@ -1,5 +1,12 @@
-import { instagram_url, linkedin_url, patreon_url, youtube_url } from '@btakita/domain--any--brookebrodack/social'
 import {
+	email_url,
+	instagram_url,
+	linkedin_url,
+	patreon_url,
+	youtube_url
+} from '@btakita/domain--any--brookebrodack/social'
+import {
+	fa_email_,
 	fa_instagram_,
 	fa_linkedin_,
 	fa_patreon_,
@@ -95,6 +102,13 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				}, [
 					'LinkedIn',
 					home_link__a__icon_({}, fa_linkedin_)
+				]),
+				home_link__a_({
+					href: email_url,
+					external: true
+				}, [
+					'Email',
+					home_link__a__icon_({}, fa_email_)
 				]),
 				home_link__a_({
 					href: '/rss',
