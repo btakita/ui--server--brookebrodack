@@ -631,7 +631,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 				...<schema_org_props_rdfa_T<CreativeWork>>{
 					property: 'name'
 				}
-			}, op?.title ?? title),
+			}, (op?.title ?? title) + ' '),
 			(description_a || []).map(line=>
 				p_({
 					class: class_(
@@ -649,7 +649,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 					...<schema_org_props_rdfa_T<CreativeWork>>{
 						property: 'description'
 					}
-				}, line)),
+				}, line + ' ')),
 			...children
 		])
 	)
