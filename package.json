@@ -42,6 +42,7 @@
 		"@btakita/domain--server--brookebrodack": "workspace:*",
 		"@btakita/ui--any--brookebrodack": "workspace:*",
 		"@rappstack/domain--server": "workspace:*",
+		"@rappstack/domain--server--youtube": "workspace:*",
 		"@rappstack/ui--server": "workspace:*",
 		"@rappstack/ui--server--blog": "workspace:*",
 		"@rappstack/ui--any": "workspace:*",
@@ -50,7 +51,8 @@
 		"relysjs": "^1.16.8"
 	},
 	"devDependencies": {
-		"bun-types": "latest"
+		"bun-types": "latest",
+		"schema-dts": "^1.1.2"
 	},
 	"peerDependencies": {
 		"typescript": "^5.4.2"

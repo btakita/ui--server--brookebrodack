@@ -2,45 +2,62 @@ import '@btakita/ui--any--brookebrodack/neon'
 import { type brookers_timeline_op_T } from '@btakita/domain--any--brookebrodack/brookers'
 import { heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
+import { WebPage__description__set, WebPage__headline__set, WebPage__name__set } from '@rappstack/domain--server/jsonld'
+import { schema_org_Article_rdfa, type schema_org_props_rdfa_T } from '@rappstack/domain--server/rdfa'
 import { tb_a_ } from '@rappstack/ui--any/anchor'
 import { class_ } from 'ctx-core/html'
 import { type relement_env_T, type tag_dom_T } from 'relementjs'
-import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
+import { article_, div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
+import type { Article } from 'schema-dts'
 import { back_link__a_, layout__doc_html_ } from '../layout/index.js'
 import cooler_in_space_gif from '../public/assets/images/cooler-in-space--look-aud-right.gif'
 import { YT_player__div_ } from '../youtube/index.js'
 export function brookers__doc_html_({ ctx }:{
 	ctx:request_ctx_T
 }) {
+	const title = 'Brookers Timeline'
+	const description = 'Brooke Brodack posted her first video on her channel, Brookers, in 2004. Brookers became a viral sensation with her comedy routines. Brookers became the most subscribed YouTube channel in 2006. With over 64,000 subscribers. Brookers appeared in media publications, guest appearances, & media. From 2004 to 2015. Entertainment Weekly hailed "Chips" among the "great moments in YouTube history". Crazed Numa fan had over 8.4 million views. My united states of...WHATEVA !!! had over 2.4 million views. She made a guest appearance on the Tyra Banks show. Brookers made an appearance on the Bare Naked Ladies. Brooke Brodack played a starring role in the web series Go Sukashi. In 2023, BBC reporter Colm Flynn made a documentary on Brooke Brodack & Brookers.'
+	WebPage__name__set(ctx, title)
+	WebPage__headline__set(ctx, title)
+	WebPage__description__set(ctx, description)
 	return (
 		layout__doc_html_({
 			ctx,
+			title,
+			description,
 			html_props: {
 				class: class_('brookers__doc_html')
 			}
 		}, [
-			div_({
-				class: class_(
-					'min-h-screen',
-					'overflow-x-hidden',
-					'relative',
-					'bg-black'),
-				/** @see {import('@btakita/ui--browser--brookebrodack/brookers').brookers__hyop} */
-				hyop: 'brookers__hyop',
+			article_({
+				...schema_org_Article_rdfa,
 			}, [
-				spinner__template_({
-					center_x: true,
-					spinner_class: class_(
-						'z-10',
-						'top-56')
-				}),
-				brookers_hero__div_(),
-				back_link__a_({}),
-				brookers_detail__div_(),
-				brookers_master__div_(),
-				brookers_img__div_(),
-			])
+				div_({
+					...<schema_org_props_rdfa_T<Article>>{
+						property: 'articleBody'
+					},
+					class: class_(
+						'min-h-screen',
+						'overflow-x-hidden',
+						'relative',
+						'bg-black'),
+					/** @see {import('@btakita/ui--browser--brookebrodack/brookers').brookers__hyop} */
+					hyop: 'brookers__hyop',
+				}, [
+					spinner__template_({
+						center_x: true,
+						spinner_class: class_(
+							'z-10',
+							'top-56')
+					}),
+					brookers_hero__div_(),
+					back_link__a_({}),
+					brookers_detail__div_(),
+					brookers_master__div_(),
+					brookers_img__div_(),
+				])
+			]),
 		])
 	)
 	function brookers_hero__div_() {
@@ -232,9 +249,7 @@ export function brookers__doc_html_({ ctx }:{
 						title: 'Chips',
 						description_a: [
 							[
-								'A spoof suspense drama about eating potato chips, has been called "brilliant" by' +
-								' Entertainment Weekly, which has listed it among the "great moments in' +
-								' YouTube history." ',
+								'A spoof suspense drama about eating potato chips, has been called "brilliant" by Entertainment Weekly, which has listed it among the "great moments in YouTube history." ',
 								cite__sup_(
 									tb_a_({
 										href: 'https://knowyourmeme.com/memes/people/brookers'
