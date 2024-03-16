@@ -12,8 +12,8 @@ import {
 import {
 	type schema_org_props_rdfa_T,
 	schema_org_rdfa_,
-	schema_org_rdfa_resource_o_,
-	schema_org_rdfa_rev_o_
+	schema_org_rdfa_resource_,
+	schema_org_rdfa_rev_
 } from '@rappstack/domain--server/rdfa'
 import { request_url__pathname_ } from '@rappstack/domain--server/request'
 import { site__website_ } from '@rappstack/domain--server/site'
@@ -181,9 +181,8 @@ export function content_feed__section_({ ctx }:{
 			target: '_blank',
 			rel: 'noopener',
 			title,
-			...schema_org_rdfa_<VideoObject>('VideoObject'),
-			...schema_org_rdfa_resource_o_(Episode_id_ref),
-			...schema_org_rdfa_rev_o_<Article>('isPartOf'),
+			...schema_org_rdfa_rev_<Article>('isPartOf'),
+			...schema_org_rdfa_resource_<VideoObject>('VideoObject', Episode_id_ref),
 			'data-op': encodeURIComponent(JSON.stringify({ videoId })),
 			class: class_(
 				'relative',
