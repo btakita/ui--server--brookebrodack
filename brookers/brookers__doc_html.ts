@@ -12,7 +12,7 @@ import {
 import {
 	schema_org_CreativeWork_rdfa,
 	type schema_org_props_rdfa_T,
-	schema_org_rdfa_
+	schema_org_rdfa_, schema_org_rdfa_resource_o_, schema_org_rdfa_rev_o_
 } from '@rappstack/domain--server/rdfa'
 import { request_url__pathname_ } from '@rappstack/domain--server/request'
 import { site__website_ } from '@rappstack/domain--server/site'
@@ -22,7 +22,7 @@ import { url__join } from 'ctx-core/uri'
 import { type relement_env_T, type tag_dom_T } from 'relementjs'
 import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { CollectionPage, CreativeWork, WebContent } from 'schema-dts'
+import { CollectionPage, CreativeWork, ItemList, ListItem } from 'schema-dts'
 import { back_link__a_, layout__doc_html_ } from '../layout/index.js'
 import cooler_in_space_gif from '../public/assets/images/cooler-in-space--look-aud-right.gif'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -226,7 +226,7 @@ export function brookers__doc_html_({ ctx }:{
 						ctx,
 						id: 'chips',
 						at: 'Oct 23, 2005',
-						description_a: [
+						description_line_a: [
 							[
 								'>8.4 Million views ',
 								cite__sup_(tb_a_({
@@ -257,14 +257,14 @@ export function brookers__doc_html_({ ctx }:{
 						id: 'carson-daly-nbc',
 						at: 'June 2006',
 						title: 'Carson Daly NBC',
-						description_a: ['18 month development contract']
+						description_line_a: ['18 month development contract']
 					}),
 					brookers_timeline__li_({
 						ctx,
 						id: 'chips',
 						at: 'June 2006',
 						title: 'Chips',
-						description_a: [
+						description_line_a: [
 							[
 								'A spoof suspense drama about eating potato chips, has been called "brilliant" by Entertainment Weekly, which has listed it among the "great moments in YouTube history." ',
 								cite__sup_(
@@ -294,20 +294,20 @@ export function brookers__doc_html_({ ctx }:{
 						id: 'most-subscribed-youtube',
 						at: 'July 3 - Aug 7 2006',
 						title: 'Most-subscribed on YouTube',
-						description_a: ['> 64000 subscribers']
+						description_line_a: ['> 64000 subscribers']
 					}),
 					brookers_timeline__li_({
 						ctx,
 						id: 'tyra-banks',
 						at: 'December 6 2006',
 						title: 'Tyra Banks Show',
-						description_a: [`judge for a student video competition`]
+						description_line_a: ['judge for a student video competition']
 					}),
 					brookers_timeline__li_({
 						ctx,
 						id: 'who-drank-my-orange-juice',
 						at: 'circa 2006-2007',
-						description_a: ['Who drank my orange juice?'],
+						description_line_a: ['Who drank my orange juice?'],
 						op: {
 							type: 'youtube',
 							title: 'Orange Juice',
@@ -319,7 +319,7 @@ export function brookers__doc_html_({ ctx }:{
 						ctx,
 						id: 'the-sound-of-your-voice-barenaked-ladies',
 						at: 'February 2007',
-						description_a: [
+						description_line_a: [
 							'Appeared in ',
 							tb_a_({ href: 'https://www.youtube.com/watch?v=FoFMRXlNJ6Y' }, 'music video'),
 							' with fellow YouTubers',
@@ -335,7 +335,7 @@ export function brookers__doc_html_({ ctx }:{
 						ctx,
 						id: 'web-celebrity',
 						at: 'February 7, 2007',
-						description_a: [
+						description_line_a: [
 							'"Web Celebrity" published by Brookers on IYS on Feb 7, 2007 and then quickly removed.',
 						],
 						op: {
@@ -349,7 +349,7 @@ export function brookers__doc_html_({ ctx }:{
 						ctx,
 						id: 'whos-leg-is-this',
 						at: 'Sep 7, 2007',
-						description_a: [
+						description_line_a: [
 							'"if this leg is yours can you come and claim it ... its stinking up my yard..thanks"',
 							[
 								'>530k views',
@@ -370,7 +370,7 @@ export function brookers__doc_html_({ ctx }:{
 						ctx,
 						id: 'go-sukashi-ep-1',
 						at: 'Aug 6, 2010',
-						description_a: [
+						description_line_a: [
 							'Brooke Brodack as Sukashi\'s girlfriend'
 						],
 						op: {
@@ -472,7 +472,7 @@ export function brookers__doc_html_({ ctx }:{
 						ctx,
 						id: 'united-states-of-whateva',
 						at: 'Mar 10, 2012',
-						description_a: [
+						description_line_a: [
 							[
 								'>2.4 Million views ',
 								cite__sup_(tb_a_({
@@ -491,7 +491,7 @@ export function brookers__doc_html_({ ctx }:{
 						ctx,
 						id: 'colm-flynn',
 						at: 'Feb 8, 2022',
-						description_a: [
+						description_line_a: [
 							'Colm Flynn\' documentary on Brookers & long form interview with Brooke Brodack.'
 						],
 						op: {
@@ -522,7 +522,7 @@ export function brookers_timeline__ol_<env_T extends relement_env_T>({ style, ..
 		...<schema_org_props_rdfa_T<CollectionPage>>{
 			property: 'mainContentOfPage'
 		},
-		...schema_org_rdfa_<WebContent>('WebContent'),
+		...schema_org_rdfa_<ItemList>('ItemList'),
 	}, ...children)
 }
 export function brookers_timeline__li_<env_T extends relement_env_T>({
@@ -530,25 +530,25 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 	id,
 	at,
 	title,
-	description_a,
+	description_line_a,
 	op
 }:{
 	ctx:request_ctx_T,
 	id:string
 	at:string
 	title:string
-	description_a?:tag_dom_T[],
+	description_line_a?:tag_dom_T[],
 	op?:brookers_timeline_op_T
 }|{
 	ctx:request_ctx_T
 	id:string
 	at:string
 	title?:string
-	description_a?:tag_dom_T[],
+	description_line_a?:tag_dom_T[],
 	op:brookers_timeline_op_T
 }, ...children:tag_dom_T<env_T>[]) {
-	const CreativeWork_id = url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#${id}_CreativeWork`)
-	WebPage__hasPart__push(ctx, { '@id': CreativeWork_id })
+	const ListItem_id_ref = { '@id': url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#${id}_ListItem`) }
+	WebPage__hasPart__push(ctx, ListItem_id_ref)
 	return (
 		li_<env_T>({
 			class: class_(
@@ -559,10 +559,11 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 				op?.bullet === 'video'
 					? ['cursor-pointer']
 					: undefined,
-				'group'
-			),
+				'group'),
 			'data-op': op ? encodeURIComponent(JSON.stringify(op)) : undefined,
-			...schema_org_CreativeWork_rdfa,
+			...schema_org_rdfa_rev_o_<ItemList>('itemListElement'),
+			...schema_org_rdfa_<ListItem>('ListItem'),
+			...schema_org_rdfa_resource_o_(ListItem_id_ref),
 		}, [
 			div_({
 				class: class_(
@@ -632,7 +633,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 					property: 'name'
 				}
 			}, (op?.title ?? title) + ' '),
-			(description_a || []).map(line=>
+			(description_line_a || []).map(description_line=>
 				p_({
 					class: class_(
 						'text-base',
@@ -649,7 +650,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 					...<schema_org_props_rdfa_T<CreativeWork>>{
 						property: 'description'
 					}
-				}, line + ' ')),
+				}, [description_line, ' '])),
 			...children
 		])
 	)

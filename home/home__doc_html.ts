@@ -23,7 +23,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	WebPage__name__set(ctx, title)
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
-	WebPage__type__set(ctx, 'CollectionPage')
+	WebPage__type__set(ctx, 'ProfilePage')
 	return (
 		layout__doc_html_({
 			ctx,

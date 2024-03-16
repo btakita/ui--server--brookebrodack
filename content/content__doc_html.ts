@@ -9,14 +9,19 @@ import {
 	WebPage__name__set,
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
-import { type schema_org_props_rdfa_T, schema_org_rdfa_ } from '@rappstack/domain--server/rdfa'
+import {
+	type schema_org_props_rdfa_T,
+	schema_org_rdfa_,
+	schema_org_rdfa_resource_o_,
+	schema_org_rdfa_rev_o_
+} from '@rappstack/domain--server/rdfa'
 import { request_url__pathname_ } from '@rappstack/domain--server/request'
 import { site__website_ } from '@rappstack/domain--server/site'
 import { class_, style_ } from 'ctx-core/html'
 import { url__join } from 'ctx-core/uri'
 import { a_, div_, h2_, img_, main_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { CollectionPage, CreativeWork, VideoObject, WebContent } from 'schema-dts'
+import type { Article, CollectionPage, CreativeWork, VideoObject, WebContent } from 'schema-dts'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -159,7 +164,8 @@ export function content_feed__section_({ ctx }:{
 				'grid-flow-row',
 				'max-w-7xl',
 				'mx-auto',
-				'overflow-y-auto')
+				'overflow-y-auto'),
+			...schema_org_rdfa_<Article>('Article')
 		}, youtube_video_a1_(ctx)!.map((brookebrodack_youtube_video, idx)=>
 			youtube_video__a_(brookebrodack_youtube_video, idx)))
 	)
@@ -168,17 +174,16 @@ export function content_feed__section_({ ctx }:{
 		idx:number
 	) {
 		const { description, title, videoId } = brookebrodack_youtube_video
-		const Episode_id = url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#${videoId}_VideoObject`)
-		WebPage__hasPart__push(ctx, { '@id': Episode_id })
+		const Episode_id_ref = { '@id': url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#${videoId}_VideoObject`) }
+		WebPage__hasPart__push(ctx, Episode_id_ref)
 		return a_({
 			href: 'https://www.youtube.com/watch?v=' + videoId,
 			target: '_blank',
 			rel: 'noopener',
 			title,
 			...schema_org_rdfa_<VideoObject>('VideoObject'),
-			resource: Episode_id,
-			/** @see {https://stackoverflow.com/a/46018087/142571} */
-			rev: 'isPartOf',
+			...schema_org_rdfa_resource_o_(Episode_id_ref),
+			...schema_org_rdfa_rev_o_<Article>('isPartOf'),
 			'data-op': encodeURIComponent(JSON.stringify({ videoId })),
 			class: class_(
 				'relative',
