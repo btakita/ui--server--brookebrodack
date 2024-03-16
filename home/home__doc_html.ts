@@ -1,29 +1,20 @@
+import { email_url } from '@btakita/domain--any--brookebrodack/social'
+import { fa_email_, heroicons_film_, heroicons_video_camera_ } from '@btakita/ui--any--brookebrodack/icon'
 import {
-	email_url,
-	instagram_url,
-	linkedin_url,
-	patreon_url,
-	youtube_url
-} from '@btakita/domain--any--brookebrodack/social'
-import {
-	fa_email_,
-	fa_instagram_,
-	fa_linkedin_,
-	fa_patreon_,
-	fa_youtube_,
-	heroicons_film_,
-	heroicons_video_camera_
-} from '@btakita/ui--any--brookebrodack/icon'
-import { WebPage__description__set, WebPage__headline__set, WebPage__name__set } from '@rappstack/domain--server/jsonld'
-import { schema_org_Article_rdfa, type schema_org_props_rdfa_T } from '@rappstack/domain--server/rdfa'
+	WebPage__description__set,
+	WebPage__headline__set,
+	WebPage__name__set,
+	WebPage__type__set
+} from '@rappstack/domain--server/jsonld'
+import { type schema_org_props_rdfa_T, schema_org_rdfa_ } from '@rappstack/domain--server/rdfa'
 import { site__social_a1_, site__title_ } from '@rappstack/domain--server/site'
 import { iconify_rss_ } from '@rappstack/ui--any--blog/icon'
 import { schema_org_Article__link_a1_ } from '@rappstack/ui--server/rdfa'
 import { class_, style_ } from 'ctx-core/html'
 import { type tag_dom_T } from 'relementjs'
-import { a_, article_, div_, section_ } from 'relementjs/html'
+import { a_, div_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import { type Article } from 'schema-dts'
+import type { CollectionPage, WebPageElement } from 'schema-dts'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
@@ -32,6 +23,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	WebPage__name__set(ctx, title)
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
+	WebPage__type__set(ctx, 'CollectionPage')
 	return (
 		layout__doc_html_({
 			ctx,
@@ -41,32 +33,29 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				class: class_('home__doc_html'),
 			}
 		}, [
-			article_({
-				...schema_org_Article_rdfa,
+			schema_org_Article__link_a1_(ctx),
+			div_({
+				...schema_org_rdfa_<WebPageElement>('WebPageElement'),
+				...<schema_org_props_rdfa_T<CollectionPage>>{
+					property: 'mainContentOfPage',
+				},
+				class: class_(
+					'min-h-screen',
+					'overflow-x-hidden',
+					'relative',
+					'bg-cover',
+					'bg-no-repeat'),
+				style: style_({
+					'background-image': 'url(' + nature_origami_bg_webp + ')'
+				})
 			}, [
-				schema_org_Article__link_a1_(ctx),
-				div_({
-					...<schema_org_props_rdfa_T<Article>>{
-						property: 'articleBody'
-					},
-					class: class_(
-						'min-h-screen',
-						'overflow-x-hidden',
-						'relative',
-						'bg-cover',
-						'bg-no-repeat'),
-					style: style_({
-						'background-image': 'url(' + nature_origami_bg_webp + ')'
-					})
-				}, [
-					site__header_({
-						ctx,
-						h1_text: 'Brooke Brodack'
-					}),
-					home_link__section_(),
-					site__footer_({ ctx })
-				])
-			]),
+				site__header_({
+					ctx,
+					h1_text: 'Brooke Brodack'
+				}),
+				home_link__section_(),
+				site__footer_({ ctx })
+			])
 		])
 	)
 	function home_link__section_() {

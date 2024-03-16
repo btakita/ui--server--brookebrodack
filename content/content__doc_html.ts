@@ -9,18 +9,14 @@ import {
 	WebPage__name__set,
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
-import {
-	schema_org_Article_rdfa,
-	type schema_org_props_rdfa_T,
-	schema_org_thing_rdfa_
-} from '@rappstack/domain--server/rdfa'
+import { type schema_org_props_rdfa_T, schema_org_rdfa_ } from '@rappstack/domain--server/rdfa'
 import { request_url__pathname_ } from '@rappstack/domain--server/request'
 import { site__website_ } from '@rappstack/domain--server/site'
 import { class_, style_ } from 'ctx-core/html'
 import { url__join } from 'ctx-core/uri'
-import { a_, article_, div_, h2_, img_, main_, section_ } from 'relementjs/html'
+import { a_, div_, h2_, img_, main_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { Article, CreativeWork, VideoObject } from 'schema-dts'
+import type { CollectionPage, CreativeWork, VideoObject, WebPageElement } from 'schema-dts'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -55,29 +51,23 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'backdrop-blur-3xl'),
 				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__hyop} */
 				hyop: 'content__hyop',
+				...schema_org_rdfa_<WebPageElement>('WebPageElement'),
+				...<schema_org_props_rdfa_T<CollectionPage>>{
+					property: 'mainContentOfPage'
+				}
 			}, [
-				article_({
-					...schema_org_Article_rdfa,
-				}, [
-					div_({
-						...<schema_org_props_rdfa_T<Article>>{
-							property: 'articleBody'
-						}
-					}, [
-						spinner__template_({
-							center_x: true,
-							spinner_class: class_('top-32')
-						}),
-						site__header_({
-							ctx,
-							h1_text: 'Brooke Brodack\'s Content Feed',
-							/** @see {import('@btakita/ui--browser--brookebrodack/content').content__site__header__hyop} */
-							hyop: 'content__site__header__hyop'
-						}),
-						video__div_(),
-						content_feed__section_({ ctx }),
-					]),
-				])
+				spinner__template_({
+					center_x: true,
+					spinner_class: class_('top-32')
+				}),
+				site__header_({
+					ctx,
+					h1_text: 'Brooke Brodack\'s Content Feed',
+					/** @see {import('@btakita/ui--browser--brookebrodack/content').content__site__header__hyop} */
+					hyop: 'content__site__header__hyop'
+				}),
+				video__div_(),
+				content_feed__section_({ ctx }),
 			]),
 			back_link__a_({
 				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__back_link__a__hyop} */
@@ -180,13 +170,12 @@ export function content_feed__section_({ ctx }:{
 		const { description, title, videoId } = brookebrodack_youtube_video
 		const Episode_id = url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#${videoId}_VideoObject`)
 		WebPage__hasPart__push(ctx, { '@id': Episode_id })
-		const schema_org_Episode_rdfa = schema_org_thing_rdfa_<VideoObject>('VideoObject')
 		return a_({
 			href: 'https://www.youtube.com/watch?v=' + videoId,
 			target: '_blank',
 			rel: 'noopener',
 			title,
-			...schema_org_Episode_rdfa,
+			...schema_org_rdfa_<VideoObject>('VideoObject'),
 			resource: Episode_id,
 			/** @see {https://stackoverflow.com/a/46018087/142571} */
 			rev: 'isPartOf',
