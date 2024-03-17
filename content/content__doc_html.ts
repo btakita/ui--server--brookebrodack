@@ -16,8 +16,9 @@ import {
 	schema_org_rdfa_property_,
 	schema_org_rdfa_rev_
 } from '@rappstack/domain--server/rdfa'
+import { utc_yyyymmdd_ } from 'ctx-core/all'
 import { class_, style_ } from 'ctx-core/html'
-import { a_, div_, h2_, img_, main_, section_ } from 'relementjs/html'
+import { a_, div_, em_, h2_, img_, main_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
 import type { Article, CreativeWork, VideoObject, WebPageElement } from 'schema-dts'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
@@ -175,7 +176,7 @@ export function content_feed__section_({ ctx }:{
 		brookebrodack_youtube_video:typeof youtube_video_tbl.$inferSelect,
 		idx:number
 	) {
-		const { description, title, videoId } = brookebrodack_youtube_video
+		const { description, publishedAt, title, videoId } = brookebrodack_youtube_video
 		const Episode_id_ref = schema_org_id_ref_(ctx, `${videoId}_VideoObject`)
 		WebPage__hasPart__push(ctx, Episode_id_ref)
 		return a_({
@@ -188,6 +189,8 @@ export function content_feed__section_({ ctx }:{
 			'data-op': encodeURIComponent(JSON.stringify({ videoId })),
 			class: class_(
 				'relative',
+				'flex',
+				'flex-col',
 				'w-96',
 				'mb-16',
 				'mx-[3px]',
@@ -233,18 +236,29 @@ export function content_feed__section_({ ctx }:{
 					'aspect-[4/3]',
 					'rounded-lg'),
 				loading: idx ? 'lazy' : 'eager',
-				...schema_org_rdfa_property_<CreativeWork>('thumbnailUrl'),
+				...schema_org_rdfa_property_<VideoObject>('thumbnailUrl'),
 			}),
 			h2_({
 				class: class_(
 					'text-xl',
 					'font-bold'),
-				...schema_org_rdfa_property_<CreativeWork>('name'),
+				...schema_org_rdfa_property_<VideoObject>('name'),
 			}, title),
 			description
 				? div_({
-					class: class_('text-l')
+					class: class_('text-l'),
+					...schema_org_rdfa_property_<VideoObject>('description'),
 				}, description)
+				: undefined,
+			publishedAt
+				? em_({
+					class: class_(
+						'relative',
+						'bottom-0',
+						'inline-block',
+						'mt-auto'),
+					...schema_org_rdfa_property_<VideoObject>('uploadDate')
+				}, [publishedAt.toISOString().split('T')[0]])
 				: undefined,
 		])
 	}
