@@ -3,6 +3,7 @@ import { heroicons_pause_, heroicons_video_camera_, heroicons_x_mark_ } from '@b
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { type youtube_video_tbl } from '@rappstack/domain--server--youtube/schema'
 import {
+	jsonld__add,
 	WebPage__description__set,
 	WebPage__hasPart__push,
 	WebPage__headline__set,
@@ -11,6 +12,7 @@ import {
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
 import {
+	schema_org_id_,
 	schema_org_id_ref_,
 	schema_org_rdfa_,
 	schema_org_rdfa_property_,
@@ -179,13 +181,23 @@ export function content_feed__section_({ ctx }:{
 	) {
 		const { description, publishedAt, title, videoId } = brookebrodack_youtube_video
 		const uploadDate = publishedAt.toISOString().split('T')[0]
-		const VideoObject_id_ref = schema_org_id_ref_(ctx, `${videoId}_VideoObject`)
-		WebPage__hasPart__push(ctx, VideoObject_id_ref)
+		const thumbnailUrl = videoId_thumbnail_url_(videoId, 'high')
+		// const VideoObject_id_ref = schema_org_id_ref_(ctx, `${videoId}_VideoObject`)
+		jsonld__add(ctx, ()=><VideoObject>{
+			'@id': schema_org_id_(ctx, `${videoId}_VideoObject`),
+			'@type': 'VideoObject',
+			isPartOf: Article_id_ref,
+			thumbnailUrl,
+			name: title,
+			description,
+			uploadDate
+		})
+		// WebPage__hasPart__push(ctx, VideoObject_id_ref)
 		return a_({
 			href: 'https://www.youtube.com/watch?v=' + videoId,
 			title,
-			...schema_org_rdfa_rev_<Article>('isPartOf'),
-			...schema_org_rdfa_<VideoObject>('VideoObject', VideoObject_id_ref),
+			// ...schema_org_rdfa_rev_<Article>('isPartOf'),
+			// ...schema_org_rdfa_<VideoObject>('VideoObject', VideoObject_id_ref),
 			'data-op': encodeURIComponent(JSON.stringify({ videoId })),
 			class: class_(
 				'relative',
@@ -229,25 +241,25 @@ export function content_feed__section_({ ctx }:{
 					'stroke-white')
 			}),
 			img_({
-				src: videoId_thumbnail_url_(videoId, 'high'),
+				src: thumbnailUrl,
 				alt: 'Video Thumbnail for ' + title,
 				class: class_(
 					'w-full',
 					'aspect-[4/3]',
 					'rounded-lg'),
 				loading: idx ? 'lazy' : 'eager',
-				...schema_org_rdfa_property_<VideoObject>('thumbnailUrl'),
+				// ...schema_org_rdfa_property_<VideoObject>('thumbnailUrl'),
 			}),
 			h2_({
 				class: class_(
 					'text-xl',
 					'font-bold'),
-				...schema_org_rdfa_property_<VideoObject>('name'),
+				// ...schema_org_rdfa_property_<VideoObject>('name'),
 			}, title),
 			description
 				? div_({
 					class: class_('text-l'),
-					...schema_org_rdfa_property_<VideoObject>('description'),
+					// ...schema_org_rdfa_property_<VideoObject>('description'),
 				}, description)
 				: undefined,
 			publishedAt
@@ -257,7 +269,7 @@ export function content_feed__section_({ ctx }:{
 						'bottom-0',
 						'inline-block',
 						'mt-auto'),
-					...schema_org_rdfa_property_<VideoObject>('uploadDate')
+					// ...schema_org_rdfa_property_<VideoObject>('uploadDate')
 				}, [uploadDate])
 				: undefined,
 		])
