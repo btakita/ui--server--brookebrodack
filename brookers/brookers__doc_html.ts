@@ -206,12 +206,12 @@ export function brookers__doc_html_({ ctx }:{
 			'@type': 'ItemList',
 			itemListElement:
 			brookers_timeline_a1
-				.map(({ id, title, description_line_a })=>
+				.map(({ id, title, description })=>
 					jsonld__add(ctx, ()=><ListItem>{
 						'@id': jsonld_id__new(ctx, `${id}_ListItem`),
 						'@type': 'ListItem',
 						name: title,
-						description: description_line_a?.join(' '),
+						description: description ?? '—',
 					})),
 		})
 		const Article_id_ref = jsonld__add(ctx, ()=><Article>{
@@ -222,7 +222,7 @@ export function brookers__doc_html_({ ctx }:{
 			image: url__join(site__website_(ctx)!, nature_origami_bg_webp),
 			articleBody:
 				brookers_timeline_a1
-					.map(({ title, description_line_a })=>`${title}: ${description_line_a?.join(' ') ?? '—'}`)
+					.map(({ title, description })=>`${title}: ${description ?? '—'}`)
 					.join(' |\n'),
 			about: ItemList_id_ref,
 		})
@@ -256,6 +256,7 @@ export function brookers__doc_html_({ ctx }:{
 			{
 				id: 'crazed-numa-fan',
 				at: 'Oct 23, 2005',
+				description: '>8.4 Million views',
 				description_line_a: [
 					[
 						'>8.4 Million views ',
@@ -285,12 +286,14 @@ export function brookers__doc_html_({ ctx }:{
 				id: 'carson-daly-nbc',
 				at: 'June 2006',
 				title: 'Carson Daly NBC',
+				description: '18 month development contract',
 				description_line_a: ['18 month development contract']
 			},
 			{
 				id: 'chips',
 				at: 'June 2006',
 				title: 'Chips',
+				description: 'A spoof suspense drama about eating potato chips, has been called "brilliant" by Entertainment Weekly, which has listed it among the "great moments in YouTube history."',
 				description_line_a: [
 					[
 						'A spoof suspense drama about eating potato chips, has been called "brilliant" by Entertainment Weekly, which has listed it among the "great moments in YouTube history." ',
@@ -320,17 +323,20 @@ export function brookers__doc_html_({ ctx }:{
 				id: 'most-subscribed-youtube',
 				at: 'July 3 - Aug 7 2006',
 				title: 'Most-subscribed on YouTube',
+				description: '> 64000 subscribers',
 				description_line_a: ['> 64000 subscribers']
 			},
 			{
 				id: 'tyra-banks',
 				at: 'December 6 2006',
 				title: 'Tyra Banks Show',
+				description: 'judge for a student video competition',
 				description_line_a: ['judge for a student video competition']
 			},
 			{
 				id: 'who-drank-my-orange-juice',
 				at: 'circa 2006-2007',
+				description: 'Who drank my orange juice?',
 				description_line_a: ['Who drank my orange juice?'],
 				op: {
 					type: 'youtube',
@@ -342,6 +348,7 @@ export function brookers__doc_html_({ ctx }:{
 			{
 				id: 'the-sound-of-your-voice-barenaked-ladies',
 				at: 'February 2007',
+				description: 'Appeared in music video with fellow YouTubers',
 				description_line_a: [
 					'Appeared in ',
 					tb_a_({ href: 'https://www.youtube.com/watch?v=FoFMRXlNJ6Y' }, 'music video'),
@@ -357,6 +364,7 @@ export function brookers__doc_html_({ ctx }:{
 			{
 				id: 'web-celebrity',
 				at: 'February 7, 2007',
+				description: '"Web Celebrity" published by Brookers on IYS on Feb 7, 2007 and then quickly removed.',
 				description_line_a: [
 					'"Web Celebrity" published by Brookers on IYS on Feb 7, 2007 and then quickly removed.',
 				],
@@ -370,6 +378,7 @@ export function brookers__doc_html_({ ctx }:{
 			{
 				id: 'whos-leg-is-this',
 				at: 'Sep 7, 2007',
+				description: '"if this leg is yours can you come and claim it ... its stinking up my yard..thanks" >530k views',
 				description_line_a: [
 					'"if this leg is yours can you come and claim it ... its stinking up my yard..thanks"',
 					[
@@ -390,6 +399,7 @@ export function brookers__doc_html_({ ctx }:{
 			{
 				id: 'go-sukashi-ep-1',
 				at: 'Aug 6, 2010',
+				description: 'Brooke Brodack as Sukashi\'s girlfriend',
 				description_line_a: [
 					'Brooke Brodack as Sukashi\'s girlfriend'
 				],
@@ -483,6 +493,7 @@ export function brookers__doc_html_({ ctx }:{
 			{
 				id: 'united-states-of-whateva',
 				at: 'Mar 10, 2012',
+				description: '>2.4 Million views',
 				description_line_a: [
 					[
 						'>2.4 Million views ',
@@ -501,6 +512,7 @@ export function brookers__doc_html_({ ctx }:{
 			{
 				id: 'colm-flynn',
 				at: 'Feb 8, 2022',
+				description: 'Colm Flynn\' documentary on Brookers & long form interview with Brooke Brodack.',
 				description_line_a: [
 					'Colm Flynn\' documentary on Brookers & long form interview with Brooke Brodack.'
 				],
@@ -514,7 +526,7 @@ export function brookers__doc_html_({ ctx }:{
 		]
 	}
 }
-export function brookers_timeline__ol_<env_T extends relement_env_T>({ ctx, style, ...$p }:{
+export function brookers_timeline__ol_<env_T extends relement_env_T>({ style, ...$p }:{
 	ctx:request_ctx_T,
 	class?:string
 	style?:string
@@ -671,12 +683,14 @@ type brookers_timeline_T = {
 	id:string
 	at:string
 	title:string
+	description?:string
 	description_line_a?:tag_dom_T[],
 	op?:brookers_timeline_op_T
 }|{
 	id:string
 	at:string
 	title?:string
+	description?:string
 	description_line_a?:tag_dom_T[],
 	op:brookers_timeline_op_T
 }
