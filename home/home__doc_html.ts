@@ -3,10 +3,12 @@ import { email_url } from '@btakita/domain--any--brookebrodack/social'
 import { fa_email_, heroicons_film_, heroicons_video_camera_ } from '@btakita/ui--any--brookebrodack/icon'
 import {
 	jsonld__add,
-	jsonld_id__new, WebPage__author__set,
+	jsonld_id__new,
+	WebPage__author__set,
 	WebPage__description__set,
 	WebPage__hasPart__push,
 	WebPage__headline__set,
+	WebPage__mainEntity__set,
 	WebPage__name__set,
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
@@ -27,6 +29,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
 	WebPage__author__set(ctx, undefined)
+	WebPage__mainEntity__set(ctx, Person_id_ref_(ctx))
 	WebPage__type__set(ctx, 'ProfilePage')
 	return (
 		layout__doc_html_({
