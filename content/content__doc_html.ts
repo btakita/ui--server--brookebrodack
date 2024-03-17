@@ -1,3 +1,4 @@
+import { Person_id_ref_ } from '@btakita/brookebrodack-site/jsonld/index.js'
 import { videoId_thumbnail_url_, youtube_video_a1_ } from '@btakita/domain--server--brookebrodack/youtube'
 import { heroicons_pause_, heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
@@ -7,15 +8,16 @@ import {
 	WebPage__description__set,
 	WebPage__hasPart__push,
 	WebPage__headline__set,
-	WebPage__mainContentOfPage__set,
 	WebPage__name__set,
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
-import { schema_org_id_, schema_org_id_ref_, schema_org_rdfa_ } from '@rappstack/domain--server/rdfa'
+import { schema_org_id_, schema_org_id_ref_ } from '@rappstack/domain--server/rdfa'
+import { site__website_ } from '@rappstack/domain--server/site'
 import { class_, style_ } from 'ctx-core/html'
+import { url__join } from 'ctx-core/uri'
 import { a_, div_, em_, h2_, img_, main_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { Article, VideoObject, WebPageElement } from 'schema-dts'
+import type { Article, VideoObject } from 'schema-dts'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -26,10 +28,18 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
 	WebPage__type__set(ctx, 'CollectionPage')
-	const Article_id_ref = schema_org_id_ref_(ctx, 'Article')
+	const Article_id_ref = jsonld__add(ctx, ()=><Article>{
+		'@id': schema_org_id_(ctx, 'Article'),
+		'@type': 'Article',
+		author: Person_id_ref_(ctx),
+		headline: title,
+		image: url__join(site__website_(ctx)!, nature_origami_bg_webp),
+		articleBody:
+			youtube_video_a1_(ctx)!
+				.map(youtube_video=>[youtube_video.title, youtube_video.description ?? '—'])
+				.join('\n'),
+	})
 	WebPage__hasPart__push(ctx, Article_id_ref)
-	const mainContentOfPage_id_ref = schema_org_id_ref_(ctx, 'mainContentOfPage')
-	WebPage__mainContentOfPage__set(ctx, mainContentOfPage_id_ref)
 	return (
 		layout__doc_html_({
 			ctx,
@@ -52,10 +62,8 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'min-h-screen',
 					'relative',
 					'backdrop-blur-3xl'),
-				...schema_org_rdfa_<WebPageElement>('WebPageElement', mainContentOfPage_id_ref),
 				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__hyop} */
 				hyop: 'content__hyop',
-				...schema_org_rdfa_<Article>('Article', Article_id_ref),
 			}, [
 				spinner__template_({
 					center_x: true,
@@ -163,7 +171,6 @@ export function content_feed__section_({ ctx }:{
 				'max-w-7xl',
 				'mx-auto',
 				'overflow-y-auto'),
-			...schema_org_rdfa_<Article>('Article', Article_id_ref)
 		}, [
 			...youtube_video_a1_(ctx)!.map((brookebrodack_youtube_video, idx)=>
 				youtube_video__a_(brookebrodack_youtube_video, idx)),
