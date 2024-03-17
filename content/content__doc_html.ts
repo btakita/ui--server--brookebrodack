@@ -55,8 +55,8 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'backdrop-blur-3xl'),
 				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__hyop} */
 				hyop: 'content__hyop',
+				...schema_org_rdfa_rev_<CollectionPage>('mainContentOfPage'),
 				...schema_org_rdfa_<WebContent>('WebContent', WebContent_id_ref),
-				...schema_org_rdfa_property_<CollectionPage>('mainContentOfPage'),
 			}, [
 				spinner__template_({
 					center_x: true,

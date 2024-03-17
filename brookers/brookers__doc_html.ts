@@ -523,7 +523,7 @@ export function brookers_timeline__ol_<env_T extends relement_env_T>({ ctx, styl
 			'border-gray-700',
 			$p.class),
 		style,
-		...schema_org_rdfa_property_<CollectionPage>('mainContentOfPage'),
+		...schema_org_rdfa_rev_<CollectionPage>('mainContentOfPage'),
 		...schema_org_rdfa_<ItemList>('ItemList', ItemList_id_ref),
 	}, ...children)
 }
