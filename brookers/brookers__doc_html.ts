@@ -205,14 +205,14 @@ export function brookers__doc_html_({ ctx }:{
 			'@id': jsonld_id__new(ctx, 'timeline'),
 			'@type': 'ItemList',
 			itemListElement:
-			brookers_timeline_a1
-				.map(({ id, title, description, op })=>
-					jsonld__add(ctx, ()=><ListItem>{
-						'@id': jsonld_id__new(ctx, `${id}_ListItem`),
-						'@type': 'ListItem',
-						name: op?.title ?? title,
-						description: description ?? '—',
-					})),
+				brookers_timeline_a1
+					.map(({ id, title, description, op })=>
+						jsonld__add(ctx, ()=><ListItem>{
+							'@id': jsonld_id__new(ctx, `${id}_ListItem`),
+							'@type': 'ListItem',
+							name: op?.title ?? title,
+							description: description ?? '—',
+						})),
 		})
 		const Article_id_ref = jsonld__add(ctx, ()=><Article>{
 			'@id': jsonld_id__new(ctx, 'Article'),
