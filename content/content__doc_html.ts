@@ -183,7 +183,7 @@ export function content_feed__section_({ ctx }:{
 			thumbnailUrl,
 			contentUrl,
 			name: title,
-			description: description ?? '—',
+			description: description || '—',
 			uploadDate: publishedAt.toISOString()
 		})
 		return a_({
