@@ -4,17 +4,18 @@ import {
 	WebPage__description__set,
 	WebPage__hasPart__push,
 	WebPage__headline__set,
+	WebPage__mainContentOfPage__set,
 	WebPage__name__set,
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
-import { schema_org_id_ref_, schema_org_rdfa_, schema_org_rdfa_rev_ } from '@rappstack/domain--server/rdfa'
+import { schema_org_id_ref_, schema_org_rdfa_ } from '@rappstack/domain--server/rdfa'
 import { site__social_a1_, site__title_ } from '@rappstack/domain--server/site'
 import { iconify_rss_ } from '@rappstack/ui--any--blog/icon'
 import { class_, style_ } from 'ctx-core/html'
 import { type tag_dom_T } from 'relementjs'
 import { a_, div_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { Article, ProfilePage } from 'schema-dts'
+import type { Article } from 'schema-dts'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
@@ -25,6 +26,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	WebPage__description__set(ctx, description)
 	WebPage__type__set(ctx, 'ProfilePage')
 	const Article_id_ref = schema_org_id_ref_(ctx, 'Article')
+	WebPage__mainContentOfPage__set(ctx, Article_id_ref)
 	WebPage__hasPart__push(ctx, Article_id_ref)
 	return (
 		layout__doc_html_({
@@ -36,7 +38,6 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 			}
 		}, [
 			div_({
-				...schema_org_rdfa_rev_<ProfilePage>('mainContentOfPage'),
 				...schema_org_rdfa_<Article>('Article', Article_id_ref),
 				class: class_(
 					'min-h-screen',
