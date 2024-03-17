@@ -21,7 +21,7 @@ import { class_ } from 'ctx-core/html'
 import { type relement_env_T, type tag_dom_T } from 'relementjs'
 import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { Article, ItemList, ListItem } from 'schema-dts'
+import type { Article, ItemList, ListItem, WebPageElement } from 'schema-dts'
 import { back_link__a_, layout__doc_html_ } from '../layout/index.js'
 import cooler_in_space_gif from '../public/assets/images/cooler-in-space--look-aud-right.gif'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -34,6 +34,8 @@ export function brookers__doc_html_({ ctx }:{
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
 	WebPage__type__set(ctx, 'CollectionPage')
+	const mainContentOfPage_id_ref = schema_org_id_ref_(ctx, 'mainContentOfPage')
+	WebPage__mainContentOfPage__set(ctx, mainContentOfPage_id_ref)
 	return (
 		layout__doc_html_({
 			ctx,
@@ -49,6 +51,7 @@ export function brookers__doc_html_({ ctx }:{
 					'overflow-x-hidden',
 					'relative',
 					'bg-black'),
+				...schema_org_rdfa_<WebPageElement>('WebPageElement', mainContentOfPage_id_ref),
 				/** @see {import('@btakita/ui--browser--brookebrodack/brookers').brookers__hyop} */
 				hyop: 'brookers__hyop',
 			}, [
@@ -202,7 +205,6 @@ export function brookers__doc_html_({ ctx }:{
 	}
 	function brookers_master__div_() {
 		const Article_id_ref = schema_org_id_ref_(ctx, 'Article')
-		WebPage__mainContentOfPage__set(ctx, Article_id_ref)
 		WebPage__hasPart__push(ctx, Article_id_ref)
 		return (
 			div_({

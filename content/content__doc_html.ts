@@ -19,7 +19,7 @@ import {
 import { class_, style_ } from 'ctx-core/html'
 import { a_, div_, h2_, img_, main_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { Article, CreativeWork, VideoObject } from 'schema-dts'
+import type { Article, CreativeWork, VideoObject, WebPageElement } from 'schema-dts'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -31,8 +31,9 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	WebPage__description__set(ctx, description)
 	WebPage__type__set(ctx, 'CollectionPage')
 	const Article_id_ref = schema_org_id_ref_(ctx, 'Article')
-	WebPage__mainContentOfPage__set(ctx, Article_id_ref)
 	WebPage__hasPart__push(ctx, Article_id_ref)
+	const mainContentOfPage_id_ref = schema_org_id_ref_(ctx, 'mainContentOfPage')
+	WebPage__mainContentOfPage__set(ctx, mainContentOfPage_id_ref)
 	return (
 		layout__doc_html_({
 			ctx,
@@ -55,6 +56,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'min-h-screen',
 					'relative',
 					'backdrop-blur-3xl'),
+				...schema_org_rdfa_<WebPageElement>('WebPageElement', mainContentOfPage_id_ref),
 				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__hyop} */
 				hyop: 'content__hyop',
 				...schema_org_rdfa_<Article>('Article', Article_id_ref),

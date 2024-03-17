@@ -15,7 +15,7 @@ import { class_, style_ } from 'ctx-core/html'
 import { type tag_dom_T } from 'relementjs'
 import { a_, div_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { Article } from 'schema-dts'
+import type { Article, WebPageElement } from 'schema-dts'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
@@ -25,9 +25,8 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
 	WebPage__type__set(ctx, 'ProfilePage')
-	const Article_id_ref = schema_org_id_ref_(ctx, 'Article')
-	WebPage__mainContentOfPage__set(ctx, Article_id_ref)
-	WebPage__hasPart__push(ctx, Article_id_ref)
+	const mainContentOfPage_id_ref = schema_org_id_ref_(ctx, 'mainContentOfPage')
+	WebPage__mainContentOfPage__set(ctx, mainContentOfPage_id_ref)
 	return (
 		layout__doc_html_({
 			ctx,
@@ -38,7 +37,6 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 			}
 		}, [
 			div_({
-				...schema_org_rdfa_<Article>('Article', Article_id_ref),
 				class: class_(
 					'min-h-screen',
 					'overflow-x-hidden',
@@ -47,7 +45,8 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'bg-no-repeat'),
 				style: style_({
 					'background-image': 'url(' + nature_origami_bg_webp + ')'
-				})
+				}),
+				...schema_org_rdfa_<WebPageElement>('WebPageElement', mainContentOfPage_id_ref),
 			}, [
 				site__header_({
 					ctx,
@@ -59,6 +58,8 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 		])
 	)
 	function home_link__section_() {
+		const Article_id_ref = schema_org_id_ref_(ctx, 'Article')
+		WebPage__hasPart__push(ctx, Article_id_ref)
 		return (
 			section_({
 				class: class_(
@@ -66,7 +67,8 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'flex-col',
 					'items-center',
 					'justify-center',
-					'my-12')
+					'my-12'),
+				...schema_org_rdfa_<Article>('Article', Article_id_ref),
 			}, [
 				home_link__a_({
 					href: '/content',
