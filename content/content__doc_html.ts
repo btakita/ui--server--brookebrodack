@@ -190,7 +190,7 @@ export function content_feed__section_({ ctx }:{
 			thumbnailUrl,
 			contentUrl,
 			name: title,
-			description,
+			description: description ?? '—',
 			uploadDate: publishedAt.toISOString()
 		})
 		// WebPage__hasPart__push(ctx, VideoObject_id_ref)
