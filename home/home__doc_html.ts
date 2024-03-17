@@ -3,7 +3,7 @@ import { email_url } from '@btakita/domain--any--brookebrodack/social'
 import { fa_email_, heroicons_film_, heroicons_video_camera_ } from '@btakita/ui--any--brookebrodack/icon'
 import {
 	jsonld__add,
-	jsonld_id__new,
+	jsonld_id__new, WebPage__author__set,
 	WebPage__description__set,
 	WebPage__hasPart__push,
 	WebPage__headline__set,
@@ -26,6 +26,7 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	WebPage__name__set(ctx, title)
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
+	WebPage__author__set(ctx, undefined)
 	WebPage__type__set(ctx, 'ProfilePage')
 	return (
 		layout__doc_html_({
