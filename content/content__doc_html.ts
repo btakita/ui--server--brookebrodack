@@ -180,7 +180,7 @@ export function content_feed__section_({ ctx }:{
 		const { description, publishedAt, title, videoId } = brookebrodack_youtube_video
 		const uploadDate = publishedAt.toISOString().split('T')[0]
 		const VideoObject_id_ref = schema_org_id_ref_(ctx, `${videoId}_VideoObject`)
-		// WebPage__hasPart__push(ctx, VideoObject_id_ref)
+		WebPage__hasPart__push(ctx, VideoObject_id_ref)
 		return a_({
 			href: 'https://www.youtube.com/watch?v=' + videoId,
 			title,
