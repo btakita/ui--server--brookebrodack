@@ -5,13 +5,14 @@ import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { type youtube_video_tbl } from '@rappstack/domain--server--youtube/schema'
 import {
 	jsonld__add,
+	jsonld_id__new,
+	jsonld_id_ref__new,
 	WebPage__description__set,
 	WebPage__hasPart__push,
 	WebPage__headline__set,
 	WebPage__name__set,
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
-import { schema_org_id_, schema_org_id_ref_ } from '@rappstack/domain--server/rdfa'
 import { site__website_ } from '@rappstack/domain--server/site'
 import { class_, style_ } from 'ctx-core/html'
 import { url__join } from 'ctx-core/uri'
@@ -29,7 +30,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	WebPage__description__set(ctx, description)
 	WebPage__type__set(ctx, 'CollectionPage')
 	const Article_id_ref = jsonld__add(ctx, ()=><Article>{
-		'@id': schema_org_id_(ctx, 'Article'),
+		'@id': jsonld_id__new(ctx, 'Article'),
 		'@type': 'Article',
 		author: Person_id_ref_(ctx),
 		headline: title,
@@ -155,7 +156,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 export function content_feed__section_({ ctx }:{
 	ctx:request_ctx_T
 }) {
-	const Article_id_ref = schema_org_id_ref_(ctx, 'Article')
+	const Article_id_ref = jsonld_id_ref__new(ctx, 'Article')
 	WebPage__hasPart__push(ctx, Article_id_ref)
 	return (
 		section_({
@@ -184,7 +185,7 @@ export function content_feed__section_({ ctx }:{
 		const thumbnailUrl = videoId_thumbnail_url_(videoId, 'high')
 		const contentUrl = 'https://www.youtube.com/watch?v=' + videoId
 		jsonld__add(ctx, ()=><VideoObject>{
-			'@id': schema_org_id_(ctx, `${videoId}_VideoObject`),
+			'@id': jsonld_id__new(ctx, `${videoId}_VideoObject`),
 			'@type': 'VideoObject',
 			isPartOf: Article_id_ref,
 			thumbnailUrl,

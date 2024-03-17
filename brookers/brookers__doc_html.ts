@@ -3,6 +3,7 @@ import { type brookers_timeline_op_T } from '@btakita/domain--any--brookebrodack
 import { heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import {
+	jsonld_id_ref__new,
 	WebPage__description__set,
 	WebPage__hasPart__push,
 	WebPage__headline__set,
@@ -10,12 +11,7 @@ import {
 	WebPage__name__set,
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
-import {
-	schema_org_id_ref_,
-	schema_org_rdfa_,
-	schema_org_rdfa_property_,
-	schema_org_rdfa_rev_
-} from '@rappstack/domain--server/rdfa'
+import { schema_org_rdfa_, schema_org_rdfa_property_, schema_org_rdfa_rev_ } from '@rappstack/domain--server/rdfa'
 import { tb_a_ } from '@rappstack/ui--any/anchor'
 import { class_ } from 'ctx-core/html'
 import { type relement_env_T, type tag_dom_T } from 'relementjs'
@@ -34,7 +30,7 @@ export function brookers__doc_html_({ ctx }:{
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
 	WebPage__type__set(ctx, 'CollectionPage')
-	const mainContentOfPage_id_ref = schema_org_id_ref_(ctx, 'mainContentOfPage')
+	const mainContentOfPage_id_ref = jsonld_id_ref__new(ctx, 'mainContentOfPage')
 	WebPage__mainContentOfPage__set(ctx, mainContentOfPage_id_ref)
 	return (
 		layout__doc_html_({
@@ -204,7 +200,7 @@ export function brookers__doc_html_({ ctx }:{
 		)
 	}
 	function brookers_master__div_() {
-		const Article_id_ref = schema_org_id_ref_(ctx, 'Article')
+		const Article_id_ref = jsonld_id_ref__new(ctx, 'Article')
 		WebPage__hasPart__push(ctx, Article_id_ref)
 		return (
 			div_({
@@ -515,7 +511,7 @@ export function brookers_timeline__ol_<env_T extends relement_env_T>({ ctx, styl
 	class?:string
 	style?:string
 }, ...children:tag_dom_T[]) {
-	const ItemList_id_ref = schema_org_id_ref_(ctx, 'ItemList')
+	const ItemList_id_ref = jsonld_id_ref__new(ctx, 'ItemList')
 	WebPage__hasPart__push(ctx, ItemList_id_ref)
 	return ol_<env_T>({
 		class: class_(
@@ -552,7 +548,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 	description_line_a?:tag_dom_T[],
 	op:brookers_timeline_op_T
 }, ...children:tag_dom_T<env_T>[]) {
-	const ListItem_id_ref = schema_org_id_ref_(ctx, `${id}_ListItem`)
+	const ListItem_id_ref = jsonld_id_ref__new(ctx, `${id}_ListItem`)
 	return (
 		li_<env_T>({
 			class: class_(

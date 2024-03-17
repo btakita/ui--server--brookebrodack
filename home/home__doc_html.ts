@@ -1,21 +1,23 @@
+import { Person_id_ref_ } from '@btakita/brookebrodack-site/jsonld/index.js'
 import { email_url } from '@btakita/domain--any--brookebrodack/social'
 import { fa_email_, heroicons_film_, heroicons_video_camera_ } from '@btakita/ui--any--brookebrodack/icon'
 import {
+	jsonld__add,
+	jsonld_id__new,
 	WebPage__description__set,
 	WebPage__hasPart__push,
 	WebPage__headline__set,
-	WebPage__mainContentOfPage__set,
 	WebPage__name__set,
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
-import { schema_org_id_ref_, schema_org_rdfa_ } from '@rappstack/domain--server/rdfa'
-import { site__social_a1_, site__title_ } from '@rappstack/domain--server/site'
+import { site__social_a1_, site__title_, site__website_ } from '@rappstack/domain--server/site'
 import { iconify_rss_ } from '@rappstack/ui--any--blog/icon'
 import { class_, style_ } from 'ctx-core/html'
+import { url__join } from 'ctx-core/uri'
 import { type tag_dom_T } from 'relementjs'
 import { a_, div_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { Article, WebPageElement } from 'schema-dts'
+import type { Article } from 'schema-dts'
 import { layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
@@ -25,8 +27,6 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
 	WebPage__type__set(ctx, 'ProfilePage')
-	const mainContentOfPage_id_ref = schema_org_id_ref_(ctx, 'mainContentOfPage')
-	WebPage__mainContentOfPage__set(ctx, mainContentOfPage_id_ref)
 	return (
 		layout__doc_html_({
 			ctx,
@@ -46,7 +46,6 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				style: style_({
 					'background-image': 'url(' + nature_origami_bg_webp + ')'
 				}),
-				...schema_org_rdfa_<WebPageElement>('WebPageElement', mainContentOfPage_id_ref),
 			}, [
 				site__header_({
 					ctx,
@@ -58,7 +57,21 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 		])
 	)
 	function home_link__section_() {
-		const Article_id_ref = schema_org_id_ref_(ctx, 'Article')
+		const Article_id_ref = jsonld__add(ctx, ()=><Article>{
+			'@id': jsonld_id__new(ctx, 'Article'),
+			'@type': 'Article',
+			author: Person_id_ref_(ctx),
+			headline: title,
+			image: url__join(site__website_(ctx)!, nature_origami_bg_webp),
+			articleBody:
+				[
+					'Content Feed',
+					'Brookers Timeline',
+					...site__social_a1_(ctx)!.map(({ link_title })=>link_title),
+					'Email',
+					'RSS Feed'
+				].join(' | '),
+		})
 		WebPage__hasPart__push(ctx, Article_id_ref)
 		return (
 			section_({
@@ -68,7 +81,6 @@ export function home__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'items-center',
 					'justify-center',
 					'my-12'),
-				...schema_org_rdfa_<Article>('Article', Article_id_ref),
 			}, [
 				home_link__a_({
 					href: '/content',
