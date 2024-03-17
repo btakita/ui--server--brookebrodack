@@ -178,13 +178,14 @@ export function content_feed__section_({ ctx }:{
 		idx:number
 	) {
 		const { description, publishedAt, title, videoId } = brookebrodack_youtube_video
-		const Episode_id_ref = schema_org_id_ref_(ctx, `${videoId}_VideoObject`)
-		WebPage__hasPart__push(ctx, Episode_id_ref)
+		const uploadDate = publishedAt.toISOString().split('T')[0]
+		const VideoObject_id_ref = schema_org_id_ref_(ctx, `${videoId}_VideoObject`)
+		// WebPage__hasPart__push(ctx, VideoObject_id_ref)
 		return a_({
 			href: 'https://www.youtube.com/watch?v=' + videoId,
 			title,
 			...schema_org_rdfa_rev_<Article>('isPartOf'),
-			...schema_org_rdfa_<VideoObject>('VideoObject', Episode_id_ref),
+			...schema_org_rdfa_<VideoObject>('VideoObject', VideoObject_id_ref),
 			'data-op': encodeURIComponent(JSON.stringify({ videoId })),
 			class: class_(
 				'relative',
@@ -257,7 +258,7 @@ export function content_feed__section_({ ctx }:{
 						'inline-block',
 						'mt-auto'),
 					...schema_org_rdfa_property_<VideoObject>('uploadDate')
-				}, [publishedAt.toISOString().split('T')[0]])
+				}, [uploadDate])
 				: undefined,
 		])
 	}
