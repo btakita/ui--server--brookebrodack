@@ -10,19 +10,17 @@ import {
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
 import {
+	schema_org_id_ref_,
 	type schema_org_props_rdfa_T,
-	schema_org_rdfa_resource_,
+	schema_org_rdfa_,
 	schema_org_rdfa_rev_
 } from '@rappstack/domain--server/rdfa'
-import { request_url__pathname_ } from '@rappstack/domain--server/request'
-import { site__website_ } from '@rappstack/domain--server/site'
 import { tb_a_ } from '@rappstack/ui--any/anchor'
 import { class_ } from 'ctx-core/html'
-import { url__join } from 'ctx-core/uri'
 import { type relement_env_T, type tag_dom_T } from 'relementjs'
 import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { CollectionPage, CreativeWork, ItemList, ListItem } from 'schema-dts'
+import type { CollectionPage, ItemList, ListItem } from 'schema-dts'
 import { back_link__a_, layout__doc_html_ } from '../layout/index.js'
 import cooler_in_space_gif from '../public/assets/images/cooler-in-space--look-aud-right.gif'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -224,7 +222,7 @@ export function brookers__doc_html_({ ctx }:{
 					}),
 					brookers_timeline__li_({
 						ctx,
-						id: 'chips',
+						id: 'crazed-numa-fan',
 						at: 'Oct 23, 2005',
 						description_line_a: [
 							[
@@ -510,7 +508,7 @@ export function brookers_timeline__ol_<env_T extends relement_env_T>({ ctx, styl
 	class?:string
 	style?:string
 }, ...children:tag_dom_T[]) {
-	const ItemList_id_ref = { '@id': url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#ItemList`) }
+	const ItemList_id_ref = schema_org_id_ref_(ctx, 'ItemList')
 	WebPage__hasPart__push(ctx, ItemList_id_ref)
 	return ol_<env_T>({
 		class: class_(
@@ -525,7 +523,7 @@ export function brookers_timeline__ol_<env_T extends relement_env_T>({ ctx, styl
 		...<schema_org_props_rdfa_T<CollectionPage>>{
 			property: 'mainContentOfPage'
 		},
-		...schema_org_rdfa_resource_<ItemList>('ItemList', ItemList_id_ref),
+		...schema_org_rdfa_<ItemList>('ItemList', ItemList_id_ref),
 	}, ...children)
 }
 export function brookers_timeline__li_<env_T extends relement_env_T>({
@@ -550,7 +548,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 	description_line_a?:tag_dom_T[],
 	op:brookers_timeline_op_T
 }, ...children:tag_dom_T<env_T>[]) {
-	const ListItem_id_ref = { '@id': url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#${id}_ListItem`) }
+	const ListItem_id_ref = schema_org_id_ref_(ctx, `${id}_ListItem`)
 	WebPage__hasPart__push(ctx, ListItem_id_ref)
 	return (
 		li_<env_T>({
@@ -565,7 +563,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 				'group'),
 			'data-op': op ? encodeURIComponent(JSON.stringify(op)) : undefined,
 			...schema_org_rdfa_rev_<ItemList>('itemListElement'),
-			...schema_org_rdfa_resource_<ListItem>('ListItem', ListItem_id_ref),
+			...schema_org_rdfa_<ListItem>('ListItem', ListItem_id_ref),
 		}, [
 			div_({
 				class: class_(
@@ -631,7 +629,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 							'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
 						]
 						: undefined),
-				...<schema_org_props_rdfa_T<CreativeWork>>{
+				...<schema_org_props_rdfa_T<ListItem>>{
 					property: 'name'
 				}
 			}, (op?.title ?? title) + ' '),
@@ -649,7 +647,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 								'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
 							]
 							: undefined),
-					...<schema_org_props_rdfa_T<CreativeWork>>{
+					...<schema_org_props_rdfa_T<ListItem>>{
 						property: 'description'
 					}
 				}, [description_line, ' '])),

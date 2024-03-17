@@ -10,15 +10,12 @@ import {
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
 import {
+	schema_org_id_ref_,
 	type schema_org_props_rdfa_T,
 	schema_org_rdfa_,
-	schema_org_rdfa_resource_,
 	schema_org_rdfa_rev_
 } from '@rappstack/domain--server/rdfa'
-import { request_url__pathname_ } from '@rappstack/domain--server/request'
-import { site__website_ } from '@rappstack/domain--server/site'
 import { class_, style_ } from 'ctx-core/html'
-import { url__join } from 'ctx-core/uri'
 import { a_, div_, h2_, img_, main_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
 import type { Article, CollectionPage, CreativeWork, VideoObject, WebContent } from 'schema-dts'
@@ -32,6 +29,8 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
 	WebPage__type__set(ctx, 'CollectionPage')
+	const WebContent_id_ref = schema_org_id_ref_(ctx, 'WebContent')
+	WebPage__hasPart__push(ctx, WebContent_id_ref)
 	return (
 		layout__doc_html_({
 			ctx,
@@ -56,7 +55,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					'backdrop-blur-3xl'),
 				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__hyop} */
 				hyop: 'content__hyop',
-				...schema_org_rdfa_<WebContent>('WebContent'),
+				...schema_org_rdfa_<WebContent>('WebContent', WebContent_id_ref),
 				...<schema_org_props_rdfa_T<CollectionPage>>{
 					property: 'mainContentOfPage'
 				}
@@ -151,6 +150,8 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 export function content_feed__section_({ ctx }:{
 	ctx:request_ctx_T
 }) {
+	const Article_id_ref = schema_org_id_ref_(ctx, 'Article')
+	WebPage__hasPart__push(ctx, Article_id_ref)
 	return (
 		section_({
 			id: 'content_feed',
@@ -165,7 +166,7 @@ export function content_feed__section_({ ctx }:{
 				'max-w-7xl',
 				'mx-auto',
 				'overflow-y-auto'),
-			...schema_org_rdfa_<Article>('Article')
+			...schema_org_rdfa_<Article>('Article', Article_id_ref)
 		}, youtube_video_a1_(ctx)!.map((brookebrodack_youtube_video, idx)=>
 			youtube_video__a_(brookebrodack_youtube_video, idx)))
 	)
@@ -174,7 +175,7 @@ export function content_feed__section_({ ctx }:{
 		idx:number
 	) {
 		const { description, title, videoId } = brookebrodack_youtube_video
-		const Episode_id_ref = { '@id': url__join(site__website_(ctx)!, request_url__pathname_(ctx), `#${videoId}_VideoObject`) }
+		const Episode_id_ref = schema_org_id_ref_(ctx, `${videoId}_VideoObject`)
 		WebPage__hasPart__push(ctx, Episode_id_ref)
 		return a_({
 			href: 'https://www.youtube.com/watch?v=' + videoId,
@@ -182,7 +183,7 @@ export function content_feed__section_({ ctx }:{
 			rel: 'noopener',
 			title,
 			...schema_org_rdfa_rev_<Article>('isPartOf'),
-			...schema_org_rdfa_resource_<VideoObject>('VideoObject', Episode_id_ref),
+			...schema_org_rdfa_<VideoObject>('VideoObject', Episode_id_ref),
 			'data-op': encodeURIComponent(JSON.stringify({ videoId })),
 			class: class_(
 				'relative',
