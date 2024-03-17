@@ -16,11 +16,10 @@ import {
 	schema_org_rdfa_property_,
 	schema_org_rdfa_rev_
 } from '@rappstack/domain--server/rdfa'
-import { utc_yyyymmdd_ } from 'ctx-core/all'
 import { class_, style_ } from 'ctx-core/html'
 import { a_, div_, em_, h2_, img_, main_, section_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { Article, CreativeWork, VideoObject, WebPageElement } from 'schema-dts'
+import type { Article, VideoObject, WebPageElement } from 'schema-dts'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -169,8 +168,10 @@ export function content_feed__section_({ ctx }:{
 				'mx-auto',
 				'overflow-y-auto'),
 			...schema_org_rdfa_<Article>('Article', Article_id_ref)
-		}, youtube_video_a1_(ctx)!.map((brookebrodack_youtube_video, idx)=>
-			youtube_video__a_(brookebrodack_youtube_video, idx)))
+		}, [
+			...youtube_video_a1_(ctx)!.map((brookebrodack_youtube_video, idx)=>
+				youtube_video__a_(brookebrodack_youtube_video, idx)),
+		])
 	)
 	function youtube_video__a_(
 		brookebrodack_youtube_video:typeof youtube_video_tbl.$inferSelect,
@@ -181,8 +182,6 @@ export function content_feed__section_({ ctx }:{
 		WebPage__hasPart__push(ctx, Episode_id_ref)
 		return a_({
 			href: 'https://www.youtube.com/watch?v=' + videoId,
-			target: '_blank',
-			rel: 'noopener',
 			title,
 			...schema_org_rdfa_rev_<Article>('isPartOf'),
 			...schema_org_rdfa_<VideoObject>('VideoObject', Episode_id_ref),
