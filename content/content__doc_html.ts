@@ -11,8 +11,8 @@ import {
 } from '@rappstack/domain--server/jsonld'
 import {
 	schema_org_id_ref_,
-	type schema_org_props_rdfa_T,
 	schema_org_rdfa_,
+	schema_org_rdfa_property_,
 	schema_org_rdfa_rev_
 } from '@rappstack/domain--server/rdfa'
 import { class_, style_ } from 'ctx-core/html'
@@ -56,9 +56,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				/** @see {import('@btakita/ui--browser--brookebrodack/content').content__hyop} */
 				hyop: 'content__hyop',
 				...schema_org_rdfa_<WebContent>('WebContent', WebContent_id_ref),
-				...<schema_org_props_rdfa_T<CollectionPage>>{
-					property: 'mainContentOfPage'
-				}
+				...schema_org_rdfa_property_<CollectionPage>('mainContentOfPage'),
 			}, [
 				spinner__template_({
 					center_x: true,
@@ -232,17 +230,13 @@ export function content_feed__section_({ ctx }:{
 					'aspect-[4/3]',
 					'rounded-lg'),
 				loading: idx ? 'lazy' : 'eager',
-				...<schema_org_props_rdfa_T<CreativeWork>>{
-					property: 'thumbnailUrl'
-				}
+				...schema_org_rdfa_property_<CreativeWork>('thumbnailUrl'),
 			}),
 			h2_({
 				class: class_(
 					'text-xl',
 					'font-bold'),
-				...<schema_org_props_rdfa_T<CreativeWork>>{
-					property: 'name'
-				}
+				...schema_org_rdfa_property_<CreativeWork>('name'),
 			}, title),
 			description
 				? div_({

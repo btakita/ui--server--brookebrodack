@@ -11,8 +11,8 @@ import {
 } from '@rappstack/domain--server/jsonld'
 import {
 	schema_org_id_ref_,
-	type schema_org_props_rdfa_T,
 	schema_org_rdfa_,
+	schema_org_rdfa_property_,
 	schema_org_rdfa_rev_
 } from '@rappstack/domain--server/rdfa'
 import { tb_a_ } from '@rappstack/ui--any/anchor'
@@ -20,7 +20,7 @@ import { class_ } from 'ctx-core/html'
 import { type relement_env_T, type tag_dom_T } from 'relementjs'
 import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { CollectionPage, ItemList, ListItem } from 'schema-dts'
+import type { Article, CollectionPage, ItemList, ListItem } from 'schema-dts'
 import { back_link__a_, layout__doc_html_ } from '../layout/index.js'
 import cooler_in_space_gif from '../public/assets/images/cooler-in-space--look-aud-right.gif'
 import { YT_player__div_ } from '../youtube/index.js'
@@ -200,6 +200,8 @@ export function brookers__doc_html_({ ctx }:{
 		)
 	}
 	function brookers_master__div_() {
+		const Article_id_ref = schema_org_id_ref_(ctx, 'Article')
+		WebPage__hasPart__push(ctx, Article_id_ref)
 		return (
 			div_({
 				class: class_(
@@ -212,6 +214,7 @@ export function brookers__doc_html_({ ctx }:{
 					'mt-auto',
 					'max-w-xs',
 					'ml-4'),
+				...schema_org_rdfa_<Article>('Article', Article_id_ref),
 			}, [
 				brookers_timeline__ol_({ ctx }, [
 					brookers_timeline__li_({
@@ -520,9 +523,7 @@ export function brookers_timeline__ol_<env_T extends relement_env_T>({ ctx, styl
 			'border-gray-700',
 			$p.class),
 		style,
-		...<schema_org_props_rdfa_T<CollectionPage>>{
-			property: 'mainContentOfPage'
-		},
+		...schema_org_rdfa_property_<CollectionPage>('mainContentOfPage'),
 		...schema_org_rdfa_<ItemList>('ItemList', ItemList_id_ref),
 	}, ...children)
 }
@@ -549,7 +550,6 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 	op:brookers_timeline_op_T
 }, ...children:tag_dom_T<env_T>[]) {
 	const ListItem_id_ref = schema_org_id_ref_(ctx, `${id}_ListItem`)
-	WebPage__hasPart__push(ctx, ListItem_id_ref)
 	return (
 		li_<env_T>({
 			class: class_(
@@ -629,9 +629,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 							'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
 						]
 						: undefined),
-				...<schema_org_props_rdfa_T<ListItem>>{
-					property: 'name'
-				}
+				...schema_org_rdfa_property_<ListItem>('name'),
 			}, (op?.title ?? title) + ' '),
 			(description_line_a || []).map(description_line=>
 				p_({
@@ -647,9 +645,7 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 								'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
 							]
 							: undefined),
-					...<schema_org_props_rdfa_T<ListItem>>{
-						property: 'description'
-					}
+					...schema_org_rdfa_property_<ListItem>('description'),
 				}, [description_line, ' '])),
 			...children
 		])
