@@ -206,11 +206,11 @@ export function brookers__doc_html_({ ctx }:{
 			'@type': 'ItemList',
 			itemListElement:
 			brookers_timeline_a1
-				.map(({ id, title, description })=>
+				.map(({ id, title, description, op })=>
 					jsonld__add(ctx, ()=><ListItem>{
 						'@id': jsonld_id__new(ctx, `${id}_ListItem`),
 						'@type': 'ListItem',
-						name: title,
+						name: op?.title ?? title,
 						description: description ?? '—',
 					})),
 		})
@@ -222,7 +222,7 @@ export function brookers__doc_html_({ ctx }:{
 			image: url__join(site__website_(ctx)!, nature_origami_bg_webp),
 			articleBody:
 				brookers_timeline_a1
-					.map(({ title, description })=>`${title}: ${description ?? '—'}`)
+					.map(({ title, description, op })=>`${op?.title ?? title}: ${description ?? '—'}`)
 					.join(' |\n'),
 			about: ItemList_id_ref,
 		})
