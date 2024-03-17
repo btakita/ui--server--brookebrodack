@@ -1,25 +1,28 @@
 import '@btakita/ui--any--brookebrodack/neon'
+import { Person_id_ref_ } from '@btakita/brookebrodack-site/jsonld/index.js'
 import { type brookers_timeline_op_T } from '@btakita/domain--any--brookebrodack/brookers'
 import { heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import {
-	jsonld_id_ref__new,
+	jsonld__add,
+	jsonld_id__new,
 	WebPage__description__set,
 	WebPage__hasPart__push,
 	WebPage__headline__set,
-	WebPage__mainContentOfPage__set,
 	WebPage__name__set,
 	WebPage__type__set
 } from '@rappstack/domain--server/jsonld'
-import { schema_org_rdfa_, schema_org_rdfa_property_, schema_org_rdfa_rev_ } from '@rappstack/domain--server/rdfa'
+import { site__website_ } from '@rappstack/domain--server/site'
 import { tb_a_ } from '@rappstack/ui--any/anchor'
 import { class_ } from 'ctx-core/html'
+import { url__join } from 'ctx-core/uri'
 import { type relement_env_T, type tag_dom_T } from 'relementjs'
 import { div_, h1_, h2_, h3_, iframe_, img_, li_, ol_, p_, sup_, time_ } from 'relementjs/html'
 import { type request_ctx_T } from 'relysjs/server'
-import type { Article, ItemList, ListItem, WebPageElement } from 'schema-dts'
+import type { Article, ItemList, ListItem } from 'schema-dts'
 import { back_link__a_, layout__doc_html_ } from '../layout/index.js'
 import cooler_in_space_gif from '../public/assets/images/cooler-in-space--look-aud-right.gif'
+import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 import { YT_player__div_ } from '../youtube/index.js'
 export function brookers__doc_html_({ ctx }:{
 	ctx:request_ctx_T
@@ -30,8 +33,6 @@ export function brookers__doc_html_({ ctx }:{
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
 	WebPage__type__set(ctx, 'CollectionPage')
-	const mainContentOfPage_id_ref = jsonld_id_ref__new(ctx, 'mainContentOfPage')
-	WebPage__mainContentOfPage__set(ctx, mainContentOfPage_id_ref)
 	return (
 		layout__doc_html_({
 			ctx,
@@ -47,7 +48,6 @@ export function brookers__doc_html_({ ctx }:{
 					'overflow-x-hidden',
 					'relative',
 					'bg-black'),
-				...schema_org_rdfa_<WebPageElement>('WebPageElement', mainContentOfPage_id_ref),
 				/** @see {import('@btakita/ui--browser--brookebrodack/brookers').brookers__hyop} */
 				hyop: 'brookers__hyop',
 			}, [
@@ -200,7 +200,32 @@ export function brookers__doc_html_({ ctx }:{
 		)
 	}
 	function brookers_master__div_() {
-		const Article_id_ref = jsonld_id_ref__new(ctx, 'Article')
+		const brookers_timeline_a1 = brookers_timeline_a1_()
+		const ItemList_id_ref = jsonld__add(ctx, ()=><ItemList>{
+			'@id': jsonld_id__new(ctx, 'timeline'),
+			'@type': 'ItemList',
+			itemListElement:
+			brookers_timeline_a1
+				.map(({ id, title, description_line_a })=>
+					jsonld__add(ctx, ()=><ListItem>{
+						'@id': jsonld_id__new(ctx, `${id}_ListItem`),
+						'@type': 'ListItem',
+						name: title,
+						description: description_line_a?.join(' '),
+					})),
+		})
+		const Article_id_ref = jsonld__add(ctx, ()=><Article>{
+			'@id': jsonld_id__new(ctx, 'Article'),
+			'@type': 'Article',
+			author: Person_id_ref_(ctx),
+			headline: title,
+			image: url__join(site__website_(ctx)!, nature_origami_bg_webp),
+			articleBody:
+				brookers_timeline_a1
+					.map(({ title, description_line_a })=>`${title}: ${description_line_a?.join(' ') ?? '—'}`)
+					.join(' |\n'),
+			about: ItemList_id_ref,
+		})
 		WebPage__hasPart__push(ctx, Article_id_ref)
 		return (
 			div_({
@@ -214,296 +239,279 @@ export function brookers__doc_html_({ ctx }:{
 					'mt-auto',
 					'max-w-xs',
 					'ml-4'),
-				...schema_org_rdfa_<Article>('Article', Article_id_ref),
 			}, [
 				brookers_timeline__ol_({ ctx }, [
-					brookers_timeline__li_({
-						ctx,
-						id: 'brookers-first-video',
-						at: 'September 2005',
-						title: 'Brookers first video on YouTube'
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'crazed-numa-fan',
-						at: 'Oct 23, 2005',
-						description_line_a: [
-							[
-								'>8.4 Million views ',
-								cite__sup_(tb_a_({
-									href: 'https://web.archive.org/web/20160210225252/https://www.youtube.com/watch?v=N6j475XI1Xg'
-								}, 'Internet Archive'))
-							]
-						],
-						op: {
-							type: 'youtube',
-							title: 'CRAZED NUMA FAN !!!!',
-							bullet: 'video',
-							videoId: 'wflZKdXC8Vo'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'what-is',
-						at: 'May 21, 2006',
-						op: {
-							type: 'youtube',
-							title: 'what is...',
-							bullet: 'video',
-							videoId: 'jRA9ujhIs2I'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'carson-daly-nbc',
-						at: 'June 2006',
-						title: 'Carson Daly NBC',
-						description_line_a: ['18 month development contract']
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'chips',
-						at: 'June 2006',
-						title: 'Chips',
-						description_line_a: [
-							[
-								'A spoof suspense drama about eating potato chips, has been called "brilliant" by Entertainment Weekly, which has listed it among the "great moments in YouTube history." ',
-								cite__sup_(
-									tb_a_({
-										href: 'https://knowyourmeme.com/memes/people/brookers'
-									}, 'knowyourmeme.com'))
-							]
-						],
-						op: {
-							type: 'html',
-							title: 'Chips',
-							bullet: 'video',
-							html: '' + iframe_({
-								class: class_(
-									'w-full',
-									'aspect-video'),
-								src: 'https://archive.org/embed/chips_202010&autoplay=1',
-								frameborder: 0,
-								webkitallowfullscreen: true,
-								mozallowfullscreen: true,
-								allowfullscreen: true,
-							})
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'most-subscribed-youtube',
-						at: 'July 3 - Aug 7 2006',
-						title: 'Most-subscribed on YouTube',
-						description_line_a: ['> 64000 subscribers']
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'tyra-banks',
-						at: 'December 6 2006',
-						title: 'Tyra Banks Show',
-						description_line_a: ['judge for a student video competition']
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'who-drank-my-orange-juice',
-						at: 'circa 2006-2007',
-						description_line_a: ['Who drank my orange juice?'],
-						op: {
-							type: 'youtube',
-							title: 'Orange Juice',
-							bullet: 'video',
-							videoId: 'h0InxfwadiM'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'the-sound-of-your-voice-barenaked-ladies',
-						at: 'February 2007',
-						description_line_a: [
-							'Appeared in ',
-							tb_a_({ href: 'https://www.youtube.com/watch?v=FoFMRXlNJ6Y' }, 'music video'),
-							' with fellow YouTubers',
-						],
-						op: {
-							type: 'youtube',
-							title: 'The Sound of Your Voice—Barenaked Ladies',
-							bullet: 'video',
-							videoId: 'FoFMRXlNJ6Y'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'web-celebrity',
-						at: 'February 7, 2007',
-						description_line_a: [
-							'"Web Celebrity" published by Brookers on IYS on Feb 7, 2007 and then quickly removed.',
-						],
-						op: {
-							type: 'youtube',
-							title: '"Web Celebrity"',
-							bullet: 'video',
-							videoId: 'izc8q91Yet0'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'whos-leg-is-this',
-						at: 'Sep 7, 2007',
-						description_line_a: [
-							'"if this leg is yours can you come and claim it ... its stinking up my yard..thanks"',
-							[
-								'>530k views',
-								cite__sup_(
-									tb_a_({
-										href: 'https://web.archive.org/web/20120710175206/http://www.youtube.com/user/Brookers/videos',
-									}, 'Internet Archive'))
-							]
-						],
-						op: {
-							type: 'youtube',
-							title: 'Who\'s Leg is this ?!',
-							bullet: 'video',
-							videoId: 'uYfYu2pB-yE'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'go-sukashi-ep-1',
-						at: 'Aug 6, 2010',
-						description_line_a: [
-							'Brooke Brodack as Sukashi\'s girlfriend'
-						],
-						op: {
-							type: 'youtube',
-							title: 'Go Sukashi! - Episode #1',
-							bullet: 'video',
-							videoId: '8KqD2RNFW5E'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'go-sukashi-the-picnic',
-						at: 'Aug 13, 2010',
-						op: {
-							type: 'youtube',
-							title: 'Go Sukashi! - The Picnic',
-							bullet: 'video',
-							videoId: 'H3GpZ82uVQE'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'go-sukashi-a-green-menace',
-						at: 'Aug 23, 2010',
-						op: {
-							type: 'youtube',
-							title: 'Go Sukashi! - A Green Menace',
-							bullet: 'video',
-							videoId: 'zleNliomOGA'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'go-sukashi-love-whispers-not',
-						at: 'Sep 10, 2010',
-						op: {
-							type: 'youtube',
-							title: 'Go Sukashi! - Love Whispers Not',
-							bullet: 'video',
-							videoId: 'LwmdQSSiYRw'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'go-sukashi-christmas-special',
-						at: 'Dec 22, 2010',
-						op: {
-							type: 'youtube',
-							title: 'Go Sukashi! Christmas Special',
-							bullet: 'video',
-							videoId: 'd7G4nCppWy4'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'go-sukashi-recap-traier',
-						at: 'Feb 7, 2011',
-						op: {
-							type: 'youtube',
-							title: 'Go Sukashi! - Season 1 Recap Trailer',
-							bullet: 'video',
-							videoId: 'P3D5B2Pt-Lo'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'go-sukashi-season2-ep1',
-						at: 'Feb 9, 2011',
-						op: {
-							type: 'youtube',
-							title: 'Go Sukashi! - Season 2 - Ep #1: Chopality',
-							bullet: 'video',
-							videoId: 'Qaf5TYm8CNE'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'go-sukashi-season2-ep2',
-						at: 'Feb 24, 2011',
-						op: {
-							type: 'youtube',
-							title: 'Go Sukashi! - Season 2 - Ep #2: Love & Taxes',
-							bullet: 'video',
-							videoId: 'Gc25NsgO_qg'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'go-sukashi-outtakes-and-bloopers',
-						at: 'Apr 5, 2011',
-						op: {
-							type: 'youtube',
-							title: 'Go Sukashi: Outtakes and Bloopers',
-							bullet: 'video',
-							videoId: 'enuphAemSRo'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'united-states-of-whateva',
-						at: 'Mar 10, 2012',
-						description_line_a: [
-							[
-								'>2.4 Million views ',
-								cite__sup_(tb_a_({
-									href: 'https://web.archive.org/web/20150109114045/https://www.youtube.com/watch?v=SLbFDMplZDs'
-								}, 'Internet Archive'))
-							],
-						],
-						op: {
-							type: 'youtube',
-							title: 'My united states of...WHATEVA !!!',
-							bullet: 'video',
-							videoId: 's35NaNkKwR4'
-						}
-					}),
-					brookers_timeline__li_({
-						ctx,
-						id: 'colm-flynn',
-						at: 'Feb 8, 2022',
-						description_line_a: [
-							'Colm Flynn\' documentary on Brookers & long form interview with Brooke Brodack.'
-						],
-						op: {
-							type: 'youtube',
-							title: 'I was the world\'s first Youtube star: Brooke Brodack',
-							bullet: 'video',
-							videoId: 'dvzfyCM5pVQ'
-						}
-					})
+					...brookers_timeline_a1.map(brookers_timeline=>
+						brookers_timeline__li_(brookers_timeline))
 				]),
 			]))
+	}
+	function brookers_timeline_a1_():brookers_timeline_T[] {
+		return [
+			{
+				id: 'brookers-first-video',
+				at: 'September 2005',
+				title: 'Brookers first video on YouTube'
+			},
+			{
+				id: 'crazed-numa-fan',
+				at: 'Oct 23, 2005',
+				description_line_a: [
+					[
+						'>8.4 Million views ',
+						cite__sup_(tb_a_({
+							href: 'https://web.archive.org/web/20160210225252/https://www.youtube.com/watch?v=N6j475XI1Xg'
+						}, 'Internet Archive'))
+					]
+				],
+				op: {
+					type: 'youtube',
+					title: 'CRAZED NUMA FAN !!!!',
+					bullet: 'video',
+					videoId: 'wflZKdXC8Vo'
+				}
+			},
+			{
+				id: 'what-is',
+				at: 'May 21, 2006',
+				op: {
+					type: 'youtube',
+					title: 'what is...',
+					bullet: 'video',
+					videoId: 'jRA9ujhIs2I'
+				}
+			},
+			{
+				id: 'carson-daly-nbc',
+				at: 'June 2006',
+				title: 'Carson Daly NBC',
+				description_line_a: ['18 month development contract']
+			},
+			{
+				id: 'chips',
+				at: 'June 2006',
+				title: 'Chips',
+				description_line_a: [
+					[
+						'A spoof suspense drama about eating potato chips, has been called "brilliant" by Entertainment Weekly, which has listed it among the "great moments in YouTube history." ',
+						cite__sup_(
+							tb_a_({
+								href: 'https://knowyourmeme.com/memes/people/brookers'
+							}, 'knowyourmeme.com'))
+					]
+				],
+				op: {
+					type: 'html',
+					title: 'Chips',
+					bullet: 'video',
+					html: '' + iframe_({
+						class: class_(
+							'w-full',
+							'aspect-video'),
+						src: 'https://archive.org/embed/chips_202010&autoplay=1',
+						frameborder: 0,
+						webkitallowfullscreen: true,
+						mozallowfullscreen: true,
+						allowfullscreen: true,
+					})
+				}
+			},
+			{
+				id: 'most-subscribed-youtube',
+				at: 'July 3 - Aug 7 2006',
+				title: 'Most-subscribed on YouTube',
+				description_line_a: ['> 64000 subscribers']
+			},
+			{
+				id: 'tyra-banks',
+				at: 'December 6 2006',
+				title: 'Tyra Banks Show',
+				description_line_a: ['judge for a student video competition']
+			},
+			{
+				id: 'who-drank-my-orange-juice',
+				at: 'circa 2006-2007',
+				description_line_a: ['Who drank my orange juice?'],
+				op: {
+					type: 'youtube',
+					title: 'Orange Juice',
+					bullet: 'video',
+					videoId: 'h0InxfwadiM'
+				}
+			},
+			{
+				id: 'the-sound-of-your-voice-barenaked-ladies',
+				at: 'February 2007',
+				description_line_a: [
+					'Appeared in ',
+					tb_a_({ href: 'https://www.youtube.com/watch?v=FoFMRXlNJ6Y' }, 'music video'),
+					' with fellow YouTubers',
+				],
+				op: {
+					type: 'youtube',
+					title: 'The Sound of Your Voice—Barenaked Ladies',
+					bullet: 'video',
+					videoId: 'FoFMRXlNJ6Y'
+				}
+			},
+			{
+				id: 'web-celebrity',
+				at: 'February 7, 2007',
+				description_line_a: [
+					'"Web Celebrity" published by Brookers on IYS on Feb 7, 2007 and then quickly removed.',
+				],
+				op: {
+					type: 'youtube',
+					title: '"Web Celebrity"',
+					bullet: 'video',
+					videoId: 'izc8q91Yet0'
+				}
+			},
+			{
+				id: 'whos-leg-is-this',
+				at: 'Sep 7, 2007',
+				description_line_a: [
+					'"if this leg is yours can you come and claim it ... its stinking up my yard..thanks"',
+					[
+						'>530k views',
+						cite__sup_(
+							tb_a_({
+								href: 'https://web.archive.org/web/20120710175206/http://www.youtube.com/user/Brookers/videos',
+							}, 'Internet Archive'))
+					]
+				],
+				op: {
+					type: 'youtube',
+					title: 'Who\'s Leg is this ?!',
+					bullet: 'video',
+					videoId: 'uYfYu2pB-yE'
+				}
+			},
+			{
+				id: 'go-sukashi-ep-1',
+				at: 'Aug 6, 2010',
+				description_line_a: [
+					'Brooke Brodack as Sukashi\'s girlfriend'
+				],
+				op: {
+					type: 'youtube',
+					title: 'Go Sukashi! - Episode #1',
+					bullet: 'video',
+					videoId: '8KqD2RNFW5E'
+				}
+			},
+			{
+				id: 'go-sukashi-the-picnic',
+				at: 'Aug 13, 2010',
+				op: {
+					type: 'youtube',
+					title: 'Go Sukashi! - The Picnic',
+					bullet: 'video',
+					videoId: 'H3GpZ82uVQE'
+				}
+			},
+			{
+				id: 'go-sukashi-a-green-menace',
+				at: 'Aug 23, 2010',
+				op: {
+					type: 'youtube',
+					title: 'Go Sukashi! - A Green Menace',
+					bullet: 'video',
+					videoId: 'zleNliomOGA'
+				}
+			},
+			{
+				id: 'go-sukashi-love-whispers-not',
+				at: 'Sep 10, 2010',
+				op: {
+					type: 'youtube',
+					title: 'Go Sukashi! - Love Whispers Not',
+					bullet: 'video',
+					videoId: 'LwmdQSSiYRw'
+				}
+			},
+			{
+				id: 'go-sukashi-christmas-special',
+				at: 'Dec 22, 2010',
+				op: {
+					type: 'youtube',
+					title: 'Go Sukashi! Christmas Special',
+					bullet: 'video',
+					videoId: 'd7G4nCppWy4'
+				}
+			},
+			{
+				id: 'go-sukashi-recap-traier',
+				at: 'Feb 7, 2011',
+				op: {
+					type: 'youtube',
+					title: 'Go Sukashi! - Season 1 Recap Trailer',
+					bullet: 'video',
+					videoId: 'P3D5B2Pt-Lo'
+				}
+			},
+			{
+				id: 'go-sukashi-season2-ep1',
+				at: 'Feb 9, 2011',
+				op: {
+					type: 'youtube',
+					title: 'Go Sukashi! - Season 2 - Ep #1: Chopality',
+					bullet: 'video',
+					videoId: 'Qaf5TYm8CNE'
+				}
+			},
+			{
+				id: 'go-sukashi-season2-ep2',
+				at: 'Feb 24, 2011',
+				op: {
+					type: 'youtube',
+					title: 'Go Sukashi! - Season 2 - Ep #2: Love & Taxes',
+					bullet: 'video',
+					videoId: 'Gc25NsgO_qg'
+				}
+			},
+			{
+				id: 'go-sukashi-outtakes-and-bloopers',
+				at: 'Apr 5, 2011',
+				op: {
+					type: 'youtube',
+					title: 'Go Sukashi: Outtakes and Bloopers',
+					bullet: 'video',
+					videoId: 'enuphAemSRo'
+				}
+			},
+			{
+				id: 'united-states-of-whateva',
+				at: 'Mar 10, 2012',
+				description_line_a: [
+					[
+						'>2.4 Million views ',
+						cite__sup_(tb_a_({
+							href: 'https://web.archive.org/web/20150109114045/https://www.youtube.com/watch?v=SLbFDMplZDs'
+						}, 'Internet Archive'))
+					],
+				],
+				op: {
+					type: 'youtube',
+					title: 'My united states of...WHATEVA !!!',
+					bullet: 'video',
+					videoId: 's35NaNkKwR4'
+				}
+			},
+			{
+				id: 'colm-flynn',
+				at: 'Feb 8, 2022',
+				description_line_a: [
+					'Colm Flynn\' documentary on Brookers & long form interview with Brooke Brodack.'
+				],
+				op: {
+					type: 'youtube',
+					title: 'I was the world\'s first Youtube star: Brooke Brodack',
+					bullet: 'video',
+					videoId: 'dvzfyCM5pVQ'
+				}
+			},
+		]
 	}
 }
 export function brookers_timeline__ol_<env_T extends relement_env_T>({ ctx, style, ...$p }:{
@@ -511,8 +519,6 @@ export function brookers_timeline__ol_<env_T extends relement_env_T>({ ctx, styl
 	class?:string
 	style?:string
 }, ...children:tag_dom_T[]) {
-	const ItemList_id_ref = jsonld_id_ref__new(ctx, 'ItemList')
-	WebPage__hasPart__push(ctx, ItemList_id_ref)
 	return ol_<env_T>({
 		class: class_(
 			'brookers_timeline__ol',
@@ -523,32 +529,17 @@ export function brookers_timeline__ol_<env_T extends relement_env_T>({ ctx, styl
 			'border-gray-700',
 			$p.class),
 		style,
-		...schema_org_rdfa_<ItemList>('ItemList', ItemList_id_ref),
 	}, ...children)
 }
-export function brookers_timeline__li_<env_T extends relement_env_T>({
-	ctx,
-	id,
-	at,
-	title,
-	description_line_a,
-	op
-}:{
-	ctx:request_ctx_T,
-	id:string
-	at:string
-	title:string
-	description_line_a?:tag_dom_T[],
-	op?:brookers_timeline_op_T
-}|{
-	ctx:request_ctx_T
-	id:string
-	at:string
-	title?:string
-	description_line_a?:tag_dom_T[],
-	op:brookers_timeline_op_T
-}, ...children:tag_dom_T<env_T>[]) {
-	const ListItem_id_ref = jsonld_id_ref__new(ctx, `${id}_ListItem`)
+export function brookers_timeline__li_<env_T extends relement_env_T>(
+	{
+		at,
+		title,
+		description_line_a,
+		op
+	}:brookers_timeline_T,
+	...children:tag_dom_T<env_T>[]
+) {
 	return (
 		li_<env_T>({
 			class: class_(
@@ -561,8 +552,6 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 					: undefined,
 				'group'),
 			'data-op': op ? encodeURIComponent(JSON.stringify(op)) : undefined,
-			...schema_org_rdfa_rev_<ItemList>('itemListElement'),
-			...schema_org_rdfa_<ListItem>('ListItem', ListItem_id_ref),
 		}, [
 			div_({
 				class: class_(
@@ -628,7 +617,6 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 							'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
 						]
 						: undefined),
-				...schema_org_rdfa_property_<ListItem>('name'),
 			}, (op?.title ?? title) + ' '),
 			(description_line_a || []).map(description_line=>
 				p_({
@@ -644,7 +632,6 @@ export function brookers_timeline__li_<env_T extends relement_env_T>({
 								'group-active:animate-[neon-blink_0.03s_infinite_alternate]',
 							]
 							: undefined),
-					...schema_org_rdfa_property_<ListItem>('description'),
 				}, [description_line, ' '])),
 			...children
 		])
@@ -679,4 +666,17 @@ function brookers_img__div_() {
 }
 function cite__sup_(...children:tag_dom_T[]) {
 	return sup_(children)
+}
+type brookers_timeline_T = {
+	id:string
+	at:string
+	title:string
+	description_line_a?:tag_dom_T[],
+	op?:brookers_timeline_op_T
+}|{
+	id:string
+	at:string
+	title?:string
+	description_line_a?:tag_dom_T[],
+	op:brookers_timeline_op_T
 }
