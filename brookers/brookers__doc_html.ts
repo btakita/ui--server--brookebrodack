@@ -671,7 +671,8 @@ function brookers_img__div_() {
 					'top-0',
 					'm-auto',
 				].join(' '),
-				src: cooler_in_space_gif
+				src: cooler_in_space_gif,
+				alt: 'Brooke Brodack\'s MySpace gif'
 			})
 		])
 	)
