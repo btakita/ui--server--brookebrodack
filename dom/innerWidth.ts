@@ -6,16 +6,18 @@ export const [
 	innerWidth__set,
 ] = id_be_sig_triple_<number|null>(
 	'innerWidth',
-	()=>is_browser_() ? window.innerWidth : null
-).add((ctx, innerWidth$)=>{
-	if (is_server_()) return
-	window.addEventListener('orientationchange', refresh)
-	window.addEventListener('resize', refresh)
-	rmemo__off__add(innerWidth$, ()=>{
-		window.removeEventListener('orientationchange', refresh)
-		window.removeEventListener('resize', refresh)
-	})
-	function refresh() {
-		innerWidth__set(ctx, window.innerWidth)
-	}
-})
+	()=>is_browser_() ? window.innerWidth : null,
+	[
+		(ctx, innerWidth$)=>{
+			if (is_server_()) return
+			window.addEventListener('orientationchange', refresh)
+			window.addEventListener('resize', refresh)
+			rmemo__off__add(innerWidth$, ()=>{
+				window.removeEventListener('orientationchange', refresh)
+				window.removeEventListener('resize', refresh)
+			})
+			function refresh() {
+				innerWidth__set(ctx, window.innerWidth)
+			}
+		}
+	])
