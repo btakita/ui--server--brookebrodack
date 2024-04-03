@@ -1,19 +1,18 @@
 import { email_url } from '@btakita/domain--any--brookebrodack/social'
 import { fa_email_, fa_osi_ } from '@btakita/ui--any--brookebrodack/icon'
-import { site__author_, site__social_a1_, site__title_ } from '@rappstack/domain--server/site'
+import { site__author_a1_, site__social_a1_, site__title_ } from '@rappstack/domain--server/site'
 import { iconify_rss_ } from '@rappstack/ui--any--blog/icon'
 import { class_ } from 'ctx-core/html'
 import { type wide_ctx_T } from 'relementjs'
 import { a_, div_, footer_, li_, ul_ } from 'relementjs/html'
-export function site__footer_({
-	ctx,
-	class: _class,
-	icon_class,
-}:{
+type site__footer_props_T = {
 	ctx:wide_ctx_T
 	class?:string
 	icon_class?:string
-}) {
+}
+export function site__footer_($p:site__footer_props_T) {
+	const { ctx, } = $p
+	let { icon_class } = $p
 	icon_class = class_(
 		'fill-gray-900',
 		'h-6',
@@ -31,7 +30,7 @@ export function site__footer_({
 				'w-screen',
 				'py-1',
 				'bg-cyan-600/90',
-				_class)
+				$p.class)
 		}, [
 			ul_({
 				class: class_(
@@ -66,7 +65,7 @@ export function site__footer_({
 				}, [
 					a_({
 						href: email_url,
-						title: 'Email ' + site__author_(ctx)
+						title: 'Email ' + site__author_a1_(ctx)![0].name
 					}, [
 						fa_email_({ class: icon_class })
 					])

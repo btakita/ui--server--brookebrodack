@@ -1,13 +1,14 @@
 import { jsonld_Graph_ } from '@rappstack/domain--server/jsonld'
 import { request_url__href_, request_url__origin_ } from '@rappstack/domain--server/request'
 import {
+	type author_T,
 	type icon_link_props_T,
-	site__author_,
+	site__author_a1_,
 	site__body_class_,
 	site__description_,
+	site__favicon_,
 	site__google_site_verification_,
 	site__gtag_id_,
-	site__favicon_,
 	site__light_and_dark_mode_,
 	site__social_image_url_,
 	site__title_
@@ -19,35 +20,39 @@ import { type tag_props_T } from 'relementjs/any'
 import { body_, head_, link_, meta_, script_, title_ } from 'relementjs/html'
 import { doc_html_ } from 'relementjs/server'
 import { assets_, assets__new, type assets_T, type request_ctx_T } from 'relysjs/server'
-export function layout__doc_html_({
-	ctx,
-	html_props,
-	assets,
-	canonical_url,
-	title,
-	author,
-	description,
-	favicon,
-	social_image_url,
-	body_class,
-	body_props,
-}:{
+type layout__doc_html_props_T = {
 	ctx:request_ctx_T
 	html_props?:tag_props_T&{ class?:string }
 	assets?:assets_T
 	canonical_url?:string
 	title?:string
-	author?:string
+	author_a1?:[author_T, ...author_T[]]
 	description?:string
 	favicon?:icon_link_props_T
 	social_image_url?:string
 	body_class?:string
 	body_props?:Exclude<tag_props_T, 'class'>
-}, ...children:tag_dom_T[]) {
+}
+export function layout__doc_html_($p:layout__doc_html_props_T, ...children:tag_dom_T[]) {
+	const {
+		ctx,
+		html_props,
+		body_class,
+		body_props,
+	} = $p
+	let {
+		assets,
+		canonical_url,
+		title,
+		author_a1,
+		description,
+		favicon,
+		social_image_url,
+	} = $p
 	canonical_url ??= request_url__href_(ctx)
 	title ??= site__title_(ctx)
 	description ??= site__description_(ctx)
-	author ??= site__author_(ctx)
+	author_a1 ??= site__author_a1_(ctx)!
 	favicon ??= site__favicon_(ctx)
 	social_image_url = new URL(social_image_url ?? site__social_image_url_(ctx), request_url__origin_(ctx)).href
 	const google_site_verification = site__google_site_verification_(ctx)
@@ -70,7 +75,7 @@ export function layout__doc_html_({
 				meta_({ name: 'viewport', content: 'width=device-width' }),
 				meta_({ name: 'title', content: title }),
 				meta_({ name: 'description', content: description }),
-				meta_({ name: 'author', content: author }),
+				meta_({ name: 'author', content: author_a1[0]!.name }),
 				//  Open Graph / Facebook
 				meta_({ property: 'og:title', content: title }),
 				meta_({ property: 'og:description', content: description }),
