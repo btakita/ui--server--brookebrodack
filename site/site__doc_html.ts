@@ -50,7 +50,7 @@ export function site__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				}, [
 					// @formatter:off
 					// language=md
-					md__raw_(ctx, `
+					md__raw_({ ctx }, `
 This site is developed by ${tb_a_({ href: 'https://briantakita.me' }, 'Brian Takita')} under the Apache 2 license for Brooke Brodack & her audience. You are free to study the ${tb_a_({ href: 'https://github.com/btakita/brookebrodack-dev' }, 'source code')}, modify it, fork it, contribute pull requests, etc.
 
 ## Technology Stack
