@@ -5,11 +5,11 @@ import {
 	type icon_link_props_T,
 	site__author_a1_,
 	site__body_class_,
+	site__color_scheme_vars_,
 	site__description_,
 	site__favicon_,
 	site__google_site_verification_,
 	site__gtag_id_,
-	site__light_and_dark_mode_,
 	site__social_image_url_,
 	site__title_
 } from '@rappstack/domain--server/site'
@@ -56,7 +56,7 @@ export function layout__doc_html_($p:layout__doc_html_props_T, ...children:tag_d
 	favicon ??= site__favicon_(ctx)
 	social_image_url = new URL(social_image_url ?? site__social_image_url_(ctx), request_url__origin_(ctx)).href
 	const google_site_verification = site__google_site_verification_(ctx)
-	const site__light_and_dark_mode = site__light_and_dark_mode_(ctx)
+	const site__color_scheme_vars = site__color_scheme_vars_(ctx)
 	assets = assets__new(assets_(ctx), assets)
 	const site__gtag_id = site__gtag_id_(ctx)
 	return (
@@ -87,7 +87,7 @@ export function layout__doc_html_($p:layout__doc_html_props_T, ...children:tag_d
 				meta_({ property: 'twitter:title', content: title }),
 				meta_({ property: 'twitter:description', content: description }),
 				meta_({ property: 'twitter:image', content: social_image_url }),
-				site__light_and_dark_mode
+				site__color_scheme_vars
 					? [
 						meta_({ name: 'darkreader-lock' }),
 						meta_({ name: 'darkreader', content: 'disable' }),
@@ -110,7 +110,7 @@ export function layout__doc_html_($p:layout__doc_html_props_T, ...children:tag_d
 					link_({ rel: 'stylesheet', type: 'text/css', href })),
 				...assets.script_a.map(src=>
 					script_({ type: 'module', src })),
-				site__light_and_dark_mode
+				site__color_scheme_vars
 					? [
 						// language=js
 						script_({ type: 'module' }, raw_(`
