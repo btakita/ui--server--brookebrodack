@@ -162,7 +162,7 @@ export function content_feed__section_({ ctx }:{
 		section_({
 			id: 'content_feed',
 			class: class_(
-				'mt-8',
+				'pt-8',
 				'flex',
 				'flex-wrap',
 				'sm:grid',
