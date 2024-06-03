@@ -211,6 +211,7 @@ export function content_feed__section_({ ctx }:{
 				'rounded-lg',
 				'bg-white/50',
 				'no-underline',
+				'transition',
 				'hover:scale-105',
 				'focus:scale-105',
 				'group'),
