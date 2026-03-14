@@ -38,6 +38,7 @@
 		"youtube"
 	],
 	"dependencies": {
+		"@btakita/brookebrodack-site": "workspace:*",
 		"@btakita/domain--any--brookebrodack": "workspace:*",
 		"@btakita/domain--server--brookebrodack": "workspace:*",
 		"@btakita/ui--any--brookebrodack": "workspace:*",
