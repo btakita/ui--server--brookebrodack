@@ -92,6 +92,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				id: 'video__div',
 				class: class_(
 					'relative',
+					'overflow-hidden',
 					'noscript:h-1/3',
 					'noscript:lg:h-[600px]',
 					'landscape:h-screen',
@@ -113,7 +114,6 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 			}, [
 				YT_player__div_({
 					class: class_(
-						'hidden',
 						'h-full',
 						'landscape:h-screen',
 						'landscape:lg:h-full',
@@ -123,10 +123,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 						'landscape:lg:max-h-[600px]',
 						'max-w-7xl',
 						'aspect-video',
-						'mx-auto',
-						'scale-0',
-						'motion-reduce:scale-100',
-						'motion-reduce:block')
+						'mx-auto')
 				}),
 				div_({
 					id: 'video_close__div',
