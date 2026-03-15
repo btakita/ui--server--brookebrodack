@@ -125,7 +125,8 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 						'aspect-video',
 						'mx-auto',
 						'scale-0',
-						'motion-reduce:scale-100')
+						'motion-reduce:scale-100',
+						'motion-reduce:block')
 				}),
 				div_({
 					id: 'video_close__div',
