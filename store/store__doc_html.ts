@@ -1,6 +1,6 @@
 import { class_ } from 'ctx-core/html'
 import { div_, h2_, main_, p_ } from 'relementjs/html'
-import { type request_ctx_T } from 'relysjs/server'
+import { type request_ctx_T } from 'rhonojs/server'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 export function store__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	return (

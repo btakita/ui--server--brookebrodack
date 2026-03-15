@@ -19,7 +19,7 @@ import { raw_, type tag_dom_T } from 'relementjs'
 import { type tag_props_T } from 'relementjs/any'
 import { body_, head_, link_, meta_, script_, title_ } from 'relementjs/html'
 import { doc_html_ } from 'relementjs/server'
-import { assets_, assets__new, type assets_T, type request_ctx_T } from 'relysjs/server'
+import { assets_, assets__new, type assets_T, type request_ctx_T } from 'rhonojs/server'
 type layout__doc_html_props_T = {
 	ctx:request_ctx_T
 	html_props?:tag_props_T&{ class?:string }

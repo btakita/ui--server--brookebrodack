@@ -2,7 +2,7 @@ import { request_url__origin_ } from '@rappstack/domain--server/request'
 import { doc__render, xml_doctype } from '@rappstack/ui--server/doc'
 import { loc_, url_, urlset_ } from '@rappstack/ui--server/sitemap'
 import { url__join } from 'ctx-core/uri'
-import { type request_ctx_T } from 'relysjs/server'
+import { type request_ctx_T } from 'rhonojs/server'
 export function sitemap__xml_({
 	ctx
 }:{

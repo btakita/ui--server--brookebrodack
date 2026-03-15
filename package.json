@@ -50,7 +50,7 @@
 		"@rappstack/ui--any--blog": "^0.1.0",
 		"ctx-core": "^7.2.27",
 		"relementjs": "^0.80.26",
-		"relysjs": "^1.21.65"
+		"rhonojs": "^0.1.2"
 	},
 	"devDependencies": {
 		"bun-types": "latest",
