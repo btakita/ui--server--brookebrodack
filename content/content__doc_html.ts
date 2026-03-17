@@ -192,10 +192,16 @@ export function content_feed__section_({ ctx }:{
 			description: description || '—',
 			uploadDate: publishedAt.toISOString()
 		})
+		const slug = title.toLowerCase().trim()
+			.replace(/[^\w\s-]/g, '')
+			.replace(/[\s_]+/g, '-')
+			.replace(/-+/g, '-')
+			.replace(/^-|-$/g, '')
+			.slice(0, 80)
 		return a_({
 			href: contentUrl,
 			title,
-			'data-op': encodeURIComponent(JSON.stringify({ videoId })),
+			'data-op': encodeURIComponent(JSON.stringify({ videoId, slug })),
 			class: class_(
 				'relative',
 				'flex',
@@ -266,6 +272,16 @@ export function content_feed__section_({ ctx }:{
 						'mt-auto'),
 				}, [publishedAt.toISOString().split('T')[0]])
 				: undefined,
+			a_({
+				href: '/content/' + slug,
+				class: class_(
+					'text-sm',
+					'text-cyan-700',
+					'hover:text-cyan-900',
+					'underline',
+					'mt-1',
+					'inline-block'),
+			}, 'Read transcript →'),
 		])
 	}
 }

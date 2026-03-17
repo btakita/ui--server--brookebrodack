@@ -1,3 +1,4 @@
+import { sorted_dehydrated_post_meta_a1_ } from '@rappstack/domain--any--blog/post'
 import { request_url__origin_ } from '@rappstack/domain--server/request'
 import { doc__render, xml_doctype } from '@rappstack/ui--server/doc'
 import { loc_, url_, urlset_ } from '@rappstack/ui--server/sitemap'
@@ -9,6 +10,7 @@ export function sitemap__xml_({
 	ctx:request_ctx_T
 }) {
 	const origin = request_url__origin_(ctx)
+	const post_meta_a1 = sorted_dehydrated_post_meta_a1_(ctx)
 	return doc__render(
 		xml_doctype,
 		urlset_([
@@ -24,6 +26,12 @@ export function sitemap__xml_({
 			url_([
 				loc_(url__join(origin, '/site'))
 			]),
+			...(post_meta_a1
+				? post_meta_a1.map(meta=>
+					url_([
+						loc_(url__join(origin, '/content', meta.slug))
+					]))
+				: []),
 		])
 	)
 }
