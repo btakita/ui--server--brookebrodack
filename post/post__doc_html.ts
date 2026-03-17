@@ -1,5 +1,14 @@
-import { blog_post__tag_, blog_post__title_, blog_post__description_ } from '@rappstack/domain--server--blog/post'
+import { Person_id_ref_ } from '@btakita/brookebrodack-site/jsonld/index.js'
 import {
+	blog_post__description_,
+	blog_post__pub_date_,
+	blog_post__tag_,
+	blog_post__title_,
+	blog_post_mod__meta_,
+} from '@rappstack/domain--server--blog/post'
+import {
+	jsonld__add,
+	jsonld_id__new,
 	WebPage__description__set,
 	WebPage__headline__set,
 	WebPage__name__set,
@@ -9,6 +18,7 @@ import { class_ } from 'ctx-core/html'
 import { raw_ } from 'relementjs'
 import { article_, div_, h1_, main_, section_, style_ } from 'relementjs/html'
 import { type request_ctx_T } from 'rhonojs/server'
+import type { VideoObject } from 'schema-dts'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
 export function post__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
@@ -18,6 +28,25 @@ export function post__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 	WebPage__headline__set(ctx, title)
 	WebPage__description__set(ctx, description)
 	WebPage__type__set(ctx, 'ItemPage')
+	const meta = blog_post_mod__meta_(ctx)
+	const video_url = (meta as any)?.video_url as string|undefined
+	if (video_url) {
+		const videoId = video_id__from_url(video_url)
+		if (videoId) {
+			const pub_date = blog_post__pub_date_(ctx)
+			jsonld__add(ctx, ()=><VideoObject>{
+				'@id': jsonld_id__new(ctx, `${videoId}_VideoObject`),
+				'@type': 'VideoObject',
+				name: title,
+				description: description || title,
+				thumbnailUrl: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+				contentUrl: `https://www.youtube.com/watch?v=${videoId}`,
+				embedUrl: `https://www.youtube.com/embed/${videoId}`,
+				uploadDate: pub_date ?? undefined,
+				author: Person_id_ref_(ctx),
+			})
+		}
+	}
 	const blog_post__tag = blog_post__tag_(ctx)
 	return (
 		layout__doc_html_({
@@ -73,4 +102,12 @@ export function post__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 			site__footer_({ ctx })
 		])
 	)
+}
+function video_id__from_url(video_url:string):string|null {
+	try {
+		const url = new URL(video_url)
+		return url.searchParams.get('v')
+	} catch {
+		return null
+	}
 }
