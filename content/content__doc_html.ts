@@ -36,7 +36,7 @@ export function content__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 		headline: title,
 		image: url__join(site__website_(ctx)!, nature_origami_bg_webp),
 		articleBody:
-			youtube_video_a1_(ctx)!
+			(youtube_video_a1_(ctx) ?? [])
 				.map(youtube_video=>[youtube_video.title, youtube_video.description ?? '—'])
 				.join('\n'),
 	})
@@ -171,7 +171,7 @@ export function content_feed__section_({ ctx }:{
 				'mx-auto',
 				'overflow-y-auto'),
 		}, [
-			...youtube_video_a1_(ctx)!.map((brookebrodack_youtube_video, idx)=>
+			...(youtube_video_a1_(ctx) ?? []).map((brookebrodack_youtube_video, idx)=>
 				youtube_video__a_(brookebrodack_youtube_video, idx)),
 		])
 	)
