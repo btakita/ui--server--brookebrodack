@@ -1,6 +1,6 @@
 import { Person_id_ref_ } from '@btakita/brookebrodack-site/jsonld/index.js'
 import { videoId_thumbnail_url_, youtube_video_a1_ } from '@btakita/domain--server--brookebrodack/youtube'
-import { heroicons_pause_, heroicons_video_camera_, heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
+import { heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
 import { type youtube_video_tbl } from '@rappstack/domain--server--youtube/schema'
 import {
@@ -219,31 +219,7 @@ export function content_feed__section_({ ctx }:{
 				'hover:scale-105',
 				'focus:scale-105',
 				'group'),
-			/** @see {import('@btakita/ui--browser--brookebrodack/content').content_feed__a__hyop} */
-			hyop: 'content_feed__a__hyop'
 		}, [
-			heroicons_video_camera_({
-				class: class_(
-					'absolute',
-					'top-12',
-					'aspect-video',
-					'w-[calc(100%-36px)]',
-					'hidden',
-					'group-[.play]:block',
-					'opacity-50',
-					'stroke-white')
-			}),
-			heroicons_pause_({
-				class: class_(
-					'absolute',
-					'top-12',
-					'aspect-video',
-					'w-[calc(100%-36px)]',
-					'hidden',
-					'group-[.pause]:block',
-					'opacity-50',
-					'stroke-white')
-			}),
 			img_({
 				src: thumbnailUrl,
 				alt: 'Video Thumbnail for ' + title,
