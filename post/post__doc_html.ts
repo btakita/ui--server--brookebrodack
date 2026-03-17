@@ -7,7 +7,7 @@ import {
 } from '@rappstack/domain--server/jsonld'
 import { class_ } from 'ctx-core/html'
 import { raw_ } from 'relementjs'
-import { article_, div_, h1_, main_, section_ } from 'relementjs/html'
+import { article_, div_, h1_, main_, section_, style_ } from 'relementjs/html'
 import { type request_ctx_T } from 'rhonojs/server'
 import { back_link__a_, layout__doc_html_, site__footer_, site__header_ } from '../layout/index.js'
 import nature_origami_bg_webp from '../public/assets/images/nature-origami-bg.webp'
@@ -34,6 +34,7 @@ export function post__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 				style: `background-image: url(${nature_origami_bg_webp})`
 			}
 		}, [
+			style_(raw_('.post__doc_html article iframe { width: 100%; aspect-ratio: 16/9; height: auto; }')),
 			main_({
 				class: class_(
 					'min-h-screen',
