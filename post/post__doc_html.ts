@@ -68,7 +68,7 @@ export function post__doc_html_({ ctx }:{ ctx:request_ctx_T }) {
 					])
 				])
 			]),
-			back_link__a_({}),
+			back_link__a_({ href: '/content' }),
 			site__footer_({ ctx })
 		])
 	)

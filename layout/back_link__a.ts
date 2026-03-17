@@ -3,15 +3,17 @@ import { class_ } from 'ctx-core/html'
 import { a_ } from 'relementjs/html'
 export function back_link__a_({
 	class: _class,
+	href,
 	hyop
 }:{
 	class?:string
+	href?:string
 	hyop?:string
 }) {
 	return (
 		a_({
-			href: '/',
-			title: 'Back to home page',
+			href: href ?? '/',
+			title: href === '/content' ? 'Back to content' : 'Back to home page',
 			class: class_(
 				'back_link__a',
 				'fixed',

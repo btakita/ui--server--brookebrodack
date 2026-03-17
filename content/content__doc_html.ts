@@ -199,7 +199,7 @@ export function content_feed__section_({ ctx }:{
 			.replace(/^-|-$/g, '')
 			.slice(0, 80)
 		return a_({
-			href: contentUrl,
+			href: '/content/' + slug,
 			title,
 			'data-op': encodeURIComponent(JSON.stringify({ videoId, slug })),
 			class: class_(
@@ -272,16 +272,6 @@ export function content_feed__section_({ ctx }:{
 						'mt-auto'),
 				}, [publishedAt.toISOString().split('T')[0]])
 				: undefined,
-			a_({
-				href: '/content/' + slug,
-				class: class_(
-					'text-sm',
-					'text-cyan-700',
-					'hover:text-cyan-900',
-					'underline',
-					'mt-1',
-					'inline-block'),
-			}, 'Read transcript →'),
 		])
 	}
 }
