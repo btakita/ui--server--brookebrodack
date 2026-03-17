@@ -2,6 +2,7 @@ import { Person_id_ref_ } from '@btakita/brookebrodack-site/jsonld/index.js'
 import { videoId_thumbnail_url_, youtube_video_a1_ } from '@btakita/domain--server--brookebrodack/youtube'
 import { heroicons_x_mark_ } from '@btakita/ui--any--brookebrodack/icon'
 import { spinner__template_ } from '@btakita/ui--any--brookebrodack/spinner'
+import { post_mod_a1_ } from '@rappstack/domain--any--blog/post'
 import { type youtube_video_tbl } from '@rappstack/domain--server--youtube/schema'
 import {
 	jsonld__add,
@@ -156,6 +157,7 @@ export function content_feed__section_({ ctx }:{
 }) {
 	const Article_id_ref = jsonld_id_ref__new(ctx, 'Article')
 	WebPage__hasPart__push(ctx, Article_id_ref)
+	const post_slug_set = post_slug_set__new(ctx)
 	return (
 		section_({
 			id: 'content_feed',
@@ -198,10 +200,15 @@ export function content_feed__section_({ ctx }:{
 			.replace(/-+/g, '-')
 			.replace(/^-|-$/g, '')
 			.slice(0, 80)
+		const has_post = post_slug_set.has(slug)
+		const href = has_post
+			? '/content/' + slug
+			: contentUrl
 		return a_({
-			href: '/content/' + slug,
+			href,
 			title,
 			'data-op': encodeURIComponent(JSON.stringify({ videoId, slug })),
+			...(has_post ? {} : { target: '_blank', rel: 'noopener noreferrer' }),
 			class: class_(
 				'relative',
 				'flex',
@@ -250,4 +257,10 @@ export function content_feed__section_({ ctx }:{
 				: undefined,
 		])
 	}
+}
+function post_slug_set__new(ctx:request_ctx_T):Set<string> {
+	const post_mod_a1 = post_mod_a1_(ctx)
+	if (!post_mod_a1) return new Set()
+	return new Set(
+		post_mod_a1.map(post_mod=>post_mod.meta_(ctx).slug))
 }
